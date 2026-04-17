@@ -14,10 +14,19 @@ config/name="FishBalls"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[file_customization]
+
+folder_colors={
+"res://Assest/": "green",
+"res://Scenes/": "pink",
+"res://Script/": "purple"
+}
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"

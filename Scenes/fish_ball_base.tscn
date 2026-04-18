@@ -1,15 +1,54 @@
 [gd_scene format=3 uid="uid://ou8vwax3spb8"]
 
-[ext_resource type="Texture2D" uid="uid://bdjum436fikom" path="res://Assest/FishBall_Base/FishBall_Base.png" id="1_2x5se"]
 [ext_resource type="Script" uid="uid://dc0ee2d0erosw" path="res://Script/FishBall_Base/fish_ball_base.gd" id="1_js28m"]
+[ext_resource type="Texture2D" uid="uid://dik050xbgikg6" path="res://Assest/FishBall_Base/FishBall_Base-Sheet.png" id="2_js28m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js28m"]
+atlas = ExtResource("2_js28m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5niw"]
+atlas = ExtResource("2_js28m")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql5y8"]
+atlas = ExtResource("2_js28m")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1mbl"]
+atlas = ExtResource("2_js28m")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bh6at"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js28m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5niw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql5y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1mbl")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_js28m"]
 
 [node name="FishBall_Base" type="CharacterBody2D" unique_id=920739817]
 script = ExtResource("1_js28m")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1739674456]
-texture = ExtResource("1_2x5se")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=744150829]
+sprite_frames = SubResource("SpriteFrames_bh6at")
+animation = &"Walk"
+frame_progress = 0.5851763
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1674202995]
+visible = false
 shape = SubResource("CircleShape2D_js28m")

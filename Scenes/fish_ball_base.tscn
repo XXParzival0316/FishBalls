@@ -2,6 +2,23 @@
 
 [ext_resource type="Script" uid="uid://dc0ee2d0erosw" path="res://Script/FishBall_Base/fish_ball_base.gd" id="1_js28m"]
 [ext_resource type="Texture2D" uid="uid://dik050xbgikg6" path="res://Assest/FishBall_Base/FishBall_Base-Sheet.png" id="2_js28m"]
+[ext_resource type="Texture2D" uid="uid://5j840bkmi0p2" path="res://Assest/FishBall_Base/FishBall_Base-idle.png" id="2_w5niw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etd7m"]
+atlas = ExtResource("2_w5niw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh6at"]
+atlas = ExtResource("2_w5niw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njq30"]
+atlas = ExtResource("2_w5niw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djqp6"]
+atlas = ExtResource("2_w5niw")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_js28m"]
 atlas = ExtResource("2_js28m")
@@ -21,6 +38,23 @@ region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bh6at"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etd7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bh6at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njq30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djqp6")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_js28m")
@@ -46,8 +80,8 @@ script = ExtResource("1_js28m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=744150829]
 sprite_frames = SubResource("SpriteFrames_bh6at")
-animation = &"Walk"
-frame_progress = 0.5851763
+animation = &"Idle"
+frame_progress = 0.5627701
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1674202995]
 visible = false

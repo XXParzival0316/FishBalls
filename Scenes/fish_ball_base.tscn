@@ -81,8 +81,7 @@ script = ExtResource("1_js28m")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=744150829]
 sprite_frames = SubResource("SpriteFrames_bh6at")
 animation = &"Idle"
-frame = 1
-frame_progress = 0.2216696
+frame_progress = 0.011846853
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1674202995]
 visible = false

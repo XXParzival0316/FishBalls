@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 				animated_sprite_2d.play("Idle")
 			velocity.x = direction * SPEED
 			# 处理跳跃
-			if Input.is_action_just_pressed("Up"):
+			if Input.is_action_just_pressed("Jump"):
 				velocity.y = JUMP_VELOCITY
 			if not is_on_floor():
 				active_state = STATE.FALL

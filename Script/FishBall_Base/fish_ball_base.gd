@@ -1,7 +1,7 @@
 extends CharacterBody2D
 # Author XXParzival
 
-# 状态机
+# 状态枚举
 enum STATE{
 	FLOOR,
 	FALL,
@@ -40,14 +40,9 @@ func _physics_process(delta: float) -> void:
 		STATE.FALL:
 			velocity.x = direction * SPEED
 			velocity.y += GRAVITY * delta
-			# 动画播放
-			if direction:
-				if direction == 1.0:
-					animated_sprite_2d.flip_h = false
-					animated_sprite_2d.play("Walk")
-				else:
-					animated_sprite_2d.flip_h = true
-					animated_sprite_2d.play("Walk")
+			# TODO-下落动画
+
+
 			if  is_on_floor():
 				velocity.y = 0
 				active_state = STATE.FLOOR

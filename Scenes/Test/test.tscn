@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="1_kr3tn"]
 [ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/fish_ball_base.tscn" id="2_v7cj3"]
+[ext_resource type="PackedScene" uid="uid://dlv5jtn57jhwq" path="res://Scenes/KitchenTraps/steam_pot.tscn" id="3_v7cj3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lxp54"]
 texture = ExtResource("1_kr3tn")
@@ -142,3 +143,6 @@ tile_set = SubResource("TileSet_jda1s")
 
 [node name="FishBall_Base" parent="." unique_id=920739817 instance=ExtResource("2_v7cj3")]
 position = Vector2(238, 397)
+
+[node name="steam_pot" parent="." unique_id=1273510535 instance=ExtResource("3_v7cj3")]
+position = Vector2(306, 399)

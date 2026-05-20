@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dlv5jtn57jhwq"]
+
+[ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="1_givbo"]
+[ext_resource type="Script" uid="uid://bw6sfruk7lynd" path="res://Script/KitchenTraps/steam_pot.gd" id="1_yedsp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnuav"]
+size = Vector2(19.5, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_givbo"]
+size = Vector2(28, 28)
+
+[node name="steam_pot" type="StaticBody2D" unique_id=72808541]
+script = ExtResource("1_yedsp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1239684251]
+scale = Vector2(1, 1.064)
+texture = ExtResource("1_givbo")
+region_enabled = true
+region_rect = Rect2(206, 115, 36, 29)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1004252403]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1960045278]
+position = Vector2(-0.75, -27)
+shape = SubResource("RectangleShape2D_pnuav")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=350253367]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_givbo")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

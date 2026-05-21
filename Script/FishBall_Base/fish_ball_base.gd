@@ -32,9 +32,16 @@ func _physics_process(delta: float) -> void:
 			else:
 				animated_sprite_2d.play("Idle")
 			velocity.x = direction * SPEED
+			
+			if Input.is_action_just_pressed("Down"):
+				set_collision_mask_value(5,false)
+				await get_tree().create_timer(0.2).timeout
+				set_collision_mask_value(5,true)
+				
 			# 处理跳跃
 			if Input.is_action_just_pressed("Jump"):
 				velocity.y = JUMP_VELOCITY
+			
 			if not is_on_floor():
 				active_state = STATE.FALL
 		STATE.FALL:

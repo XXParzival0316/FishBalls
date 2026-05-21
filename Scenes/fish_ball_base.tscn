@@ -77,6 +77,8 @@ animations = [{
 radius = 15.524175
 
 [node name="FishBall_Base" type="CharacterBody2D" unique_id=920739817 groups=["Player"]]
+scale = Vector2(0.5, 0.5)
+collision_mask = 17
 script = ExtResource("1_js28m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=744150829]
@@ -88,4 +90,4 @@ position = Vector2(1, -1)
 shape = SubResource("CircleShape2D_js28m")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=855046793]
-zoom = Vector2(2, 2)
+zoom = Vector2(5, 5)

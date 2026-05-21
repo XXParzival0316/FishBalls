@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://tl6xqwq3dbni"]
+
+[ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="1_a4lxi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ha1hl"]
+size = Vector2(22, 6)
+
+[node name="BasePlatform" type="StaticBody2D" unique_id=91061509]
+collision_layer = 16
+collision_mask = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=766568442]
+texture = ExtResource("1_a4lxi")
+region_enabled = true
+region_rect = Rect2(77, 13, 22, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=181390989]
+shape = SubResource("RectangleShape2D_ha1hl")
+one_way_collision = true

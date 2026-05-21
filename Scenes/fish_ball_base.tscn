@@ -88,6 +88,3 @@ animation = &"Walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1674202995]
 position = Vector2(1, -1)
 shape = SubResource("CircleShape2D_js28m")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=855046793]
-zoom = Vector2(5, 5)

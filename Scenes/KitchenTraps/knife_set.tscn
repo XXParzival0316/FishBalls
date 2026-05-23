@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://4srmoc1ogn8r"]
+
+[ext_resource type="Texture2D" uid="uid://glm18khxl6j5" path="res://Assest/Kitchen/Object.PNG" id="1_kr0fj"]
+[ext_resource type="Script" uid="uid://2ln2817fbp0y" path="res://Script/KitchenTraps/knife_set_area2d.gd" id="2_6ta5i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ta5i"]
+size = Vector2(53, 7)
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=337676790]
+mass = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=107155596]
+shape = SubResource("RectangleShape2D_6ta5i")
+
+[node name="Object" type="Sprite2D" parent="CollisionShape2D" unique_id=680905517]
+texture = ExtResource("1_kr0fj")
+region_enabled = true
+region_rect = Rect2(36, 33, 55, 8)
+
+[node name="Area2D" type="Area2D" parent="CollisionShape2D" unique_id=1814460899]
+script = ExtResource("2_6ta5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Area2D" unique_id=1381045581]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_6ta5i")
+
+[node name="Node2D" type="Node2D" parent="CollisionShape2D/Area2D" unique_id=181277424]
+position = Vector2(0, -7)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1477046098]
+
+[node name="CuttingBoard" type="Sprite2D" parent="Node2D" unique_id=1605584152]
+position = Vector2(-9, 14)
+texture = ExtResource("1_kr0fj")
+region_enabled = true
+region_rect = Rect2(49, 53, 15, 25)
+
+[node name="Knife" type="Sprite2D" parent="Node2D" unique_id=1090034674]
+position = Vector2(15, 13)
+texture = ExtResource("1_kr0fj")
+region_enabled = true
+region_rect = Rect2(68, 55, 10, 23)
+
+[connection signal="body_entered" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="_on_body_exited"]

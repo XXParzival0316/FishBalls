@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dc0ee2d0erosw" path="res://Script/FishBall_Base/fish_ball.gd" id="1_js28m"]
 [ext_resource type="Texture2D" uid="uid://isew4qolyvto" path="res://Assest/FishBall_Base/fish_ball_base_jump.png" id="2_ql5y8"]
 [ext_resource type="Texture2D" uid="uid://5j840bkmi0p2" path="res://Assest/FishBall_Base/fishball_base_idle.png" id="2_w5niw"]
+[ext_resource type="Texture2D" uid="uid://b5ihgiibcaep8" path="res://Assest/FishBall_Base/fish_ball_base_walk.png" id="3_h5c1u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7dqb"]
 atlas = ExtResource("2_ql5y8")
@@ -28,20 +29,20 @@ region = Rect2(96, 0, 32, 32)
 atlas = ExtResource("2_ql5y8")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_js28m"]
-atlas = ExtResource("2_w5niw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5c1u"]
+atlas = ExtResource("3_h5c1u")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w5niw"]
-atlas = ExtResource("2_w5niw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_srqj3"]
+atlas = ExtResource("3_h5c1u")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ql5y8"]
-atlas = ExtResource("2_w5niw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbjmm"]
+atlas = ExtResource("3_h5c1u")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b1mbl"]
-atlas = ExtResource("2_w5niw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kicbi"]
+atlas = ExtResource("3_h5c1u")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bh6at"]
@@ -81,16 +82,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_js28m")
+"texture": SubResource("AtlasTexture_h5c1u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w5niw")
+"texture": SubResource("AtlasTexture_srqj3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ql5y8")
+"texture": SubResource("AtlasTexture_sbjmm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b1mbl")
+"texture": SubResource("AtlasTexture_kicbi")
 }],
 "loop": true,
 "name": &"Walk",
@@ -109,7 +110,7 @@ script = ExtResource("1_js28m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=744150829]
 sprite_frames = SubResource("SpriteFrames_bh6at")
-animation = &"Fall"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1674202995]
 position = Vector2(1, -1)

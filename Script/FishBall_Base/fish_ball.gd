@@ -45,10 +45,13 @@ func _physics_process(delta: float) -> void:
 				set_collision_mask_value(5,true)
 			
 			if can_rebound:
+				# 下落高度不为0才判断
 				if fall_height:
-					# 地板高度
+					# 检测地板高度
 					var floor_height:float = position.y
+					# 地板高度要低于下落高度才进行判断
 					if floor_height > fall_height:
+						# 要到一定的高度差才反弹
 						if floor_height - fall_height >100:
 							var bounce_height = (floor_height -fall_height) * 3
 							if bounce_height < 800:
@@ -57,7 +60,8 @@ func _physics_process(delta: float) -> void:
 								bounce(800)
 						else:
 							print("高度差不足100，无法反弹")
-							
+
+					# 重置下落高度为0
 					fall_height = 0.0
 				
 			# 处理跳跃
@@ -71,7 +75,9 @@ func _physics_process(delta: float) -> void:
 			# 记录吸水后下落高度
 			if can_rebound:
 				if not fall_height:
+					# 初始化下落高度
 					fall_height = position.y
+				# 记录最高下落高度
 				if fall_height > position.y:
 					fall_height = position.y			
 				

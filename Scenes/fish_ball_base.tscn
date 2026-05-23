@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ou8vwax3spb8"]
 
 [ext_resource type="Script" uid="uid://dc0ee2d0erosw" path="res://Script/FishBall_Base/fish_ball_base.gd" id="1_js28m"]
-[ext_resource type="Texture2D" uid="uid://dik050xbgikg6" path="res://Assest/FishBall_Base/FishBall_Base-Sheet.png" id="2_js28m"]
-[ext_resource type="Texture2D" uid="uid://5j840bkmi0p2" path="res://Assest/FishBall_Base/FishBall_Base-idle.png" id="2_w5niw"]
+[ext_resource type="Texture2D" uid="uid://5j840bkmi0p2" path="res://Assest/FishBall_Base/fishball_base_idle.png" id="2_js28m"]
+[ext_resource type="Texture2D" uid="uid://5j840bkmi0p2" path="res://Assest/FishBall_Base/fishball_base_idle.png" id="2_w5niw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_etd7m"]
 atlas = ExtResource("2_w5niw")

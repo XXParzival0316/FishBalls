@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diiapirysm3v4"
-path="res://.godot/imported/fishball_base.png-b04282fed44908c99fefe641814fc724.ctex"
+uid="uid://5j840bkmi0p2"
+path="res://.godot/imported/fishball_base_idle.png-e7a119df799e377579b9a89049981aaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/FishBall_Base/fishball_base.png"
-dest_files=["res://.godot/imported/fishball_base.png-b04282fed44908c99fefe641814fc724.ctex"]
+source_file="res://Assest/FishBall_Base/fishball_base_idle.png"
+dest_files=["res://.godot/imported/fishball_base_idle.png-e7a119df799e377579b9a89049981aaa.ctex"]
 
 [params]
 

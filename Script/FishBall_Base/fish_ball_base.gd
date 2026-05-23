@@ -7,8 +7,8 @@ enum STATE{
 	FALL,
 }
 
-const SPEED := 300.0
-const JUMP_VELOCITY := -400.0
+const SPEED := 200.0
+const JUMP_VELOCITY := -270.0
 const GRAVITY := 1000.0
 
 var active_state := STATE.FLOOR
@@ -40,15 +40,26 @@ func _physics_process(delta: float) -> void:
 				
 			# 处理跳跃
 			if Input.is_action_just_pressed("Jump"):
+				animated_sprite_2d.play("Jump")
 				velocity.y = JUMP_VELOCITY
-			
+				
 			if not is_on_floor():
 				active_state = STATE.FALL
 		STATE.FALL:
 			velocity.x = direction * SPEED
 			velocity.y += GRAVITY * delta
-			# TODO-下落动画
+			
+			# 动画处理
+			if direction:
+				if direction == 1.0:
+					animated_sprite_2d.flip_h = false
+				else:
+					animated_sprite_2d.flip_h = true
 
+			if velocity.y < 0.0:
+				animated_sprite_2d.play("Jump")
+			else :
+				animated_sprite_2d.play("Fall")
 
 			if  is_on_floor():
 				velocity.y = 0

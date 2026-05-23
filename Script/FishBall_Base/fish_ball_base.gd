@@ -66,3 +66,12 @@ func _physics_process(delta: float) -> void:
 				active_state = STATE.FLOOR
 	
 	move_and_slide()
+
+
+func smoonth_scale(target_scale:Vector2,duration:float)->void:
+	var tween := create_tween()
+	tween.tween_property(self,"scale",target_scale,duration)
+
+
+func _entered_water(body: Node2D) -> void:
+	smoonth_scale(Vector2(1.0,1.0),0.75)

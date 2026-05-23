@@ -11,6 +11,7 @@ func _ready() -> void:
 	
 func _fall_into_water(player:Node2D):
 	if player.has_method("fall_in_water"): #检测进入的物体身上有没有“fall_in_water"这个函数
+		player.get
 		#target_in_area.append(body)
 		
 		print("fall in water")

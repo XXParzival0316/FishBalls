@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://isew4qolyvto" path="res://Assest/FishBall_Base/fish_ball_base_jump.png" id="2_ql5y8"]
 [ext_resource type="Texture2D" uid="uid://5j840bkmi0p2" path="res://Assest/FishBall_Base/fishball_base_idle.png" id="2_w5niw"]
 [ext_resource type="Texture2D" uid="uid://b5ihgiibcaep8" path="res://Assest/FishBall_Base/fish_ball_base_walk.png" id="3_h5c1u"]
+[ext_resource type="PackedScene" uid="uid://betqtjasgw3ia" path="res://Scenes/FishBall/Particles/water_drop_particles_2d.tscn" id="5_qhdtn"]
+[ext_resource type="PackedScene" uid="uid://bemf58yduupi5" path="res://Scenes/FishBall/Particles/water_explosion.tscn" id="6_tf1wl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7dqb"]
 atlas = ExtResource("2_ql5y8")
@@ -126,4 +128,11 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1783041974]
 shape = SubResource("CircleShape2D_w5niw")
 
+[node name="Timer" type="Timer" parent="." unique_id=991729823]
+
+[node name="WaterDrop" parent="." unique_id=1396458935 instance=ExtResource("5_qhdtn")]
+
+[node name="WaterExplosion" parent="." unique_id=147157352 instance=ExtResource("6_tf1wl")]
+
 [connection signal="body_entered" from="Area2D" to="." method="_entered_water"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

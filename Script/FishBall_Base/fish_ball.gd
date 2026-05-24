@@ -10,6 +10,7 @@ enum STATE{
 const SPEED := 200.0
 const JUMP_VELOCITY := -270.0
 const GRAVITY := 1000.0
+const BOUNCE_TIME:float = 4.0
 
 # 状态
 var active_state := STATE.FLOOR
@@ -20,8 +21,20 @@ var fall_height:float = 0.0
 
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var timer:Timer = $Timer
+# 粒子特效
+@onready var water_drop_particles: CPUParticles2D = $WaterDrop
+@onready var water_explosion_particles: CPUParticles2D = $WaterExplosion
+
+# 
+func _ready() -> void:
+	pass
+	
+
 
 func _physics_process(delta: float) -> void:
+	
+
 	
 	var direction := Input.get_axis("Left","Right")
 	# 匹配状态
@@ -102,11 +115,18 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	# 滴水粒子开关
+	if can_rebound:
+		water_drop_particles.emitting = true
+	else:
+		water_drop_particles.emitting = false
 
 func bounce(bounce_target:float) -> void:
+	water_drop_particles.emitting = false
 	print("反弹高度为:",bounce_target)
 	smoonth_scale(Vector2(0.5,0.5),0.25)
 	velocity.y = -bounce_target
+	water_explosion_particles.emitting = true	
 	can_rebound = false
 	
 func smoonth_scale(target_scale:Vector2,duration:float)->void:
@@ -115,6 +135,13 @@ func smoonth_scale(target_scale:Vector2,duration:float)->void:
 
 
 func _entered_water(body: Node2D) -> void:
+	timer.set_wait_time(BOUNCE_TIME)
+	timer.start()
 	smoonth_scale(Vector2(1.0,1.0),0.75)
 	can_rebound = true
 	
+
+
+func _on_timer_timeout() -> void:
+	smoonth_scale(Vector2(0.5,0.5),0.75)
+	can_rebound = false

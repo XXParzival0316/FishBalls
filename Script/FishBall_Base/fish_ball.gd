@@ -10,7 +10,8 @@ enum STATE{
 const SPEED := 200.0
 const JUMP_VELOCITY := -270.0
 const GRAVITY := 1000.0
-const BOUNCE_TIME:float = 4.0
+# 吸水持续状态
+const BOUNCE_TIME:float = 15.0
 
 # 状态
 var active_state := STATE.FLOOR
@@ -23,8 +24,8 @@ var fall_height:float = 0.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer:Timer = $Timer
 # 粒子特效
-@onready var water_drop_particles: CPUParticles2D = $WaterDrop
-@onready var water_explosion_particles: CPUParticles2D = $WaterExplosion
+@onready var water_drop_particles: CPUParticles2D = $Particles/WaterDrop
+@onready var water_explosion_particles: CPUParticles2D = $Particles/WaterExplosion
 
 # 
 func _ready() -> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8ir6lhd08hen"
-path="res://.godot/imported/Kitchenware_tilemap.png-94d3bf721cd6c610f3c155f7a89f9d96.ctex"
+uid="uid://5xuyfqm8pops"
+path="res://.godot/imported/Kitchenware_draft_tilemap.png-534c7dd42b8934de74d957d34aa706ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/Kitchen/Kitchenware_tilemap.png"
-dest_files=["res://.godot/imported/Kitchenware_tilemap.png-94d3bf721cd6c610f3c155f7a89f9d96.ctex"]
+source_file="res://Assest/Kitchen/Kitchenware_draft_tilemap.png"
+dest_files=["res://.godot/imported/Kitchenware_draft_tilemap.png-534c7dd42b8934de74d957d34aa706ad.ctex"]
 
 [params]
 

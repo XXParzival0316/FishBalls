@@ -13,7 +13,15 @@ config_version=5
 config/name="FishBalls"
 run/main_scene="uid://csbnr1f04kb4c"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="uid://bdjum436fikom"
+config/icon="uid://diiapirysm3v4"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=320
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
 
 [file_customization]
 

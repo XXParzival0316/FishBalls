@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://betqtjasgw3ia"]
+
+[sub_resource type="Curve" id="Curve_h5c1u"]
+_data = [Vector2(0.012422353, 0.9840519), 0.0, 0.0, 0, 0, Vector2(0.51138717, 0.7311602), -1.78344, -1.78344, 0, 0, Vector2(0.73706, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="WaterDrop" type="CPUParticles2D" unique_id=1396458935]
+amount = 20
+lifetime = 4.0
+explosiveness = 0.3
+emission_shape = 2
+emission_sphere_radius = 11.55
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_h5c1u")
+color = Color(0.114725, 0.5682373, 0.68543494, 1)

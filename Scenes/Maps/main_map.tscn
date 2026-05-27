@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dhca6h4g8ackd"]
 
-[ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/fish_ball_base.tscn" id="1_5l7ac"]
-[ext_resource type="PackedScene" uid="uid://dwn585jhghlg5" path="res://Scenes/Maps/map.tscn" id="2_skgwc"]
+[ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="1_5l7ac"]
+[ext_resource type="PackedScene" uid="uid://dwn585jhghlg5" path="res://Scenes/Maps/kitchen.tscn" id="2_skgwc"]
 
 [node name="MainMap" type="Node2D" unique_id=1457323384]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diiapirysm3v4"
-path="res://.godot/imported/FishBall_Base.png-eda38b954f5ca1ae2434a1dd430f17d6.ctex"
+uid="uid://mumrtkf6o5th"
+path="res://.godot/imported/Kitchen_Furniture_tilemap.png-35ac49e7fdcee1c41fb179a527b5b37c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/FishBall_Base/FishBall_Base.png"
-dest_files=["res://.godot/imported/FishBall_Base.png-eda38b954f5ca1ae2434a1dd430f17d6.ctex"]
+source_file="res://Assest/Kitchen/Kitchen_Furniture_tilemap.png"
+dest_files=["res://.godot/imported/Kitchen_Furniture_tilemap.png-35ac49e7fdcee1c41fb179a527b5b37c.ctex"]
 
 [params]
 

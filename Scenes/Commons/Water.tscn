@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bsmkq25vct88x"]
+
+[ext_resource type="Script" uid="uid://do1yw6jwgrdjw" path="res://Script/Commons/water.gd" id="1_u47h2"]
+[ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="1_vcqvc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_834r2"]
+atlas = ExtResource("1_vcqvc")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_makch"]
+atlas = ExtResource("1_vcqvc")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d1qw"]
+atlas = ExtResource("1_vcqvc")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e33y6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_834r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_makch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6d1qw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e33y6"]
+
+[node name="Water" type="AnimatedSprite2D" unique_id=508019601]
+sprite_frames = SubResource("SpriteFrames_e33y6")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=396871069]
+script = ExtResource("1_u47h2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1855831932]
+scale = Vector2(1.6, 1.6)
+shape = SubResource("RectangleShape2D_e33y6")

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://po42unj73fhl"]
+
+[ext_resource type="Script" uid="uid://dx4s3dwhegs4q" path="res://Script/KitchenTraps/Cabinet.gd" id="1_1e3hk"]
+[ext_resource type="Texture2D" uid="uid://mumrtkf6o5th" path="res://Assest/Kitchen/Kitchen_Furniture_tilemap.png" id="1_q02t3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1e3hk"]
+size = Vector2(214, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dowye"]
+size = Vector2(79, 11)
+
+[node name="Cabinet" type="StaticBody2D" unique_id=1205623102]
+script = ExtResource("1_1e3hk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1094257429]
+texture = ExtResource("1_q02t3")
+region_enabled = true
+region_rect = Rect2(269.0452, 40.931957, 214.85272, 64.08089)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=487522773]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1e3hk")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=371630459]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=390632082]
+position = Vector2(-67.5, -37.5)
+shape = SubResource("RectangleShape2D_dowye")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

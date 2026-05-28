@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="1_ywp72"]
 [ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="2_ngua7"]
-[ext_resource type="PackedScene" uid="uid://kx6ksbesfqa" path="res://Scenes/KitchenTraps/iceFloor.tscn" id="3_ngua7"]
+[ext_resource type="PackedScene" uid="uid://kx6ksbesfqa" path="res://Scenes/KitchenTraps/Refrigerator_Scene/iceFloor.tscn" id="3_ngua7"]
+[ext_resource type="PackedScene" uid="uid://dk7fhaqgyfbvf" path="res://Scenes/KitchenTraps/Refrigerator.tscn" id="4_ad1s7"]
+[ext_resource type="PackedScene" uid="uid://po42unj73fhl" path="res://Scenes/KitchenTraps/Cabinet.tscn" id="5_eu7lq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ngua7"]
 texture = ExtResource("1_ywp72")
@@ -142,11 +144,17 @@ sources/0 = SubResource("TileSetAtlasSource_ngua7")
 [node name="Node2D" type="Node2D" unique_id=838889194]
 
 [node name="FishBall_Base" parent="." unique_id=920739817 instance=ExtResource("2_ngua7")]
-position = Vector2(-12, -57)
+position = Vector2(-60, -81)
 
 [node name="iceFloor" parent="." unique_id=1812020366 instance=ExtResource("3_ngua7")]
-position = Vector2(-9, -8)
+position = Vector2(-184, -6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1102749344]
 tile_map_data = PackedByteArray("AAD0/wUAAAAJAAAAAAD1/wUAAAAKAAAAAAD2/wUAAAALAAAAAAD3/wUAAAAMAAAAAAD4/wUAAAANAAAAAAD5/wUAAAAJAAAAAAD6/wUAAAAKAAAAAAD7/wUAAAALAAAAAAD8/wUAAAAMAAAAAAD9/wUAAAANAAAAAAD+/wUAAAAJAAAAAAD//wUAAAAKAAAAAAAAAAUAAAALAAAAAAABAAUAAAAMAAAAAAACAAUAAAANAAAAAAADAAUAAAAJAAAAAAAEAAUAAAAKAAAAAAAFAAUAAAALAAAAAAAGAAUAAAAMAAAAAAAHAAUAAAANAAAAAAA=")
 tile_set = SubResource("TileSet_ad1s7")
+
+[node name="refrigerator" parent="." unique_id=51527414 instance=ExtResource("4_ad1s7")]
+position = Vector2(-59, 21)
+
+[node name="Cabinet" parent="." unique_id=1205623102 instance=ExtResource("5_eu7lq")]
+position = Vector2(86, -4)

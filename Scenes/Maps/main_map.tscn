@@ -6,6 +6,7 @@
 [node name="MainMap" type="Node2D" unique_id=1457323384]
 
 [node name="Map" parent="." unique_id=2133362733 instance=ExtResource("2_skgwc")]
+position = Vector2(36, 66)
 
 [node name="FishBall_Base" parent="." unique_id=920739817 instance=ExtResource("1_5l7ac")]
-position = Vector2(419, 132)
+position = Vector2(249, 236)

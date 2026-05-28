@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://5xuyfqm8pops" path="res://Assest/Kitchen/Kitchenware_draft_tilemap.png" id="6_kyl5f"]
 [ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="7_snuip"]
 [ext_resource type="Texture2D" uid="uid://dwqkbj4tbcfqi" path="res://Assest/Kitchen/Kitchyen_furniture2_tilemap.png" id="8_omuvu"]
-[ext_resource type="PackedScene" uid="uid://nebwj0otgyyk" path="res://node_2d.tscn" id="8_vqcsi"]
 [ext_resource type="Texture2D" uid="uid://dqkrm5g6eav87" path="res://Assest/Kitchen/Kitchen__Window_tilemap.png" id="10_kyl5f"]
 [ext_resource type="PackedScene" uid="uid://4srmoc1ogn8r" path="res://Scenes/KitchenTraps/knife_set.tscn" id="10_xvaan"]
 [ext_resource type="PackedScene" uid="uid://dlv5jtn57jhwq" path="res://Scenes/KitchenTraps/steam_pot.tscn" id="11_xvaan"]
@@ -2023,9 +2022,6 @@ texture = ExtResource("8_omuvu")
 31:19/0 = 0
 37:19/0 = 0
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mhcli"]
-scenes/2/scene = ExtResource("8_vqcsi")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oysoi"]
 texture = ExtResource("10_kyl5f")
 31:2/0 = 0
@@ -2175,7 +2171,6 @@ sources/0 = SubResource("TileSetAtlasSource_xtf6f")
 sources/1 = SubResource("TileSetAtlasSource_03x5g")
 sources/3 = SubResource("TileSetAtlasSource_k64qy")
 sources/2 = SubResource("TileSetAtlasSource_yfvn6")
-sources/5 = SubResource("TileSetScenesCollectionSource_mhcli")
 sources/4 = SubResource("TileSetAtlasSource_kyl5f")
 sources/6 = SubResource("TileSetAtlasSource_oysoi")
 
@@ -2893,7 +2888,6 @@ tile_set = SubResource("TileSet_fyo8k")
 
 [node name="RigidBody2D" parent="." unique_id=337676790 instance=ExtResource("10_xvaan")]
 position = Vector2(141, 188)
-gravity_scale = 0.0
 
 [node name="steam_pot" parent="." unique_id=72808541 instance=ExtResource("11_xvaan")]
 position = Vector2(384, 207.99998)

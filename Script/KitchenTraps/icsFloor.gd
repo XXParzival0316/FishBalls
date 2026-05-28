@@ -45,4 +45,4 @@ func _physics_process(delta: float) -> void:
 
 		# 时间到，销毁
 		if shake_timer <= 0:
-			free()
+			queue_free()

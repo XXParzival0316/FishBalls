@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dj3ygdwwj5873"]
 
 [ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="1_ywp72"]
-[ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/fish_ball_base.tscn" id="2_ngua7"]
+[ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="2_ngua7"]
 [ext_resource type="PackedScene" uid="uid://kx6ksbesfqa" path="res://Scenes/KitchenTraps/iceFloor.tscn" id="3_ngua7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ngua7"]

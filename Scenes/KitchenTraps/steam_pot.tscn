@@ -9,7 +9,7 @@ size = Vector2(19.5, 28)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_givbo"]
 size = Vector2(28, 28)
 
-[node name="steam_pot" type="StaticBody2D" unique_id=72808541]
+[node name="SteamPot" type="StaticBody2D" unique_id=72808541]
 script = ExtResource("1_yedsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1239684251]

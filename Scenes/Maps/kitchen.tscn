@@ -2886,10 +2886,10 @@ visible = false
 tile_map_data = PackedByteArray("AAAXAAwAAQAMAAcAAAAYAAwAAQANAAcAAAAYAA0AAQANAAgAAAAZAAwAAQAOAAcAAAAZAA0AAQAOAAgAAAA=")
 tile_set = SubResource("TileSet_fyo8k")
 
-[node name="RigidBody2D" parent="." unique_id=337676790 instance=ExtResource("10_xvaan")]
+[node name="KnifeSet" parent="." unique_id=337676790 instance=ExtResource("10_xvaan")]
 position = Vector2(141, 188)
 
-[node name="steam_pot" parent="." unique_id=72808541 instance=ExtResource("11_xvaan")]
+[node name="SteamPot" parent="." unique_id=72808541 instance=ExtResource("11_xvaan")]
 position = Vector2(384, 207.99998)
 scale = Vector2(1.1, 1.1)
 

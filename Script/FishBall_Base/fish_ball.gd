@@ -6,6 +6,7 @@ enum STATE{
 	FLOOR,
 	FALL,
 }
+signal interact
 
 const SPEED := 200.0
 const JUMP_VELOCITY := -270.0
@@ -20,23 +21,24 @@ var can_rebound:bool = false
 # 下落高度
 var fall_height:float = 0.0
 
-
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer:Timer = $Timer
 # 粒子特效
 @onready var water_drop_particles: CPUParticles2D = $Particles/WaterDrop
 @onready var water_explosion_particles: CPUParticles2D = $Particles/WaterExplosion
 
-# 
+
+
 func _ready() -> void:
 	pass
 	
 
 
 func _physics_process(delta: float) -> void:
-	
+	# 检测按下互动,发射型号
+	if Input.is_action_just_pressed("Interact"):
+		interact.emit()
 
-	
 	var direction := Input.get_axis("Left","Right")
 	# 匹配状态
 	match active_state:
@@ -113,8 +115,9 @@ func _physics_process(delta: float) -> void:
 			if  is_on_floor():
 				velocity.y = 0
 				active_state = STATE.FLOOR
-	
 	move_and_slide()
+	
+	
 	
 	# 滴水粒子开关
 	if can_rebound:
@@ -122,6 +125,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		water_drop_particles.emitting = false
 
+# 反弹
 func bounce(bounce_target:float) -> void:
 	water_drop_particles.emitting = false
 	print("反弹高度为:",bounce_target)

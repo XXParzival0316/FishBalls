@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://mumrtkf6o5th" path="res://Assest/Kitchen/Kitchen_Furniture_tilemap.png" id="5_xvaan"]
 [ext_resource type="Texture2D" uid="uid://5xuyfqm8pops" path="res://Assest/Kitchen/Kitchenware_draft_tilemap.png" id="6_kyl5f"]
 [ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="7_snuip"]
-[ext_resource type="Texture2D" uid="uid://dwqkbj4tbcfqi" path="res://Assest/Kitchen/Kitchyen_furniture2_tilemap.png" id="8_omuvu"]
+[ext_resource type="Texture2D" uid="uid://dwqkbj4tbcfqi" path="res://Assest/Kitchen/Kitchen_furniture2_tilemap.png" id="8_omuvu"]
 [ext_resource type="Texture2D" uid="uid://dqkrm5g6eav87" path="res://Assest/Kitchen/Kitchen__Window_tilemap.png" id="10_kyl5f"]
 [ext_resource type="PackedScene" uid="uid://4srmoc1ogn8r" path="res://Scenes/KitchenTraps/knife_set.tscn" id="10_xvaan"]
 [ext_resource type="PackedScene" uid="uid://dlv5jtn57jhwq" path="res://Scenes/KitchenTraps/steam_pot.tscn" id="11_xvaan"]

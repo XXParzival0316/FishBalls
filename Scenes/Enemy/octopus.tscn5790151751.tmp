@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://cau4sbgaaoit2"]
+
+[ext_resource type="Script" uid="uid://8yfbxnn3wf1l" path="res://Script/Enemy/enemy.gd" id="1_0ok03"]
+[ext_resource type="Texture2D" uid="uid://b5ihgiibcaep8" path="res://Assest/FishBall_Base/fish_ball_base_walk.png" id="2_rt28f"]
+[ext_resource type="Script" uid="uid://clposgcm42j03" path="res://Script/Enemy/State/base_state.gd" id="4_my0ma"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvplx"]
+atlas = ExtResource("2_rt28f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_my0ma"]
+atlas = ExtResource("2_rt28f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0rse"]
+atlas = ExtResource("2_rt28f")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pt7lk"]
+atlas = ExtResource("2_rt28f")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ok03"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvplx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my0ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0rse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pt7lk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ok03"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt28f"]
+size = Vector2(210, 50)
+
+[node name="Octopus" type="CharacterBody2D" unique_id=1517227325]
+script = ExtResource("1_0ok03")
+ground_check_distance = null
+ground_check_height = null
+metadata/_custom_type_script = "uid://8yfbxnn3wf1l"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1764964283]
+sprite_frames = SubResource("SpriteFrames_0ok03")
+frame_progress = 0.24178718
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=660837180]
+shape = SubResource("CircleShape2D_0ok03")
+
+[node name="WarningArea" type="Area2D" parent="." unique_id=240772394]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarningArea" unique_id=727287892]
+position = Vector2(69, -7)
+shape = SubResource("RectangleShape2D_rt28f")
+
+[node name="StateMachine" type="Node" parent="." unique_id=819558516]
+
+[node name="ChaseState" type="Node" parent="StateMachine" unique_id=1879461556]
+script = ExtResource("4_my0ma")
+metadata/_custom_type_script = "uid://clposgcm42j03"
+
+[node name="PartolState" type="Node" parent="StateMachine" unique_id=1690022906]
+script = ExtResource("4_my0ma")
+metadata/_custom_type_script = "uid://clposgcm42j03"
+
+[node name="CheckPoint" type="Node2D" parent="." unique_id=1275320962]
+position = Vector2(20, 12)
+
+[connection signal="body_entered" from="WarningArea" to="." method="_on_warning_area_body_entered"]

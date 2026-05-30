@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://cau4sbgaaoit2"]
+
+[ext_resource type="Script" uid="uid://j5elidxo40yg" path="res://Scenes/Enemy/octopus.gd" id="1_my0ma"]
+[ext_resource type="Texture2D" uid="uid://isew4qolyvto" path="res://Assest/FishBall_Base/fish_ball_base_jump.png" id="2_my0ma"]
+[ext_resource type="Texture2D" uid="uid://b5ihgiibcaep8" path="res://Assest/FishBall_Base/fish_ball_base_walk.png" id="2_rt28f"]
+[ext_resource type="Script" uid="uid://dri1l6dt6xrvl" path="res://Scenes/Enemy/octopus_chase_state.gd" id="4_r0rse"]
+[ext_resource type="Script" uid="uid://46uu8supqls4" path="res://Scenes/Enemy/octopus_partol_state.gd" id="5_r0rse"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7qoi"]
+atlas = ExtResource("2_my0ma")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxxkg"]
+atlas = ExtResource("2_my0ma")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cj7a"]
+atlas = ExtResource("2_my0ma")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvplx"]
+atlas = ExtResource("2_rt28f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_my0ma"]
+atlas = ExtResource("2_rt28f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0rse"]
+atlas = ExtResource("2_rt28f")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pt7lk"]
+atlas = ExtResource("2_rt28f")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ok03"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7qoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxxkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cj7a")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvplx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my0ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0rse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pt7lk")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ok03"]
+radius = 13.038404
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt28f"]
+size = Vector2(210, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvplx"]
+size = Vector2(2, 2)
+
+[node name="Octopus" type="CharacterBody2D" unique_id=1517227325]
+script = ExtResource("1_my0ma")
+metadata/_custom_type_script = "uid://8yfbxnn3wf1l"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1764964283]
+sprite_frames = SubResource("SpriteFrames_0ok03")
+animation = &"attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=660837180]
+shape = SubResource("CircleShape2D_0ok03")
+
+[node name="WarningArea" type="Area2D" parent="." unique_id=240772394]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarningArea" unique_id=727287892]
+position = Vector2(69, -7)
+shape = SubResource("RectangleShape2D_rt28f")
+
+[node name="GroundCheck" type="Area2D" parent="." unique_id=1848964762]
+position = Vector2(25, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundCheck" unique_id=612669468]
+shape = SubResource("RectangleShape2D_vvplx")
+
+[node name="WallChecker" type="Area2D" parent="." unique_id=2069379491]
+position = Vector2(25, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallChecker" unique_id=177903182]
+shape = SubResource("RectangleShape2D_vvplx")
+
+[node name="StateMachine" type="Node" parent="." unique_id=819558516]
+
+[node name="ChaseState" type="Node" parent="StateMachine" unique_id=1879461556]
+script = ExtResource("4_r0rse")
+metadata/_custom_type_script = "uid://clposgcm42j03"
+
+[node name="PartolState" type="Node" parent="StateMachine" unique_id=1690022906]
+script = ExtResource("5_r0rse")
+metadata/_custom_type_script = "uid://clposgcm42j03"
+
+[connection signal="body_entered" from="WarningArea" to="." method="_on_warning_area_body_entered"]
+[connection signal="body_entered" from="GroundCheck" to="." method="_on_ground_check_body_entered"]
+[connection signal="body_exited" from="GroundCheck" to="." method="_on_ground_check_body_exited"]
+[connection signal="body_entered" from="WallChecker" to="." method="_on_wall_checker_body_entered"]
+[connection signal="body_exited" from="WallChecker" to="." method="_on_wall_checker_body_exited"]

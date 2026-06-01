@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://dwn585jhghlg5"]
 
-[ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="1_kyl5f"]
 [ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="1_ws8sa"]
 [ext_resource type="Texture2D" uid="uid://ck8741ninfiem" path="res://Assest/Kitchen/Kitchen_Wall_tilemap.png" id="2_vqcsi"]
 [ext_resource type="Texture2D" uid="uid://bubc3eli5xqq3" path="res://Assest/Kitchen/Kitchen_Floor_tilemap.png" id="3_mhcli"]
@@ -12,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dqkrm5g6eav87" path="res://Assest/Kitchen/Kitchen__Window_tilemap.png" id="10_kyl5f"]
 [ext_resource type="PackedScene" uid="uid://4srmoc1ogn8r" path="res://Scenes/KitchenTraps/knife_set.tscn" id="10_xvaan"]
 [ext_resource type="PackedScene" uid="uid://dlv5jtn57jhwq" path="res://Scenes/KitchenTraps/steam_pot.tscn" id="11_xvaan"]
+[ext_resource type="PackedScene" uid="uid://dk7fhaqgyfbvf" path="res://Scenes/KitchenTraps/Refrigerator.tscn" id="12_kyl5f"]
+[ext_resource type="PackedScene" uid="uid://po42unj73fhl" path="res://Scenes/KitchenTraps/Cabinet.tscn" id="13_snuip"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jolfa"]
 texture = ExtResource("1_ws8sa")
@@ -2765,15 +2766,10 @@ shape = SubResource("SegmentShape2D_c8tov")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/RightBoundary" unique_id=1815363701]
 shape = SubResource("SegmentShape2D_rw82g")
 
-[node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("1_kyl5f")]
-position = Vector2(283, 231)
+[node name="Refrigerator" parent="." unique_id=51527414 instance=ExtResource("12_kyl5f")]
+position = Vector2(53, 228)
+scale = Vector2(1.3, 1.3)
 
-[node name="KitchenCamera" type="Camera2D" parent="FishBall" unique_id=1189484895]
-zoom = Vector2(1.5, 1.5)
-limit_left = 0
-limit_top = 0
-limit_right = 640
-limit_bottom = 315
-limit_smoothed = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
+[node name="Cabinet" parent="." unique_id=1205623102 instance=ExtResource("13_snuip")]
+position = Vector2(226.00002, 84)
+scale = Vector2(1.08, 1.1917636)

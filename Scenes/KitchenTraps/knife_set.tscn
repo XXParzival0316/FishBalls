@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ta5i"]
 size = Vector2(53, 7)
 
-[node name="RigidBody2D" type="RigidBody2D" unique_id=337676790]
+[node name="KnifeSet" type="RigidBody2D" unique_id=337676790]
 mass = 10.0
 gravity_scale = 0.0
 

@@ -7,6 +7,7 @@ signal interact_tips(can_interact: bool, scene_name: String)
 # 目标跳转场景名，编辑器内直接填写
 @export var target_scene: String = "CabinetScene"
 # 代码控制识别区尺寸
+
 @export var detect_range: Vector2 = Vector2(90, 75)
 
 var player_target = null

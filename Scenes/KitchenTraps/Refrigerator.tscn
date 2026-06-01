@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dk7fhaqgyfbvf"]
 
-[ext_resource type="Script" uid="uid://ddcnt4bc236x3" path="res://Script/KitchenTraps/Refrigerator.gd" id="1_lbhfx"]
+[ext_resource type="Script" uid="uid://ddcnt4bc236x3" path="res://Script/KitchenTraps/reuqest_switch.gd" id="1_lbhfx"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0piek"]
 load_path = "res://.godot/imported/Kitchen_Furniture_tilemap.png-35ac49e7fdcee1c41fb179a527b5b37c.ctex"
@@ -11,7 +11,7 @@ size = Vector2(66, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhfx"]
 size = Vector2(66, 114.5)
 
-[node name="refrigerator" type="StaticBody2D" unique_id=51527414]
+[node name="Refrigerator" type="StaticBody2D" unique_id=51527414]
 script = ExtResource("1_lbhfx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1170165579]
@@ -28,6 +28,3 @@ shape = SubResource("RectangleShape2D_0piek")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1542206662]
 position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_lbhfx")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

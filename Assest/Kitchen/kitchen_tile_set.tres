@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" format=3 uid="uid://c2fcwrwc68d5v"]
 
-[ext_resource type="Texture2D" uid="uid://dwqkbj4tbcfqi" path="res://Assest/Kitchen/Kitchyen_furniture2_tilemap.png" id="1_1cyc1"]
+[ext_resource type="Texture2D" uid="uid://dwqkbj4tbcfqi" path="res://Assest/Kitchen/Kitchen_furniture2_tilemap.png" id="1_1cyc1"]
 [ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="2_25e03"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8uh7m"]

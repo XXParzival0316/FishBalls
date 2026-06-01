@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://vb51e1j7f5fl"]
+
+[node name="TestCabinet" type="Node2D" unique_id=1347863545]
+
+[node name="Label" type="Label" parent="." unique_id=1647807663]
+offset_left = 260.0
+offset_top = 146.0
+offset_right = 393.0
+offset_bottom = 169.0
+text = "Here is cabinet!"

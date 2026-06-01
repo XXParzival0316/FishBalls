@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c6b8wvnm12lyn"]
+
+[node name="TestRefrigerator" type="Node2D" unique_id=998143257]
+
+[node name="Label" type="Label" parent="." unique_id=255488300]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 245.0
+offset_top = 136.0
+offset_right = 415.0
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Here is Refrigerator!"

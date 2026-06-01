@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c5wvhiobdhof"]
 
-[ext_resource type="Texture2D" uid="uid://cldrknwijuce4" path="res://Assest/Refrigerator/冰锥草稿版.png" id="1_3xcjo"]
+[ext_resource type="Texture2D" uid="uid://cldrknwijuce4" path="res://Assest/Refrigerator/冰锥草稿版.png" id="1_y0uc1"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_3xcjo"]
 resource_local_to_scene = true
@@ -10,7 +10,7 @@ points = PackedVector2Array(-8, -24, 8, -24, 0, -2)
 [node name="Icicle" type="StaticBody2D" unique_id=1510930077]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1625163720]
-texture = ExtResource("1_3xcjo")
+texture = ExtResource("1_y0uc1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=792880006]
 shape = SubResource("ConvexPolygonShape2D_3xcjo")

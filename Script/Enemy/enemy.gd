@@ -3,8 +3,6 @@ extends CharacterBody2D
 
 class_name Enemy
 
-@onready var warning_area = $WarningArea
-
 #基本参数
 var health : int = 100  #血量
 var normal_speed :float #正常速度
@@ -38,7 +36,6 @@ func _ready() -> void: #awake
 	ground_checker.collision_mask = 1
 	change_state(load("res://Script/Enemy/State/octopus/octopus_patrol_state.gd")) #启用patrol_state
 	state_machine.set_physics_process(true)
-	now_speed = normal_speed
 
 func _process(delta: float) -> void:
 	pass

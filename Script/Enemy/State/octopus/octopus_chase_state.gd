@@ -1,4 +1,5 @@
 # Author Baishu
+#切换回PatrolState：get_parent().change_state(load("res://Script/Enemy/State/octopus/octopus_patrol_state.gd")  )
 extends Node
 
 func start():
@@ -6,4 +7,4 @@ func start():
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_left"):
-		get_parent().change_state(load("res://Script/Enemy/State/octopus/octopus_patrol_state.gd")  )
+		pass

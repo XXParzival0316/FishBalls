@@ -4,9 +4,9 @@ extends StaticBody2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 
 # 配置
-@export var drop_small_distance: float = 10.0   # 先下落一小段
-@export var shake_time: float = 1.5            # 抖动1.5秒
-@export var shake_power: float = 2.0           # 抖动幅度
+@export var drop_small_distance: float = 0.5   # 先下落一小段
+@export var shake_time: float = 2            # 抖动1.5秒
+@export var shake_power: float = 0.8       # 抖动幅度
 @export var fall_speed: float = 500.0          # 最终下落速度
 
 # 内部状态
@@ -34,7 +34,7 @@ func _process(delta: float):
 	# 抖动阶段
 	if shake_timer > 0:
 		shake_timer -= delta
-		position.y = original_pos.y + drop_small_distance + randf_range(-shake_power, shake_power)
+		position.x = original_pos.x + drop_small_distance + randf_range(-shake_power, shake_power)
 		
 		# 抖动结束 → 开始下落
 		if shake_timer <= 0:
@@ -46,3 +46,7 @@ func _process(delta: float):
 
 func _physics_process(delta):
 	pass
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

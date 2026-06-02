@@ -1,16 +1,30 @@
 [gd_scene format=3 uid="uid://c5wvhiobdhof"]
 
+[ext_resource type="Script" uid="uid://77wvd122x836" path="res://Script/Refrigerator/Icecle.gd" id="1_3cn8g"]
 [ext_resource type="Texture2D" uid="uid://cldrknwijuce4" path="res://Assest/Refrigerator/冰锥草稿版.png" id="1_y0uc1"]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_3xcjo"]
-resource_local_to_scene = true
-resource_name = "Icicle"
-points = PackedVector2Array(-8, -24, 8, -24, 0, -2)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0uc1"]
+size = Vector2(6, 22)
 
-[node name="Icicle" type="StaticBody2D" unique_id=1510930077]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3cn8g"]
+size = Vector2(10, 39)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1625163720]
+[node name="StaticBody2D" type="StaticBody2D" unique_id=663586642]
+script = ExtResource("1_3cn8g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1764273797]
+scale = Vector2(0.375, 1)
 texture = ExtResource("1_y0uc1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=792880006]
-shape = SubResource("ConvexPolygonShape2D_3xcjo")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=832888130]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_y0uc1")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=441758589]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1257623883]
+position = Vector2(0, 17)
+shape = SubResource("RectangleShape2D_3cn8g")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

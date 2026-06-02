@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diiapirysm3v4"
-path="res://.godot/imported/FishBall_Base.png-eda38b954f5ca1ae2434a1dd430f17d6.ctex"
+uid="uid://cldrknwijuce4"
+path="res://.godot/imported/冰锥草稿版.png-ea07334be27d8d24d59cbc431053274d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/FishBall_Base/FishBall_Base.png"
-dest_files=["res://.godot/imported/FishBall_Base.png-eda38b954f5ca1ae2434a1dd430f17d6.ctex"]
+source_file="res://Assest/Refrigerator/冰锥草稿版.png"
+dest_files=["res://.godot/imported/冰锥草稿版.png-ea07334be27d8d24d59cbc431053274d.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://kx6ksbesfqa"]
 
 [ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="1_qoyku"]
-[ext_resource type="Script" uid="uid://dai3vx0hbhbx5" path="res://Script/KitchenTraps/icsFloor.gd" id="2_effn6"]
+[ext_resource type="Script" uid="uid://dai3vx0hbhbx5" path="res://Script/Refrigerator/icsFloor.gd" id="2_effn6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_effn6"]
 size = Vector2(65, 14.5)

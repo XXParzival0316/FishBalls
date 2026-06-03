@@ -22,3 +22,8 @@ func _on_warning_area_body_entered(body: Node2D) -> void:
 		#dir = (current_enemy.global_position - global_position).normalized()
 		losttime = 5
 		
+
+
+func _on_wall_checker_body_entered(body: Node2D) -> void:
+	wait_and_flip_direction(waittime)
+	current_enemy = null

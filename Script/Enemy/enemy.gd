@@ -74,9 +74,10 @@ func move(delta):
 			#on_ground = false
 #
 #func _on_wall_checker_body_entered(body: Node2D) -> void:#检测是否撞墙
-	#if body is TileMapLayer:
-		#wait_timer(waittime)
-		#flip_direction()
+	##if body is TileMapLayer:
+		##wait_and_flip_direction(waittime)
+		#pass
+		
 func is_ground_ahead(direction: int) -> bool:
 	var ray_start = global_position + Vector2(direction * 20, 0)
 	var ray_end = ray_start + Vector2(direction * 15, 30)

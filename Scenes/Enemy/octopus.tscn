@@ -163,4 +163,3 @@ shape = SubResource("RectangleShape2D_vvplx")
 [connection signal="body_entered" from="GroundCheck" to="." method="_on_ground_check_body_entered"]
 [connection signal="body_exited" from="GroundCheck" to="." method="_on_ground_check_body_exited"]
 [connection signal="body_entered" from="WallChecker" to="." method="_on_wall_checker_body_entered"]
-[connection signal="body_exited" from="WallChecker" to="." method="_on_wall_checker_body_exited"]

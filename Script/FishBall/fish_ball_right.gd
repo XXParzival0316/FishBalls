@@ -1,16 +1,18 @@
 extends CharacterBody2D
 # Author XXParzival
+# 右边鱼蛋脚本
 
 # 状态枚举
 enum STATE{
 	FLOOR,
+	JUMP,
 	FALL,
 }
 signal interact
 
 const SPEED := 150.0
 const JUMP_VELOCITY := -270.0
-const GRAVITY := 1000.0
+
 # 吸水持续状态
 const BOUNCE_TIME:float = 15.0
 
@@ -39,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Interact"):
 		interact.emit()
 
-	var direction := Input.get_axis("Left","Right")
+	var direction := Input.get_axis("Right","Left")
 	# 匹配状态
 	match active_state:
 		STATE.FLOOR:
@@ -54,11 +56,6 @@ func _physics_process(delta: float) -> void:
 			else :
 				animated_sprite_2d.play("Idle")
 			velocity.x = direction * SPEED
-			
-			if Input.is_action_just_pressed("Down"):
-				set_collision_mask_value(5,false)
-				await get_tree().create_timer(0.2).timeout
-				set_collision_mask_value(5,true)
 			
 			if can_rebound:
 				# 下落高度不为0才判断
@@ -76,17 +73,23 @@ func _physics_process(delta: float) -> void:
 								bounce(800)
 						else:
 							print("高度差不足100，无法反弹")
-
 					# 重置下落高度为0
 					fall_height = 0.0
 				
 			# 处理跳跃
 			if Input.is_action_just_pressed("Jump"):
-				animated_sprite_2d.play("Jump")
-				velocity.y = JUMP_VELOCITY
-				
+				active_state = STATE.JUMP
+			
 			if not is_on_floor():
 				active_state = STATE.FALL
+				
+		STATE.JUMP:
+			animated_sprite_2d.play("Jump")
+			velocity.y = JUMP_VELOCITY
+			
+			if not is_on_floor():
+				active_state = STATE.FALL
+			
 		STATE.FALL:
 			# 记录吸水后下落高度
 			if can_rebound:
@@ -98,7 +101,7 @@ func _physics_process(delta: float) -> void:
 					fall_height = position.y			
 				
 			velocity.x = direction * SPEED
-			velocity.y += GRAVITY * delta
+			velocity += get_gravity() * delta
 			# 动画处理
 			# 处理动画翻转
 			if direction:

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ou8vwax3spb8"]
 
-[ext_resource type="Script" uid="uid://dc0ee2d0erosw" path="res://Script/FishBall_Base/fish_ball.gd" id="1_js28m"]
+[ext_resource type="Script" uid="uid://dc0ee2d0erosw" path="res://Script/FishBall/fish_ball.gd" id="1_js28m"]
 [ext_resource type="Texture2D" uid="uid://isew4qolyvto" path="res://Assest/FishBall_Base/fish_ball_base_jump.png" id="2_ql5y8"]
 [ext_resource type="Texture2D" uid="uid://5j840bkmi0p2" path="res://Assest/FishBall_Base/fishball_base_idle.png" id="2_w5niw"]
 [ext_resource type="Texture2D" uid="uid://b5ihgiibcaep8" path="res://Assest/FishBall_Base/fish_ball_base_walk.png" id="3_h5c1u"]

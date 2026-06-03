@@ -8,7 +8,7 @@ enum STATE{
 }
 signal interact
 
-const SPEED := 200.0
+const SPEED := 150.0
 const JUMP_VELOCITY := -270.0
 const GRAVITY := 1000.0
 # 吸水持续状态

@@ -1,13 +1,12 @@
 [gd_scene format=4 uid="uid://dj3ygdwwj5873"]
 
-[ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="1_ywp72"]
-[ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="2_ngua7"]
-[ext_resource type="PackedScene" uid="uid://kx6ksbesfqa" path="res://Scenes/KitchenTraps/Refrigerator_Scene/iceFloor.tscn" id="3_ngua7"]
-[ext_resource type="PackedScene" uid="uid://dk7fhaqgyfbvf" path="res://Scenes/KitchenTraps/Refrigerator.tscn" id="4_ad1s7"]
-[ext_resource type="PackedScene" uid="uid://po42unj73fhl" path="res://Scenes/KitchenTraps/Cabinet.tscn" id="5_eu7lq"]
+[ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="1_mbb1q"]
+[ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="2_nh3y6"]
+[ext_resource type="PackedScene" uid="uid://po42unj73fhl" path="res://Scenes/KitchenTraps/Cabinet.tscn" id="3_gs6rn"]
+[ext_resource type="PackedScene" uid="uid://c5wvhiobdhof" path="res://Scenes/Refrigerator/Icicle.tscn" id="4_f743o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ngua7"]
-texture = ExtResource("1_ywp72")
+texture = ExtResource("2_nh3y6")
 4:0/0 = 0
 5:0/0 = 0
 6:0/0 = 0
@@ -143,18 +142,16 @@ sources/0 = SubResource("TileSetAtlasSource_ngua7")
 
 [node name="Node2D" type="Node2D" unique_id=838889194]
 
-[node name="FishBall_Base" parent="." unique_id=920739817 instance=ExtResource("2_ngua7")]
-position = Vector2(-60, -81)
-
-[node name="iceFloor" parent="." unique_id=1812020366 instance=ExtResource("3_ngua7")]
-position = Vector2(-184, -6)
+[node name="FishBall_Base" parent="." unique_id=920739817 instance=ExtResource("1_mbb1q")]
+position = Vector2(449, 172)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1102749344]
+position = Vector2(387, 167)
 tile_map_data = PackedByteArray("AAD0/wUAAAAJAAAAAAD1/wUAAAAKAAAAAAD2/wUAAAALAAAAAAD3/wUAAAAMAAAAAAD4/wUAAAANAAAAAAD5/wUAAAAJAAAAAAD6/wUAAAAKAAAAAAD7/wUAAAALAAAAAAD8/wUAAAAMAAAAAAD9/wUAAAANAAAAAAD+/wUAAAAJAAAAAAD//wUAAAAKAAAAAAAAAAUAAAALAAAAAAABAAUAAAAMAAAAAAACAAUAAAANAAAAAAADAAUAAAAJAAAAAAAEAAUAAAAKAAAAAAAFAAUAAAALAAAAAAAGAAUAAAAMAAAAAAAHAAUAAAANAAAAAAA=")
 tile_set = SubResource("TileSet_ad1s7")
 
-[node name="refrigerator" parent="." unique_id=51527414 instance=ExtResource("4_ad1s7")]
-position = Vector2(-59, 21)
+[node name="Cabinet" parent="TileMapLayer" unique_id=1205623102 instance=ExtResource("3_gs6rn")]
+position = Vector2(-8, 47)
 
-[node name="Cabinet" parent="." unique_id=1205623102 instance=ExtResource("5_eu7lq")]
-position = Vector2(86, -4)
+[node name="StaticBody2D" parent="." unique_id=663586642 instance=ExtResource("4_f743o")]
+position = Vector2(426, 145)

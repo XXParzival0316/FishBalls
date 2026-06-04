@@ -4,42 +4,68 @@ extends CharacterBody2D
 # 状态枚举
 enum STATE{
 	FLOOR,
+	JUMP,
 	FALL,
 }
+
 signal interact
+signal dead
 
 const SPEED := 150.0
 const JUMP_VELOCITY := -270.0
-const GRAVITY := 1000.0
 # 吸水持续状态
 const BOUNCE_TIME:float = 15.0
 
+# 血量
+var HP:float = 100.0
 # 状态
 var active_state := STATE.FLOOR
 # 是否可以反弹
 var can_rebound:bool = false
 # 下落高度
 var fall_height:float = 0.0
+# 是否为克隆体
+var is_clone:bool = false
 
+# 开启克隆
+@export var clone:bool = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer:Timer = $Timer
 # 粒子特效
 @onready var water_drop_particles: CPUParticles2D = $Particles/WaterDrop
 @onready var water_explosion_particles: CPUParticles2D = $Particles/WaterExplosion
 
-
-
 func _ready() -> void:
-	pass
-	
-
+	if clone:		
+		var target:Node2D=$Node2D
+		var fb_tscn:PackedScene = load("res://Scenes/FishBall/fish_ball.tscn")
+		var fb_inst:CharacterBody2D = fb_tscn.instantiate()
+		fb_inst.name = "FishBall_Clone"
+		# 如果你看到这行报错，需要往鱼蛋下面挂一个Node2D节点用来确定克隆鱼蛋生成位置
+		fb_inst.position = target.global_position
+		fb_inst.is_clone = true
+		get_tree().current_scene.call_deferred("add_child",fb_inst)
 
 func _physics_process(delta: float) -> void:
 	# 检测按下互动,发射型号
 	if Input.is_action_just_pressed("Interact"):
 		interact.emit()
+	if not is_clone:
+		var direction := Input.get_axis("Left","Right")
+		match_active_state(delta,direction)
+	else:
+		var direction := Input.get_axis("Right","Left")
+		match_active_state(delta,direction)
+	
+	move_and_slide()
+	
+	# 滴水粒子开关
+	if can_rebound:
+		water_drop_particles.emitting = true
+	else:
+		water_drop_particles.emitting = false
 
-	var direction := Input.get_axis("Left","Right")
+func match_active_state(delta:float,direction:float) -> void:
 	# 匹配状态
 	match active_state:
 		STATE.FLOOR:
@@ -54,11 +80,6 @@ func _physics_process(delta: float) -> void:
 			else :
 				animated_sprite_2d.play("Idle")
 			velocity.x = direction * SPEED
-			
-			if Input.is_action_just_pressed("Down"):
-				set_collision_mask_value(5,false)
-				await get_tree().create_timer(0.2).timeout
-				set_collision_mask_value(5,true)
 			
 			if can_rebound:
 				# 下落高度不为0才判断
@@ -76,17 +97,23 @@ func _physics_process(delta: float) -> void:
 								bounce(800)
 						else:
 							print("高度差不足100，无法反弹")
-
 					# 重置下落高度为0
 					fall_height = 0.0
-				
 			# 处理跳跃
 			if Input.is_action_just_pressed("Jump"):
-				animated_sprite_2d.play("Jump")
-				velocity.y = JUMP_VELOCITY
+				active_state = STATE.JUMP
+				
+			# 状态变成下落
+			if not is_on_floor():
+				active_state = STATE.FALL
+				
+		STATE.JUMP:
+			animated_sprite_2d.play("Jump")
+			velocity.y = JUMP_VELOCITY
 				
 			if not is_on_floor():
 				active_state = STATE.FALL
+				
 		STATE.FALL:
 			# 记录吸水后下落高度
 			if can_rebound:
@@ -98,7 +125,7 @@ func _physics_process(delta: float) -> void:
 					fall_height = position.y			
 				
 			velocity.x = direction * SPEED
-			velocity.y += GRAVITY * delta
+			velocity += get_gravity() * delta
 			# 动画处理
 			# 处理动画翻转
 			if direction:
@@ -115,16 +142,6 @@ func _physics_process(delta: float) -> void:
 			if  is_on_floor():
 				velocity.y = 0
 				active_state = STATE.FLOOR
-	move_and_slide()
-	
-	
-	
-	# 滴水粒子开关
-	if can_rebound:
-		water_drop_particles.emitting = true
-	else:
-		water_drop_particles.emitting = false
-
 # 反弹
 func bounce(bounce_target:float) -> void:
 	water_drop_particles.emitting = false
@@ -138,6 +155,14 @@ func smoonth_scale(target_scale:Vector2,duration:float)->void:
 	var tween := create_tween()
 	tween.tween_property(self,"scale",target_scale,duration)
 
+# 受伤
+func take_damage(damage:float):
+	HP -= damage
+	print(name,"受到:",damage,"点伤害")
+	if HP <= 0.0:
+		print(name,"死了")
+		dead.emit()
+		queue_free()
 
 func _entered_water(body: Node2D) -> void:
 	timer.set_wait_time(BOUNCE_TIME)
@@ -145,8 +170,6 @@ func _entered_water(body: Node2D) -> void:
 	smoonth_scale(Vector2(1.0,1.0),0.75)
 	can_rebound = true
 	
-
-
 func _on_timer_timeout() -> void:
 	smoonth_scale(Vector2(0.5,0.5),0.75)
 	can_rebound = false

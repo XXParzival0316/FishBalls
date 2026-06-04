@@ -13,7 +13,6 @@ config_version=5
 config/name="FishBalls"
 run/main_scene="uid://bsi12em562xgs"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="uid://diiapirysm3v4"
 
 [display]
 

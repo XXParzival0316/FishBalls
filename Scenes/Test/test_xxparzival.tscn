@@ -166,6 +166,11 @@ tile_set = SubResource("TileSet_jda1s")
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("3_hu080")]
 position = Vector2(264, 296)
+clone = true
+
+[node name="Node2D" type="Node2D" parent="FishBall" unique_id=1547003255]
+position = Vector2(336, -4)
+scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1994545243]
 position = Vector2(320, 304)

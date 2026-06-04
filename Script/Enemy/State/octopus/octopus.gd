@@ -19,11 +19,19 @@ func _on_warning_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		current_enemy = body
 		print(current_enemy.position)
-		#dir = (current_enemy.global_position - global_position).normalized()
-		losttime = 5
-		
 
 
 func _on_wall_checker_body_entered(body: Node2D) -> void:
-	wait_and_flip_direction(waittime)
-	current_enemy = null
+	if body is TileMapLayer:
+		wait_and_flip_direction(waittime)
+		current_enemy = null
+
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		last_animation = animated_sprite_2d.animation
+		animated_sprite_2d.play("attack")
+
+func _on_attack_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		animated_sprite_2d.play(last_animation)

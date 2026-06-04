@@ -55,8 +55,6 @@ func _physics_process(delta: float) -> void:
 	# 检测按下互动,发射型号
 	if Input.is_action_just_pressed("Interact"):
 		interact.emit()
-	if Input.is_action_just_pressed("Left"):
-		take_damage(10.0)
 	if not is_clone:
 		var direction := Input.get_axis("Left","Right")
 		match_active_state(delta,direction)

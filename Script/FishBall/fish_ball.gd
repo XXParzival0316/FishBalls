@@ -55,6 +55,8 @@ func _physics_process(delta: float) -> void:
 	# 检测按下互动,发射型号
 	if Input.is_action_just_pressed("Interact"):
 		interact.emit()
+	if Input.is_action_just_pressed("Left"):
+		take_damage(10.0)
 	if not is_clone:
 		var direction := Input.get_axis("Left","Right")
 		match_active_state(delta,direction)
@@ -176,6 +178,8 @@ func take_damage(damage:float):
 	if invincible == false:
 		invincible = true
 		HP -= damage
+		#todo 动画
+		modulate = Color(1.0, 0.0, 0.0, 1.0)
 		print(name,"受到:",damage,"点伤害")
 		if HP <= 0.0:
 			print(name,"死了")
@@ -183,7 +187,9 @@ func take_damage(damage:float):
 			queue_free()
 			return
 		await get_tree().create_timer(invincible_time).timeout
+		modulate = Color(1.0, 1.0, 1.0, 1.0)
 		invincible = false
+		
 func apply_knockback(force_x: float):
 	knockback_velocity_x = force_x
 

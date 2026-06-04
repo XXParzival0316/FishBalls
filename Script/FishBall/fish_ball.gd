@@ -26,7 +26,12 @@ var can_rebound:bool = false
 var fall_height:float = 0.0
 # 是否为克隆体
 var is_clone:bool = false
-
+# 击退系统(Baishu)
+var knockback_velocity_x: float = 0.0
+var knockback_friction: float = 0.6 # 每帧衰减速度
+# 受伤无敌时间(Baishu)
+var invincible: bool = false
+var invincible_time : float = 0.8
 # 开启克隆
 @export var clone:bool = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -79,8 +84,13 @@ func match_active_state(delta:float,direction:float) -> void:
 				animated_sprite_2d.play("Walk")
 			else :
 				animated_sprite_2d.play("Idle")
-			velocity.x = direction * SPEED
-			
+			#velocity.x = direction * SPEED
+			if abs(knockback_velocity_x) > 1:
+				velocity.x = knockback_velocity_x
+				knockback_velocity_x *= knockback_friction  # 逐渐衰减
+			else:
+				knockback_velocity_x = 0
+				velocity.x = direction * SPEED
 			if can_rebound:
 				# 下落高度不为0才判断
 				if fall_height:
@@ -124,7 +134,13 @@ func match_active_state(delta:float,direction:float) -> void:
 				if fall_height > position.y:
 					fall_height = position.y			
 				
-			velocity.x = direction * SPEED
+			#velocity.x = direction * SPEED
+			if abs(knockback_velocity_x) > 1:
+				velocity.x = knockback_velocity_x
+				knockback_velocity_x *= knockback_friction
+			else:
+				knockback_velocity_x = 0
+				velocity.x = direction * SPEED
 			velocity += get_gravity() * delta
 			# 动画处理
 			# 处理动画翻转
@@ -157,12 +173,19 @@ func smoonth_scale(target_scale:Vector2,duration:float)->void:
 
 # 受伤
 func take_damage(damage:float):
-	HP -= damage
-	print(name,"受到:",damage,"点伤害")
-	if HP <= 0.0:
-		print(name,"死了")
-		dead.emit()
-		queue_free()
+	if invincible == false:
+		invincible = true
+		HP -= damage
+		print(name,"受到:",damage,"点伤害")
+		if HP <= 0.0:
+			print(name,"死了")
+			dead.emit()
+			queue_free()
+			return
+		await get_tree().create_timer(invincible_time).timeout
+		invincible = false
+func apply_knockback(force_x: float):
+	knockback_velocity_x = force_x
 
 func _entered_water(body: Node2D) -> void:
 	timer.set_wait_time(BOUNCE_TIME)

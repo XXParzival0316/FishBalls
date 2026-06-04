@@ -138,6 +138,8 @@ size = Vector2(2, 2)
 
 [node name="Octopus" type="CharacterBody2D" unique_id=1517227325]
 script = ExtResource("1_vvplx")
+ground_check_distance = null
+ground_check_height = null
 metadata/_custom_type_script = "uid://8yfbxnn3wf1l"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1764964283]

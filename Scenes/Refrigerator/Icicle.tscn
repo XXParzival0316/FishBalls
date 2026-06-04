@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c5wvhiobdhof"]
 
 [ext_resource type="Script" uid="uid://77wvd122x836" path="res://Script/Refrigerator/Icecle.gd" id="1_3cn8g"]
-[ext_resource type="Texture2D" uid="uid://cldrknwijuce4" path="res://Assest/Refrigerator/冰锥草稿版.png" id="1_y0uc1"]
+[ext_resource type="Texture2D" uid="uid://cldrknwijuce4" path="res://Assest/Refrigerator/Icicle.png" id="1_y0uc1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0uc1"]
 size = Vector2(6, 22)

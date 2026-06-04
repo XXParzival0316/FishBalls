@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dr21ubqc5j0w1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c8j"]
+
+[node name="fishCar" type="StaticBody2D" unique_id=1774908513]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1893628061]
+shape = SubResource("RectangleShape2D_w7c8j")

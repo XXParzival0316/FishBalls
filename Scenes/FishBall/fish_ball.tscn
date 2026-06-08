@@ -112,10 +112,9 @@ script = ExtResource("1_js28m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=744150829]
 sprite_frames = SubResource("SpriteFrames_bh6at")
-animation = &"Idle"
+animation = &"Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1674202995]
-position = Vector2(1, -1)
 shape = SubResource("CircleShape2D_js28m")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1110119987]
@@ -125,14 +124,19 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1783041974]
 shape = SubResource("CircleShape2D_w5niw")
 
-[node name="Timer" type="Timer" parent="." unique_id=991729823]
-
 [node name="Particles" type="Node2D" parent="." unique_id=1383876021]
 
 [node name="WaterExplosion" parent="Particles" unique_id=147157352 instance=ExtResource("6_tf1wl")]
 
 [node name="WaterDrop" parent="Particles" unique_id=1396458935 instance=ExtResource("5_qhdtn")]
 emitting = false
+
+[node name="Timer" type="Timer" parent="." unique_id=991729823]
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=989155502]
+scale = Vector2(1.7335016, 0.80438215)
+target_position = Vector2(0, 17.404663)
+collision_mask = 4
 
 [connection signal="body_entered" from="Area2D" to="." method="_entered_water"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

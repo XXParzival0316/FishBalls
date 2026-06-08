@@ -1,6 +1,7 @@
 extends CharacterBody2D
 # Author XXParzival
 
+
 # 状态枚举
 enum STATE{
 	FLOOR,
@@ -20,6 +21,9 @@ const BOUNCE_TIME:float = 15.0
 var HP:float = 100.0
 # 状态
 var active_state := STATE.FLOOR
+# 开启冰行
+var walk_on_water:bool = true
+var count:int = 0
 # 是否可以反弹
 var can_rebound:bool = false
 # 下落高度
@@ -32,10 +36,13 @@ var knockback_friction: float = 0.6 # 每帧衰减速度
 # 受伤无敌时间(Baishu)
 var invincible: bool = false
 var invincible_time : float = 0.8
+
+var ice_block:PackedScene = preload("res://Scenes/FishBall/Skills/ice_block.tscn")
 # 开启克隆
 @export var clone:bool = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer:Timer = $Timer
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
 # 粒子特效
 @onready var water_drop_particles: CPUParticles2D = $Particles/WaterDrop
 @onready var water_explosion_particles: CPUParticles2D = $Particles/WaterExplosion
@@ -51,6 +58,10 @@ func _ready() -> void:
 		fb_inst.is_clone = true
 		get_tree().current_scene.call_deferred("add_child",fb_inst)
 
+func _process(delta: float) -> void:
+	if walk_on_water:
+		change_water()
+	
 func _physics_process(delta: float) -> void:
 	# 检测按下互动,发射型号
 	if Input.is_action_just_pressed("Interact"):
@@ -190,12 +201,21 @@ func take_damage(damage:float):
 		
 func apply_knockback(force_x: float):
 	knockback_velocity_x = force_x
+	
+func change_water()-> void:
+	if ray_cast_2d.get_collider():
+		var target_point = ray_cast_2d.get_collision_point()
+		#if target_point:
+			#var ice_block_inst = ice_block.instantiate()
+			#ice_block_inst.position = target_point + Vector2(0,8.9)
+			#get_tree().current_scene.add_child(ice_block_inst)
 
 func _entered_water(body: Node2D) -> void:
-	timer.set_wait_time(BOUNCE_TIME)
-	timer.start()
-	smoonth_scale(Vector2(1.0,1.0),0.75)
-	can_rebound = true
+	if not walk_on_water:
+		timer.set_wait_time(BOUNCE_TIME)
+		timer.start()
+		smoonth_scale(Vector2(1.0,1.0),0.75)
+		can_rebound = true
 	
 func _on_timer_timeout() -> void:
 	smoonth_scale(Vector2(0.5,0.5),0.75)

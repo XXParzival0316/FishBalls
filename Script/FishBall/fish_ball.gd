@@ -1,7 +1,6 @@
 extends CharacterBody2D
 # Author XXParzival
 
-
 # 状态枚举
 enum STATE{
 	FLOOR,
@@ -14,6 +13,7 @@ signal dead
 
 const SPEED := 150.0
 const JUMP_VELOCITY := -270.0
+
 # 吸水持续状态
 const BOUNCE_TIME:float = 15.0
 
@@ -21,15 +21,26 @@ const BOUNCE_TIME:float = 15.0
 var HP:float = 100.0
 # 状态
 var active_state := STATE.FLOOR
-# 开启冰行
-var walk_on_water:bool = true
-var count:int = 0
-# 是否可以反弹
+
+# 冰行系统
+@export var frozen_time:int = 10
+var is_frozen:bool = false
+var tilemapLayer:TileMapLayer = null
+var ice_block:PackedScene = preload("res://Scenes/FishBall/Skills/ice_block.tscn")
+var source_id:int
+var ice_block_id:int
+
+# 反弹系统
 var can_rebound:bool = false
 # 下落高度
 var fall_height:float = 0.0
+
 # 是否为克隆体
 var is_clone:bool = false
+# 开启克隆
+@export var clone:bool = false
+
+# 受伤&击退
 # 击退系统(Baishu)
 var knockback_velocity_x: float = 0.0
 var knockback_friction: float = 0.6 # 每帧衰减速度
@@ -37,9 +48,7 @@ var knockback_friction: float = 0.6 # 每帧衰减速度
 var invincible: bool = false
 var invincible_time : float = 0.8
 
-var ice_block:PackedScene = preload("res://Scenes/FishBall/Skills/ice_block.tscn")
-# 开启克隆
-@export var clone:bool = false
+# 获取子节点
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer:Timer = $Timer
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
@@ -58,14 +67,22 @@ func _ready() -> void:
 		fb_inst.is_clone = true
 		get_tree().current_scene.call_deferred("add_child",fb_inst)
 
-func _process(delta: float) -> void:
-	if walk_on_water:
-		change_water()
 	
 func _physics_process(delta: float) -> void:
 	# 检测按下互动,发射型号
 	if Input.is_action_just_pressed("Interact"):
 		interact.emit()
+	if Input.is_action_just_pressed("ui_left"):
+		is_frozen = true
+	
+	# 冰行技能
+	if is_frozen:
+		if not timer.timeout.is_connected(_on_frozen_timer_timeout):
+			timer.timeout.connect(_on_frozen_timer_timeout)
+			timer.set_wait_time(frozen_time)
+			timer.start()
+		frozen()
+	
 	if not is_clone:
 		var direction := Input.get_axis("Left","Right")
 		match_active_state(delta,direction)
@@ -201,22 +218,40 @@ func take_damage(damage:float):
 		
 func apply_knockback(force_x: float):
 	knockback_velocity_x = force_x
-	
-func change_water()-> void:
-	if ray_cast_2d.get_collider():
-		var target_point = ray_cast_2d.get_collision_point()
-		#if target_point:
-			#var ice_block_inst = ice_block.instantiate()
-			#ice_block_inst.position = target_point + Vector2(0,8.9)
-			#get_tree().current_scene.add_child(ice_block_inst)
 
+# 冰冻(把水冻住)
+func frozen()-> void:
+	if !tilemapLayer:
+		# 获得水所在的TileMapLayer
+		var collider = ray_cast_2d.get_collider()
+		if collider is TileMapLayer:
+			tilemapLayer = collider
+			# 对所在的TileMapLayer中的tileset进行设置
+			var tile_set = tilemapLayer.tile_set
+			var scene_source = TileSetScenesCollectionSource.new()
+			# 对tileset添加一个新场景源
+			source_id = tile_set.add_source(scene_source)
+			# 对上面添加的场景源中添加冰砖块
+			ice_block_id = scene_source.create_scene_tile(ice_block)
+	else:	
+		if source_id and ice_block_id:
+			var target_vector = tilemapLayer.local_to_map(ray_cast_2d.get_collision_point())
+			tilemapLayer.set_cell(target_vector,source_id,Vector2i(0,0),ice_block_id)
+		
 func _entered_water(body: Node2D) -> void:
-	if not walk_on_water:
-		timer.set_wait_time(BOUNCE_TIME)
-		timer.start()
-		smoonth_scale(Vector2(1.0,1.0),0.75)
-		can_rebound = true
+	if not is_frozen:
+		if not timer.timeout.is_connected(_on_bounce_timer_timeout):
+			timer.timeout.connect(_on_bounce_timer_timeout)
+			timer.set_wait_time(BOUNCE_TIME)
+			timer.start()
+			smoonth_scale(Vector2(1.0,1.0),0.75)
+			can_rebound = true
 	
-func _on_timer_timeout() -> void:
+func _on_bounce_timer_timeout() -> void:
 	smoonth_scale(Vector2(0.5,0.5),0.75)
 	can_rebound = false
+	print("反弹时间到")
+	
+func _on_frozen_timer_timeout() -> void:
+	is_frozen = false
+	print("冰行时间到")

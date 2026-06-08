@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="1_52yc7"]
 [ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="2_brns1"]
+[ext_resource type="PackedScene" uid="uid://uuaegfofs4vf" path="res://Scenes/FishBall/Skills/ice_block.tscn" id="3_brns1"]
 [ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="3_hu080"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lxp54"]
@@ -151,12 +152,16 @@ texture = ExtResource("2_brns1")
 2:4/0 = 0
 2:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_hu080"]
+scenes/1/scene = ExtResource("3_brns1")
+
 [sub_resource type="TileSet" id="TileSet_jda1s"]
 physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 4
 physics_layer_1/collision_mask = 4
 sources/0 = SubResource("TileSetAtlasSource_lxp54")
 sources/1 = SubResource("TileSetAtlasSource_vfjqq")
+sources/3 = SubResource("TileSetScenesCollectionSource_hu080")
 
 [node name="Test" type="Node2D" unique_id=1968407514]
 
@@ -166,6 +171,7 @@ tile_set = SubResource("TileSet_jda1s")
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("3_hu080")]
 position = Vector2(161, 292)
+clone = null
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1994545243]
 position = Vector2(320, 304)

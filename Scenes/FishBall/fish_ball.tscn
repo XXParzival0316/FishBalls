@@ -131,8 +131,6 @@ shape = SubResource("CircleShape2D_w5niw")
 [node name="WaterDrop" parent="Particles" unique_id=1396458935 instance=ExtResource("5_qhdtn")]
 emitting = false
 
-[node name="Timer" type="Timer" parent="." unique_id=991729823]
-
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=989155502]
 scale = Vector2(1.7335016, 0.80438215)
 target_position = Vector2(0, 22.377422)

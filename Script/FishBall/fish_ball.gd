@@ -50,7 +50,6 @@ var invincible_time : float = 0.8
 
 # 获取子节点
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var timer:Timer = $Timer
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 # 粒子特效
 @onready var water_drop_particles: CPUParticles2D = $Particles/WaterDrop
@@ -77,10 +76,8 @@ func _physics_process(delta: float) -> void:
 	
 	# 冰行技能
 	if is_frozen:
-		if not timer.timeout.is_connected(_on_frozen_timer_timeout):
-			timer.timeout.connect(_on_frozen_timer_timeout)
-			timer.set_wait_time(frozen_time)
-			timer.start()
+		if not has_node("frozen_timer"):
+			create_timer(frozen_time,_on_frozen_timer_timeout,"frozen_timer")
 		frozen()
 	
 	if not is_clone:
@@ -186,6 +183,15 @@ func match_active_state(delta:float,direction:float) -> void:
 			if  is_on_floor():
 				velocity.y = 0
 				active_state = STATE.FLOOR
+
+func create_timer(wait_time:float,func_name:Callable,timer_name ="timer"):
+	var timer:Timer = Timer.new()
+	timer.name = timer_name
+	timer.set_wait_time(wait_time)
+	timer.timeout.connect(func_name)
+	add_child(timer)
+	timer.start()
+
 # 反弹
 func bounce(bounce_target:float) -> void:
 	water_drop_particles.emitting = false
@@ -240,18 +246,19 @@ func frozen()-> void:
 		
 func _entered_water(body: Node2D) -> void:
 	if not is_frozen:
-		if not timer.timeout.is_connected(_on_bounce_timer_timeout):
-			timer.timeout.connect(_on_bounce_timer_timeout)
-			timer.set_wait_time(BOUNCE_TIME)
-			timer.start()
-			smoonth_scale(Vector2(1.0,1.0),0.75)
-			can_rebound = true
+			if not has_node("bounce_timer"):
+				create_timer(BOUNCE_TIME,_on_bounce_timer_timeout,"bounce_timer")
+				smoonth_scale(Vector2(1.0,1.0),0.75)
+				can_rebound = true
 	
 func _on_bounce_timer_timeout() -> void:
 	smoonth_scale(Vector2(0.5,0.5),0.75)
 	can_rebound = false
+	$bounce_timer.queue_free()
 	print("反弹时间到")
 	
 func _on_frozen_timer_timeout() -> void:
 	is_frozen = false
+	tilemapLayer = null
+	$frozen_timer.queue_free()
 	print("冰行时间到")

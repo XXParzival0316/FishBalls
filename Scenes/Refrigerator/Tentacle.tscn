@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cxqkigulone8v"]
+
+[ext_resource type="Script" uid="uid://c21p5lcq3la8k" path="res://Script/Refrigerator/tentacle.gd" id="1_oghk8"]
+[ext_resource type="Texture2D" uid="uid://cldrknwijuce4" path="res://Assest/Refrigerator/Icicle.png" id="2_oghk8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dbm0"]
+atlas = ExtResource("2_oghk8")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oghk8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dbm0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Tentacle" type="Area2D" unique_id=575950593]
+script = ExtResource("1_oghk8")
+max_extension_length = 10.0
+extension_coefficient = 0.1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=579821822]
+position = Vector2(0, 10)
+polygon = PackedVector2Array(-12, -11, 0, 10, 2.9553528, 4.3579636, 11, -11)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=307534464]
+position = Vector2(0, 24)
+sprite_frames = SubResource("SpriteFrames_oghk8")
+frame_progress = 0.541952
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

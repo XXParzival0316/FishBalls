@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="2_l70bw"]
 [ext_resource type="PackedScene" uid="uid://cau4sbgaaoit2" path="res://Scenes/Enemy/octopus.tscn" id="3_l70bw"]
 [ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="4_g22f7"]
+[ext_resource type="PackedScene" uid="uid://cxqkigulone8v" path="res://Scenes/Refrigerator/Tentacle.tscn" id="5_smpm2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g22f7"]
 texture = ExtResource("1_qwvd0")
@@ -170,3 +171,13 @@ position = Vector2(251, 283)
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("4_g22f7")]
 position = Vector2(151, 214)
+
+[node name="Tentacle" parent="." unique_id=575950593 instance=ExtResource("5_smpm2")]
+position = Vector2(309, 185)
+extension_length = 1.0
+min_extension_length = 1.0
+
+[node name="Tentacle2" parent="." unique_id=1887124946 instance=ExtResource("5_smpm2")]
+position = Vector2(395, 160)
+extension_length = 10.0
+min_extension_length = 1.0

@@ -110,16 +110,17 @@ animations = [{
 
 [node name="Tentacle" type="Area2D" unique_id=575950593]
 script = ExtResource("1_oghk8")
+extension_length = null
 max_extension_length = 10.0
 extension_coefficient = 0.1
+min_extension_length = null
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=579821822]
 position = Vector2(0, 10)
 polygon = PackedVector2Array(-12, -11, 0, 10, 2.9553528, 4.3579636, 11, -11)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=307534464]
-position = Vector2(0, 38)
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, 74)
 sprite_frames = SubResource("SpriteFrames_oghk8")
 frame_progress = 0.74197596
 

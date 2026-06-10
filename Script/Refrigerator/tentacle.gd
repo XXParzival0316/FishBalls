@@ -6,10 +6,15 @@ extends Area2D
 @export var min_extension_length : float #最小伸缩长度
 var hurting_player : Node2D
 var is_extending : bool
+var animated_sprite_2d : AnimatedSprite2D
 func _physics_process(delta: float) -> void:
 	extension()
 	hurt_player()
-
+	
+func _enter_tree() -> void:
+	animated_sprite_2d = $AnimatedSprite2D
+	animated_sprite_2d.play("default")
+	
 func hurt_player():
 	if hurting_player != null:
 		if hurting_player.is_in_group("Player"):
@@ -30,7 +35,7 @@ func extension():
 		if extension_length <= min_extension_length:
 			extension_length = min_extension_length
 			is_extending = true
-	scale.y = extension_length
+	#scale.y = extension_length
 
 
 func _on_body_entered(body: Node2D) -> void:

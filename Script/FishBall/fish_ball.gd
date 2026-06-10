@@ -11,8 +11,14 @@ enum STATE{
 signal interact
 signal dead
 
-const SPEED := 150.0
-const JUMP_VELOCITY := -270.0
+## 鱼蛋移动速度
+@export var SPEED := 150.0
+## 鱼蛋跳跃高度
+@export var JUMP_VELOCITY := -270.0
+## 开启克隆
+@export var clone:bool = false
+# 冰行持续时间
+@export var icewalk_time:int = 10
 
 # 吸水持续状态
 const BOUNCE_TIME:float = 15.0
@@ -22,9 +28,17 @@ var HP:float = 100.0
 # 状态
 var active_state := STATE.FLOOR
 
-# 冰行系统
-@export var frozen_time:int = 10
-var is_frozen:bool = false
+# 技能系统
+# 获取技能列表
+var skills_dict:Dictionary = {
+	"icewalk":false,
+	"wasabi":false,
+} 
+# 玩家真正拥有的技能
+var skills_arr:Array = Array()
+var active_skill:String
+
+var is_icewalk:bool = false
 var tilemapLayer:TileMapLayer = null
 var ice_block:PackedScene = preload("res://Scenes/FishBall/Skills/ice_block.tscn")
 var source_id:int
@@ -37,8 +51,7 @@ var fall_height:float = 0.0
 
 # 是否为克隆体
 var is_clone:bool = false
-# 开启克隆
-@export var clone:bool = false
+
 
 # 受伤&击退
 # 击退系统(Baishu)
@@ -56,7 +69,7 @@ var invincible_time : float = 0.8
 @onready var water_explosion_particles: CPUParticles2D = $Particles/WaterExplosion
 
 func _ready() -> void:
-	if clone:		
+	if clone:
 		var target:Node2D=$Node2D
 		var fb_tscn:PackedScene = load("res://Scenes/FishBall/fish_ball.tscn")
 		var fb_inst:CharacterBody2D = fb_tscn.instantiate()
@@ -65,20 +78,33 @@ func _ready() -> void:
 		fb_inst.position = target.global_position
 		fb_inst.is_clone = true
 		get_tree().current_scene.call_deferred("add_child",fb_inst)
-
+	get_skill("icewalk")
+	get_skill("wasabi")
 	
 func _physics_process(delta: float) -> void:
 	# 检测按下互动,发射型号
 	if Input.is_action_just_pressed("Interact"):
 		interact.emit()
+		
+	# 如果技能不为空，才能切换
 	if Input.is_action_just_pressed("ui_left"):
-		is_frozen = true
+		if skills_arr:
+			print("切换上个技能")
+			switch_skill("last")
+		# 下一个技能
+	if Input.is_action_just_pressed("ui_right"):
+		if skills_arr:
+			print("切换下个技能")
+			switch_skill("next")
+	if Input.is_action_just_pressed("ui_up"):
+		print("使用技能：",active_skill)
+		use_skill()
 	
 	# 冰行技能
-	if is_frozen:
-		if not has_node("frozen_timer"):
-			create_timer(frozen_time,_on_frozen_timer_timeout,"frozen_timer")
-		frozen()
+	if is_icewalk:
+		if not has_node("icewalk_timer"):
+			create_timer(icewalk_time,_on_icewalk_timer_timeout,"icewalk_timer")
+		ice_walk()
 	
 	if not is_clone:
 		var direction := Input.get_axis("Left","Right")
@@ -200,7 +226,8 @@ func bounce(bounce_target:float) -> void:
 	velocity.y = -bounce_target
 	water_explosion_particles.emitting = true	
 	can_rebound = false
-	
+
+# 大小缩放
 func smoonth_scale(target_scale:Vector2,duration:float)->void:
 	var tween := create_tween()
 	tween.tween_property(self,"scale",target_scale,duration)
@@ -225,8 +252,51 @@ func take_damage(damage:float):
 func apply_knockback(force_x: float):
 	knockback_velocity_x = force_x
 
+## 获得技能
+func get_skill(skill_name:String) -> void:
+	if skill_name in skills_dict.keys() and not skills_dict[skill_name]:
+		skills_dict[skill_name] = true
+		skills_arr.append(skill_name)
+		active_skill = skill_name
+		print("获得技能:",skill_name)
+		print(skills_arr)
+
+# 切换技能
+func switch_skill(choice:String) -> void:
+	var skill_index:int = skills_arr.find(active_skill)
+	if skill_index != -1:
+		match choice:
+			# 切换上一个技能
+			"last":
+				# 位于第一位不切换
+				if skill_index == 0:
+					print("已经是最前的技能")
+					return
+				active_skill = skills_arr[skill_index-1]
+				print("技能切换到:",active_skill)
+			# 切换下一个技能
+			"next":
+				# 位于最后一位不切换
+				if skill_index == skills_arr.size() - 1:
+					print("已经是最后的技能")
+					return
+				active_skill = skills_arr[skill_index+1]
+				print("技能切换到:",active_skill)
+
+## 使用技能
+func use_skill() -> void:
+	match active_skill:
+		"icewalk":
+			is_icewalk = true
+		"wasabi":
+			wasabi()
+
+# 扔芥末
+func wasabi()-> void:
+	print("丢出芥末")
+
 # 冰冻(把水冻住)
-func frozen()-> void:
+func ice_walk()-> void:
 	if !tilemapLayer:
 		# 获得水所在的TileMapLayer
 		var collider = ray_cast_2d.get_collider()
@@ -247,7 +317,7 @@ func frozen()-> void:
 			tilemapLayer.set_cell(target_vector,source_id,Vector2i(0,0),ice_block_id)
 		
 func _entered_water(body: Node2D) -> void:
-	if not is_frozen:
+	if not is_icewalk:
 			if not has_node("bounce_timer"):
 				create_timer(BOUNCE_TIME,_on_bounce_timer_timeout,"bounce_timer")
 				smoonth_scale(Vector2(1.0,1.0),0.75)
@@ -259,8 +329,8 @@ func _on_bounce_timer_timeout() -> void:
 	$bounce_timer.queue_free()
 	print("反弹时间到")
 	
-func _on_frozen_timer_timeout() -> void:
-	is_frozen = false
+func _on_icewalk_timer_timeout() -> void:
+	is_icewalk = false
 	tilemapLayer = null
-	$frozen_timer.queue_free()
+	$icewalk_timer.queue_free()
 	print("冰行时间到")

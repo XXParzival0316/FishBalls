@@ -100,8 +100,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_js28m"]
-radius = 15.524175
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tf1wl"]
+size = Vector2(24, 26)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5niw"]
 radius = 1.52
@@ -115,7 +115,8 @@ sprite_frames = SubResource("SpriteFrames_bh6at")
 animation = &"Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1674202995]
-shape = SubResource("CircleShape2D_js28m")
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_tf1wl")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1110119987]
 collision_layer = 4

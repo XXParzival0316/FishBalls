@@ -293,7 +293,10 @@ func use_skill() -> void:
 
 # 扔芥末
 func wasabi()-> void:
-	print("丢出芥末")
+	var wasabi:PackedScene= load("res://Scenes/FishBall/Skills/wasabi.tscn")
+	var wasabi_inst = wasabi.instantiate()
+	wasabi_inst.position = position +Vector2(20.0,0.0)
+	get_tree().current_scene.add_child(wasabi_inst)
 
 # 冰冻(把水冻住)
 func ice_walk()-> void:

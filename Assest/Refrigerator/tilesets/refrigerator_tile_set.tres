@@ -1,6 +1,7 @@
 [gd_resource type="TileSet" format=3 uid="uid://bjoc8gf5bo3vd"]
 
 [ext_resource type="Texture2D" uid="uid://dewkm2iuddts4" path="res://Assest/Refrigerator/Refrigerator_Base_tilemap.png" id="1_m3iix"]
+[ext_resource type="Texture2D" uid="uid://dl3uqdadeaa88" path="res://Assest/Refrigerator/Refrigerator_Base2_tilemap.png" id="2_nkvls"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hgrnn"]
 texture = ExtResource("1_m3iix")
@@ -235,6 +236,57 @@ texture = ExtResource("1_m3iix")
 23:15/0 = 0
 27:15/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7v60o"]
+texture = ExtResource("2_nkvls")
+12:1/0 = 0
+13:1/0 = 0
+4:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+3:4/0 = 0
+5:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+8:7/0 = 0
+12:7/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+
 [resource]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_hgrnn")
+sources/1 = SubResource("TileSetAtlasSource_7v60o")

@@ -167,17 +167,14 @@ tile_map_data = PackedByteArray("AAAAABoAAAACAAUAAAABABoAAAACAAUAAAACABoAAAACAAU
 tile_set = SubResource("TileSet_3kylt")
 
 [node name="Octopus" parent="." unique_id=1517227325 instance=ExtResource("3_l70bw")]
-position = Vector2(251, 283)
+position = Vector2(69, 280)
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("4_g22f7")]
 position = Vector2(151, 214)
 
-[node name="Tentacle" parent="." unique_id=575950593 instance=ExtResource("5_smpm2")]
-position = Vector2(309, 185)
-extension_length = 1.0
-min_extension_length = 1.0
+[node name="Tentacle" parent="." unique_id=1013037171 instance=ExtResource("5_smpm2")]
+position = Vector2(150, 154)
 
-[node name="Tentacle2" parent="." unique_id=1887124946 instance=ExtResource("5_smpm2")]
-position = Vector2(395, 160)
-extension_length = 10.0
-min_extension_length = 1.0
+[node name="Tentacle2" parent="." unique_id=575950593 instance=ExtResource("5_smpm2")]
+position = Vector2(249, 154)
+is_extending = false

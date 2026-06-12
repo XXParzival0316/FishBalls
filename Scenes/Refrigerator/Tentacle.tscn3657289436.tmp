@@ -3,18 +3,6 @@
 [ext_resource type="Script" uid="uid://c21p5lcq3la8k" path="res://Script/Refrigerator/tentacle.gd" id="1_oghk8"]
 [ext_resource type="Texture2D" uid="uid://v00dvw6ma8pp" path="res://Assest/Enemy/tentacle/tentacle.png" id="2_oghk8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oghk8"]
-size = Vector2(32, 34)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dbm0"]
-size = Vector2(25.5, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bktvs"]
-size = Vector2(20, 28)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oghk8"]
-height = 38.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_0dbm0"]
 atlas = ExtResource("2_oghk8")
 region = Rect2(0, 0, 128, 150)
@@ -87,12 +75,7 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mhebs")
-}],
-"loop": false,
-"name": &"extension",
-"speed": 5.0
 }, {
-"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_axuse")
 }, {
@@ -120,35 +103,27 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0dbm0")
 }],
-"loop": false,
-"name": &"shrink",
+"loop": true,
+"name": &"default",
 "speed": 5.0
 }]
 
 [node name="Tentacle" type="Area2D" unique_id=575950593]
 script = ExtResource("1_oghk8")
+extension_length = null
+max_extension_length = 10.0
+extension_coefficient = 0.1
+min_extension_length = null
 
-[node name="Collision1" type="CollisionShape2D" parent="." unique_id=1213926065]
-position = Vector2(0, 17)
-shape = SubResource("RectangleShape2D_oghk8")
-
-[node name="Collision2" type="CollisionShape2D" parent="." unique_id=1672806798]
-position = Vector2(0, 59)
-shape = SubResource("RectangleShape2D_0dbm0")
-
-[node name="Collision3" type="CollisionShape2D" parent="." unique_id=119929003]
-position = Vector2(2, 98)
-shape = SubResource("RectangleShape2D_bktvs")
-
-[node name="Collision4" type="CollisionShape2D" parent="." unique_id=582506978]
-position = Vector2(2, 130)
-shape = SubResource("CapsuleShape2D_oghk8")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=579821822]
+polygon = PackedVector2Array(-18, 0, 1, 132, 19, -1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=307534464]
-position = Vector2(0, 75)
+position = Vector2(-2, 74)
 scale = Vector2(0.5, 1)
 sprite_frames = SubResource("SpriteFrames_oghk8")
-animation = &"extension"
+frame = 6
+frame_progress = 0.97358507
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

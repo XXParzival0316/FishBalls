@@ -166,7 +166,10 @@ tile_set = SubResource("TileSet_jda1s")
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("3_hu080")]
 position = Vector2(383, 285)
-scale = Vector2(1, 1)
+SPEED = null
+JUMP_VELOCITY = null
+clone = null
+icewalk_time = null
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1994545243]
 position = Vector2(320, 304)

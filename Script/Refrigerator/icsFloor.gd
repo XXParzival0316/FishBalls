@@ -4,9 +4,9 @@ extends StaticBody2D
 @onready var area_2d: Area2D = $Area2D
 
 # 编辑器可调参数
-@export var delay_before_shake: float = 2.0   # 踩后多久抖
-@export var shake_duration: float = 2.0       # 抖动多久
-@export var shake_strength: float = 3.0       # 抖动幅度
+@export var delay_before_shake: float = 0.3   # 踩后多久抖
+@export var shake_duration: float = 0.3       # 抖动多久
+@export var shake_strength: float = 1.0       # 抖动幅度
 
 var is_triggered: bool = false
 var original_pos: Vector2

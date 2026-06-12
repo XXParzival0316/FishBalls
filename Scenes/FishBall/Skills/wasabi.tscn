@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://fbcu1nd02w18"]
+
+[ext_resource type="Texture2D" uid="uid://dewkm2iuddts4" path="res://Assest/Refrigerator/Refrigerator_Base_tilemap.png" id="1_7g2r0"]
+[ext_resource type="Script" uid="uid://ddx1o2cc64t1" path="res://Script/FishBall/Skills/wasabi.gd" id="1_uu1er"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7g2r0"]
+size = Vector2(8, 13)
+
+[node name="Wasabi" type="RigidBody2D" unique_id=1027648530]
+mass = 0.2
+contact_monitor = true
+max_contacts_reported = 1
+linear_velocity = Vector2(500, -200)
+script = ExtResource("1_uu1er")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1942331441]
+texture = ExtResource("1_7g2r0")
+region_enabled = true
+region_rect = Rect2(115, 32, 10, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=174043795]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_7g2r0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

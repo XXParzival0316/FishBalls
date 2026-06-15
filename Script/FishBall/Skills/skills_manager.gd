@@ -7,15 +7,19 @@ var skills_arr:Array = Array()
 # 当前选中技能
 var active_skill:String
 
+var icewalk:PackedScene = preload("res://Scenes/FishBall/Skills/IceWalk/icewalk.tscn")
+var icewalk_inst:RayCast2D
+
 # 各技能初始化
 func _ready() -> void:
-	if fb.wasabi:
+	if fb.get_wasabi:
 		print("获得芥末酱技能")
 		skills_arr.append("wasabi")
-	if fb.ice_walk:
+	if fb.get_icewalk:
+		icewalk_inst = icewalk.instantiate()
+		add_child(icewalk_inst)
 		print("获得冰霜行者技能")
 		skills_arr.append("icewalk")
-	
 	# 选中最后一个获得的技能
 	if skills_arr:
 		active_skill = skills_arr[skills_arr.size()-1]
@@ -29,7 +33,6 @@ func _input(event: InputEvent) -> void:
 			switch_skills("last")
 		if event.is_action_pressed("ui_right"):
 			switch_skills("next")
-
 
 func _process(delta: float) -> void:
 	pass
@@ -58,9 +61,10 @@ func use_skill() -> void:
 		"wasabi":
 			use_wasabi()
 
+# 统一管理技能CD&持续时间
 func use_icewalk() -> void:
-	pass
-
+	icewalk_inst.use()
+	
 func use_wasabi() -> void:
 	var wasabi:PackedScene = load("res://Scenes/FishBall/Skills/wasabi.tscn")
 	var wasabi_inst = wasabi.instantiate()

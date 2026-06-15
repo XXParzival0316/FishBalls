@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cfl6mirmxfdvc"]
+
+[ext_resource type="Script" uid="uid://btw1nkdatnjqa" path="res://Script/FishBall/Skills/IceWalk/icewalk.gd" id="1_bgk5b"]
+
+[node name="IceWalk" type="RayCast2D" unique_id=1414787809]
+scale = Vector2(1.7335016, 0.80438215)
+target_position = Vector2(0, 22.377422)
+collision_mask = 4
+script = ExtResource("1_bgk5b")

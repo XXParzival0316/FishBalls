@@ -133,6 +133,11 @@ shape = SubResource("CircleShape2D_w5niw")
 [node name="WaterDrop" parent="Particles" unique_id=1396458935 instance=ExtResource("5_qhdtn")]
 emitting = false
 
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=989155502]
+scale = Vector2(1.7335016, 0.80438215)
+target_position = Vector2(0, 22.377422)
+collision_mask = 4
+
 [node name="SkillsManager" type="Node2D" parent="." unique_id=794075905]
 script = ExtResource("7_avsej")
 

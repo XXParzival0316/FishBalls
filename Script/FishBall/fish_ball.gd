@@ -11,47 +11,41 @@ enum STATE{
 signal interact
 signal dead
 
-## 鱼蛋移动速度
+@export_group("基础属性")
+## 血量
+@export var HP:float = 100.0
+## 移动速度
 @export var SPEED := 150.0
-## 鱼蛋跳跃高度
+## 跳跃高度
 @export var JUMP_VELOCITY := -270.0
 ## 开启克隆
 @export var clone:bool = false
-# 冰行持续时间
+
+@export_group("冰霜行者")
+## 获得冰行技能
+@export var get_icewalk:bool = true
+## 冰行CD
+@export var icewalk_CD:int = 5
+## 冰行持续时间
 @export var icewalk_time:int = 10
 
+@export_group("芥末酱")
+## 获得芥末酱技能
+@export var get_wasabi:bool = true	
+## 芥末酱料CD
+@export var wasabi_CD:int = 5
+
 # 吸水持续状态
+var first_size
 const BOUNCE_TIME:float = 15.0
 
-# 血量
-var HP:float = 100.0
 # 状态
 var active_state := STATE.FLOOR
-
-# 技能系统
-# 获取技能列表
-var skills_dict:Dictionary = {
-	"icewalk":false,
-	"wasabi":false,
-} 
-# 玩家真正拥有的技能
-var skills_arr:Array = Array()
-var active_skill:String
-
-var is_icewalk:bool = false
-var tilemapLayer:TileMapLayer = null
-var ice_block:PackedScene = preload("res://Scenes/FishBall/Skills/ice_block.tscn")
-var source_id:int
-var ice_block_id:int
 
 # 反弹系统
 var can_rebound:bool = false
 # 下落高度
 var fall_height:float = 0.0
-
-# 是否为克隆体
-var is_clone:bool = false
-
 
 # 受伤&击退
 # 击退系统(Baishu)
@@ -63,12 +57,12 @@ var invincible_time : float = 0.8
 
 # 获取子节点
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var ray_cast_2d: RayCast2D = $RayCast2D
 # 粒子特效
 @onready var water_drop_particles: CPUParticles2D = $Particles/WaterDrop
 @onready var water_explosion_particles: CPUParticles2D = $Particles/WaterExplosion
 
 func _ready() -> void:
+	first_size = scale
 	if clone:
 		var target:Node2D=$Node2D
 		var fb_tscn:PackedScene = load("res://Scenes/FishBall/fish_ball.tscn")
@@ -76,43 +70,18 @@ func _ready() -> void:
 		fb_inst.name = "FishBall_Clone"
 		# 如果你看到这行报错，需要往鱼蛋下面挂一个Node2D节点用来确定克隆鱼蛋生成位置
 		fb_inst.position = target.global_position
-		fb_inst.is_clone = true
 		get_tree().current_scene.call_deferred("add_child",fb_inst)
-	get_skill("icewalk")
-	get_skill("wasabi")
 	
 func _physics_process(delta: float) -> void:
 	# 检测按下互动,发射型号
 	if Input.is_action_just_pressed("Interact"):
 		interact.emit()
-		
-	# 如果技能不为空，才能切换
-	if Input.is_action_just_pressed("ui_left"):
-		if skills_arr:
-			print("切换上个技能")
-			switch_skill("last")
-		# 下一个技能
-	if Input.is_action_just_pressed("ui_right"):
-		if skills_arr:
-			print("切换下个技能")
-			switch_skill("next")
-	if Input.is_action_just_pressed("ui_up"):
-		print("使用技能：",active_skill)
-		use_skill()
-	
-	# 冰行技能
-	if is_icewalk:
-		if not has_node("icewalk_timer"):
-			create_timer(icewalk_time,_on_icewalk_timer_timeout,"icewalk_timer")
-		ice_walk()
-	
-	if not is_clone:
+	if not clone:
 		var direction := Input.get_axis("Left","Right")
 		match_active_state(delta,direction)
 	else:
 		var direction := Input.get_axis("Right","Left")
 		match_active_state(delta,direction)
-	
 	move_and_slide()
 	
 	# 滴水粒子开关
@@ -222,7 +191,7 @@ func create_timer(wait_time:float,func_name:Callable,timer_name ="timer"):
 func bounce(bounce_target:float) -> void:
 	water_drop_particles.emitting = false
 	print("反弹高度为:",bounce_target)
-	smoonth_scale(Vector2(0.5,0.5),0.25)
+	smoonth_scale(first_size,0.25)
 	velocity.y = -bounce_target
 	water_explosion_particles.emitting = true	
 	can_rebound = false
@@ -252,88 +221,14 @@ func take_damage(damage:float):
 func apply_knockback(force_x: float):
 	knockback_velocity_x = force_x
 
-## 获得技能
-func get_skill(skill_name:String) -> void:
-	if skill_name in skills_dict.keys() and not skills_dict[skill_name]:
-		skills_dict[skill_name] = true
-		skills_arr.append(skill_name)
-		active_skill = skill_name
-		print("获得技能:",skill_name)
-		print(skills_arr)
-
-# 切换技能
-func switch_skill(choice:String) -> void:
-	var skill_index:int = skills_arr.find(active_skill)
-	if skill_index != -1:
-		match choice:
-			# 切换上一个技能
-			"last":
-				# 位于第一位不切换
-				if skill_index == 0:
-					print("已经是最前的技能")
-					return
-				active_skill = skills_arr[skill_index-1]
-				print("技能切换到:",active_skill)
-			# 切换下一个技能
-			"next":
-				# 位于最后一位不切换
-				if skill_index == skills_arr.size() - 1:
-					print("已经是最后的技能")
-					return
-				active_skill = skills_arr[skill_index+1]
-				print("技能切换到:",active_skill)
-
-## 使用技能
-func use_skill() -> void:
-	match active_skill:
-		"icewalk":
-			is_icewalk = true
-		"wasabi":
-			wasabi()
-
-# 扔芥末
-func wasabi()-> void:
-	var wasabi:PackedScene= load("res://Scenes/FishBall/Skills/wasabi.tscn")
-	var wasabi_inst = wasabi.instantiate()
-	wasabi_inst.position = position +Vector2(20.0,0.0)
-	get_tree().current_scene.add_child(wasabi_inst)
-
-# 冰冻(把水冻住)
-func ice_walk()-> void:
-	if !tilemapLayer:
-		# 获得水所在的TileMapLayer
-		var collider = ray_cast_2d.get_collider()
-		if collider is TileMapLayer:
-			tilemapLayer = collider
-			# 对所在的TileMapLayer中的tileset进行设置,之前要是添加过了就复用之前的场景源
-			if not source_id and not ice_block_id:
-				var tile_set = tilemapLayer.tile_set
-				var scene_source = TileSetScenesCollectionSource.new()
-				# 对tileset添加一个新场景源
-				source_id = tile_set.add_source(scene_source)
-				# 对上面添加的场景源中添加冰砖块
-				ice_block_id = scene_source.create_scene_tile(ice_block)
-			
-	else:	
-		if source_id and ice_block_id:
-			var target_vector = tilemapLayer.local_to_map(ray_cast_2d.get_collision_point())
-			tilemapLayer.set_cell(target_vector,source_id,Vector2i(0,0),ice_block_id)
-		
 func _entered_water(body: Node2D) -> void:
-	if not is_icewalk:
-			if not has_node("bounce_timer"):
-				create_timer(BOUNCE_TIME,_on_bounce_timer_timeout,"bounce_timer")
-				smoonth_scale(Vector2(1.0,1.0),0.75)
-				can_rebound = true
+	if not has_node("bounce_timer"):
+		create_timer(BOUNCE_TIME,_on_bounce_timer_timeout,"bounce_timer")
+		smoonth_scale(first_size * 1.5,0.75)
+		can_rebound = true
 	
 func _on_bounce_timer_timeout() -> void:
-	smoonth_scale(Vector2(0.5,0.5),0.75)
+	smoonth_scale(first_size,0.75)
 	can_rebound = false
 	$bounce_timer.queue_free()
 	print("反弹时间到")
-	
-func _on_icewalk_timer_timeout() -> void:
-	is_icewalk = false
-	tilemapLayer = null
-	$icewalk_timer.queue_free()
-	print("冰行时间到")

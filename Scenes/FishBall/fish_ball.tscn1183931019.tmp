@@ -110,6 +110,14 @@ radius = 1.52
 [node name="FishBall" type="CharacterBody2D" unique_id=920739817 groups=["Player"]]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_js28m")
+SPEED = null
+JUMP_VELOCITY = null
+clone = null
+get_icewalk = null
+icewalk_CD = null
+icewalk_time = null
+get_wasabi = null
+wasabi_CD = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=744150829]
 sprite_frames = SubResource("SpriteFrames_bh6at")
@@ -132,6 +140,11 @@ shape = SubResource("CircleShape2D_w5niw")
 
 [node name="WaterDrop" parent="Particles" unique_id=1396458935 instance=ExtResource("5_qhdtn")]
 emitting = false
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=989155502]
+scale = Vector2(1.7335016, 0.80438215)
+target_position = Vector2(0, 22.377422)
+collision_mask = 4
 
 [node name="SkillsManager" type="Node2D" parent="." unique_id=794075905]
 script = ExtResource("7_avsej")

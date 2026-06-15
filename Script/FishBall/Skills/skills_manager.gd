@@ -1,0 +1,68 @@
+extends Node2D
+
+@onready var fb: CharacterBody2D = $".."
+
+# 获得的技能
+var skills_arr:Array = Array()
+# 当前选中技能
+var active_skill:String
+
+# 各技能初始化
+func _ready() -> void:
+	if fb.wasabi:
+		print("获得芥末酱技能")
+		skills_arr.append("wasabi")
+	if fb.ice_walk:
+		print("获得冰霜行者技能")
+		skills_arr.append("icewalk")
+	
+	# 选中最后一个获得的技能
+	if skills_arr:
+		active_skill = skills_arr[skills_arr.size()-1]
+
+func _input(event: InputEvent) -> void:
+	if active_skill:
+		if event.is_action_pressed("ui_up"):
+			use_skill()
+	if skills_arr:
+		if event.is_action_pressed("ui_left"):
+			switch_skills("last")
+		if event.is_action_pressed("ui_right"):
+			switch_skills("next")
+
+
+func _process(delta: float) -> void:
+	pass
+
+func switch_skills(direct:String) -> void:
+	var skill_index = skills_arr.find(active_skill)
+	match direct:
+		"last":
+			if skill_index:
+				print("切换上一个技能")
+				active_skill = skills_arr[skill_index-1]
+			else:
+				print("已经是最开始的技能了")
+		"next":
+			if skill_index != skills_arr.size()-1:
+				active_skill = skills_arr[skill_index+1]
+				print("切换下一个技能")
+			else:
+				print("已经是最后的技能了")
+
+func use_skill() -> void:
+	var root_scene:Node = get_tree().current_scene
+	match active_skill:
+		"icewalk":
+			use_icewalk()
+		"wasabi":
+			use_wasabi()
+
+func use_icewalk() -> void:
+	pass
+
+func use_wasabi() -> void:
+	var wasabi:PackedScene = load("res://Scenes/FishBall/Skills/wasabi.tscn")
+	var wasabi_inst = wasabi.instantiate()
+	wasabi_inst.position = fb.position + Vector2(20.0,0.0)
+	get_tree().current_scene.add_child(wasabi_inst)

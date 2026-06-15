@@ -11,14 +11,27 @@ enum STATE{
 signal interact
 signal dead
 
-## 鱼蛋移动速度
+@export_group("基础属性")
+## 移动速度
 @export var SPEED := 150.0
-## 鱼蛋跳跃高度
+## 跳跃高度
 @export var JUMP_VELOCITY := -270.0
 ## 开启克隆
 @export var clone:bool = false
-# 冰行持续时间
+
+@export_group("冰霜行者")
+## 获得冰行技能
+@export var get_icewalk:bool = true
+## 冰行CD
+@export var icewalk_CD:int = 5
+## 冰行持续时间
 @export var icewalk_time:int = 10
+
+@export_group("芥末酱")
+## 获得芥末酱技能
+@export var get_wasabi:bool = true	
+## 芥末酱料CD
+@export var wasabi_CD:int = 5
 
 # 吸水持续状态
 const BOUNCE_TIME:float = 15.0
@@ -27,16 +40,6 @@ const BOUNCE_TIME:float = 15.0
 var HP:float = 100.0
 # 状态
 var active_state := STATE.FLOOR
-
-# 技能系统
-# 获取技能列表
-var skills_dict:Dictionary = {
-	"icewalk":false,
-	"wasabi":false,
-} 
-# 玩家真正拥有的技能
-var skills_arr:Array = Array()
-var active_skill:String
 
 var is_icewalk:bool = false
 var tilemapLayer:TileMapLayer = null
@@ -78,28 +81,12 @@ func _ready() -> void:
 		fb_inst.position = target.global_position
 		fb_inst.is_clone = true
 		get_tree().current_scene.call_deferred("add_child",fb_inst)
-	get_skill("icewalk")
-	get_skill("wasabi")
 	
 func _physics_process(delta: float) -> void:
 	# 检测按下互动,发射型号
 	if Input.is_action_just_pressed("Interact"):
 		interact.emit()
 		
-	# 如果技能不为空，才能切换
-	if Input.is_action_just_pressed("ui_left"):
-		if skills_arr:
-			print("切换上个技能")
-			switch_skill("last")
-		# 下一个技能
-	if Input.is_action_just_pressed("ui_right"):
-		if skills_arr:
-			print("切换下个技能")
-			switch_skill("next")
-	if Input.is_action_just_pressed("ui_up"):
-		print("使用技能：",active_skill)
-		use_skill()
-	
 	# 冰行技能
 	if is_icewalk:
 		if not has_node("icewalk_timer"):
@@ -252,44 +239,7 @@ func take_damage(damage:float):
 func apply_knockback(force_x: float):
 	knockback_velocity_x = force_x
 
-## 获得技能
-func get_skill(skill_name:String) -> void:
-	if skill_name in skills_dict.keys() and not skills_dict[skill_name]:
-		skills_dict[skill_name] = true
-		skills_arr.append(skill_name)
-		active_skill = skill_name
-		print("获得技能:",skill_name)
-		print(skills_arr)
 
-# 切换技能
-func switch_skill(choice:String) -> void:
-	var skill_index:int = skills_arr.find(active_skill)
-	if skill_index != -1:
-		match choice:
-			# 切换上一个技能
-			"last":
-				# 位于第一位不切换
-				if skill_index == 0:
-					print("已经是最前的技能")
-					return
-				active_skill = skills_arr[skill_index-1]
-				print("技能切换到:",active_skill)
-			# 切换下一个技能
-			"next":
-				# 位于最后一位不切换
-				if skill_index == skills_arr.size() - 1:
-					print("已经是最后的技能")
-					return
-				active_skill = skills_arr[skill_index+1]
-				print("技能切换到:",active_skill)
-
-## 使用技能
-func use_skill() -> void:
-	match active_skill:
-		"icewalk":
-			is_icewalk = true
-		"wasabi":
-			wasabi()
 
 # 扔芥末
 func wasabi()-> void:

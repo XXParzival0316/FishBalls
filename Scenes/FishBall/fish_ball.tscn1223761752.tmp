@@ -139,7 +139,6 @@ target_position = Vector2(0, 22.377422)
 collision_mask = 4
 
 [node name="SkillsManager" type="Node2D" parent="." unique_id=794075905]
-position = Vector2(14, 0)
 script = ExtResource("7_avsej")
 
 [connection signal="body_entered" from="Area2D" to="." method="_entered_water"]

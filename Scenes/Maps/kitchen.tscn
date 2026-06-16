@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://ck8741ninfiem" path="res://Assest/Kitchen/Kitchen_Wall_tilemap.png" id="2_vqcsi"]
 [ext_resource type="Texture2D" uid="uid://bubc3eli5xqq3" path="res://Assest/Kitchen/Kitchen_Floor_tilemap.png" id="3_mhcli"]
 [ext_resource type="Texture2D" uid="uid://glm18khxl6j5" path="res://Assest/Kitchen/Object.PNG" id="4_omuvu"]
+[ext_resource type="TileSet" uid="uid://dkir3g3iacoia" path="res://Assest/Refrigerator/tilesets/Water.tres" id="4_oysoi"]
 [ext_resource type="Texture2D" uid="uid://mumrtkf6o5th" path="res://Assest/Kitchen/Kitchen_Furniture_tilemap.png" id="5_xvaan"]
 [ext_resource type="Texture2D" uid="uid://5xuyfqm8pops" path="res://Assest/Kitchen/Kitchenware_draft_tilemap.png" id="6_kyl5f"]
-[ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="7_snuip"]
 [ext_resource type="Texture2D" uid="uid://dwqkbj4tbcfqi" path="res://Assest/Kitchen/Kitchen_furniture2_tilemap.png" id="8_omuvu"]
 [ext_resource type="Texture2D" uid="uid://dqkrm5g6eav87" path="res://Assest/Kitchen/Kitchen__Window_tilemap.png" id="10_kyl5f"]
 [ext_resource type="Texture2D" uid="uid://mqtjfft72bdt" path="res://Assest/Kitchen/Kitchen_Decorate_tilemap.png" id="10_oysoi"]
@@ -752,28 +752,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_jolfa")
 sources/1 = SubResource("TileSetAtlasSource_ww8yf")
 sources/2 = SubResource("TileSetAtlasSource_qxx83")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q4nek"]
-texture = ExtResource("7_snuip")
-2:3/animation_speed = 3.0
-2:3/animation_mode = 1
-2:3/animation_frame_0/duration = 1.0
-2:3/animation_frame_1/duration = 1.0
-2:3/animation_frame_2/duration = 1.0
-2:3/0 = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
-2:4/animation_speed = 3.0
-2:4/animation_mode = 1
-2:4/animation_frame_0/duration = 1.0
-2:4/animation_frame_1/duration = 1.0
-2:4/animation_frame_2/duration = 1.0
-2:4/0 = 0
-2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSet" id="TileSet_t6gnw"]
-physics_layer_0/collision_layer = 4
-physics_layer_0/collision_mask = 4
-sources/0 = SubResource("TileSetAtlasSource_q4nek")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jc3tk"]
 texture = ExtResource("3_mhcli")
@@ -2923,7 +2901,7 @@ tile_set = SubResource("TileSet_03x5g")
 
 [node name="TileMapLayer_Water" type="TileMapLayer" parent="TileMapLayers" unique_id=1942079818]
 tile_map_data = PackedByteArray("AAASAA8AAAACAAMAAAASABAAAAACAAQAAAASABEAAAACAAQAAAATAA8AAAACAAMAAAATABAAAAACAAQAAAATABEAAAACAAQAAAAUAA8AAAACAAMAAAAUABAAAAACAAQAAAAUABEAAAACAAQAAAAVAA8AAAACAAMAAAAVABAAAAACAAQAAAAVABEAAAACAAQAAAAWAA8AAAACAAMAAAAWABAAAAACAAQAAAAWABEAAAACAAQAAAASABIAAAACAAQAAAATABIAAAACAAQAAAAUABIAAAACAAQAAAAVABIAAAACAAQAAAAWABIAAAACAAQAAAA=")
-tile_set = SubResource("TileSet_t6gnw")
+tile_set = ExtResource("4_oysoi")
 
 [node name="TileMapLayer_Floor" type="TileMapLayer" parent="TileMapLayers" unique_id=1303066681]
 tile_map_data = PackedByteArray("AAAAABIAAAAAAA4AAAAAABMAAAAAAA8AAAABABIAAAABAA4AAAABABMAAAABAA8AAAACABIAAAACAA4AAAACABMAAAACAA8AAAADABIAAAADAA4AAAADABMAAAADAA8AAAAEABIAAAAEAA4AAAAEABMAAAAEAA8AAAAFABIAAAAFAA4AAAAFABMAAAAFAA8AAAAGABIAAAAGAA4AAAAGABMAAAAGAA8AAAAHABIAAAAHAA4AAAAHABMAAAAHAA8AAAAIABIAAAAIAA4AAAAIABMAAAAIAA8AAAAJABIAAAAJAA4AAAAJABMAAAAJAA8AAAAKABIAAAAKAA4AAAAKABMAAAAKAA8AAAALABIAAAALAA4AAAALABMAAAALAA8AAAAMABIAAAAMAA4AAAAMABMAAAAMAA8AAAANABIAAAANAA4AAAANABMAAAANAA8AAAAOABIAAAAOAA4AAAAOABMAAAAOAA8AAAAPABIAAAAPAA4AAAAPABMAAAAPAA8AAAAQABIAAAAQAA4AAAAQABMAAAAQAA8AAAARABIAAAARAA4AAAARABMAAAARAA8AAAASABIAAAASAA4AAAASABMAAAASAA8AAAATABIAAAATAA4AAAATABMAAAATAA8AAAAUABIAAAAUAA4AAAAUABMAAAAUAA8AAAAVABIAAAAVAA4AAAAVABMAAAAVAA8AAAAWABIAAAAWAA4AAAAWABMAAAAWAA8AAAAXABIAAAAXAA4AAAAXABMAAAAXAA8AAAAYABIAAAAYAA4AAAAYABMAAAAYAA8AAAAZABIAAAAZAA4AAAAZABMAAAAZAA8AAAAaABIAAAAaAA4AAAAaABMAAAAaAA8AAAAbABIAAAAbAA4AAAAbABMAAAAbAA8AAAAcABIAAAAcAA4AAAAcABMAAAAcAA8AAAAdABIAAAAdAA4AAAAdABMAAAAdAA8AAAAeABIAAAAeAA4AAAAeABMAAAAeAA8AAAAfABIAAAAfAA4AAAAfABMAAAAfAA8AAAAgABIAAAAgAA4AAAAgABMAAAAgAA8AAAAhABIAAAAhAA4AAAAhABMAAAAhAA8AAAAiABIAAAAAAA4AAAAiABMAAAAAAA8AAAAjABIAAAABAA4AAAAjABMAAAABAA8AAAAkABIAAAACAA4AAAAkABMAAAACAA8AAAAlABIAAAADAA4AAAAlABMAAAADAA8AAAAmABIAAAAEAA4AAAAmABMAAAAEAA8AAAAnABIAAAAFAA4AAAAnABMAAAAFAA8AAAA=")

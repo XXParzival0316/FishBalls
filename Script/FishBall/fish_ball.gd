@@ -21,6 +21,15 @@ signal dead
 ## 开启克隆
 @export var clone:bool = false
 
+@export_group("吸水反弹")
+var first_size
+## 吸水反弹持续时间
+@export var BOUNCE_TIME:float = 15.0
+# 反弹系统
+var can_rebound:bool = false
+# 下落高度
+var fall_height:float = 0.0
+
 @export_group("冰霜行者")
 ## 获得冰行技能
 @export var get_icewalk:bool = true
@@ -35,17 +44,8 @@ signal dead
 ## 芥末酱料CD
 @export var wasabi_CD:int = 5
 
-# 吸水持续状态
-var first_size
-const BOUNCE_TIME:float = 15.0
-
 # 状态
 var active_state := STATE.FLOOR
-
-# 反弹系统
-var can_rebound:bool = false
-# 下落高度
-var fall_height:float = 0.0
 
 # 受伤&击退
 # 击退系统(Baishu)
@@ -179,14 +179,6 @@ func match_active_state(delta:float,direction:float) -> void:
 				velocity.y = 0
 				active_state = STATE.FLOOR
 
-func create_timer(wait_time:float,func_name:Callable,timer_name ="timer"):
-	var timer:Timer = Timer.new()
-	timer.name = timer_name
-	timer.set_wait_time(wait_time)
-	timer.timeout.connect(func_name)
-	add_child(timer)
-	timer.start()
-
 # 反弹
 func bounce(bounce_target:float) -> void:
 	water_drop_particles.emitting = false
@@ -222,13 +214,9 @@ func apply_knockback(force_x: float):
 	knockback_velocity_x = force_x
 
 func _entered_water(body: Node2D) -> void:
-	if not has_node("bounce_timer"):
-		create_timer(BOUNCE_TIME,_on_bounce_timer_timeout,"bounce_timer")
-		smoonth_scale(first_size * 1.5,0.75)
-		can_rebound = true
-	
-func _on_bounce_timer_timeout() -> void:
+	smoonth_scale(first_size * 1.5,0.75)
+	can_rebound = true
+	# 等待持续时间
+	await  get_tree().create_timer(BOUNCE_TIME).timeout
 	smoonth_scale(first_size,0.75)
 	can_rebound = false
-	$bounce_timer.queue_free()
-	print("反弹时间到")

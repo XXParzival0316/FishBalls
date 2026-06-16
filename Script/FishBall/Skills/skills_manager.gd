@@ -35,8 +35,7 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("ui_right"):
 			switch_skills("next")
 
-func _process(delta: float) -> void:
-	pass
+
 
 func switch_skills(direct:String) -> void:
 	var skill_index = skills_arr.find(active_skill)
@@ -55,7 +54,6 @@ func switch_skills(direct:String) -> void:
 				print("已经是最后的技能了")
 
 func use_skill() -> void:
-	var root_scene:Node = get_tree().current_scene
 	match active_skill:
 		"icewalk":
 			use_icewalk()
@@ -74,15 +72,17 @@ func create_timer(wait_time:float,func_name:Callable,timer_name ="timer"):
 # 统一管理技能CD&持续时间
 func use_icewalk() -> void:
 	if can_use_icewalk:
-		# 等冰行持续时间结束,才开始创建CD计时器
-		await icewalk_inst.use(fb.icewalk_time,fb.icewalk_CD)
 		can_use_icewalk = false
+		## 等冰行持续时间结束,才开始创建CD计时器
+		await icewalk_inst.use(fb.icewalk_time)
 		if not has_node("icewalk_timer"):
+			print("冰霜行者:冷却--",fb.icewalk_CD,"s")
 			create_timer(fb.icewalk_CD,_on_icewalk_CD_timeout,"icewalk_timer")
+
 
 func _on_icewalk_CD_timeout() -> void:
 		can_use_icewalk = true
-		print(fb.icewalk_CD,"sCD,冷却结束")
+		print("冰霜行者:就绪")
 		$icewalk_timer.queue_free()
 		
 func use_wasabi() -> void:

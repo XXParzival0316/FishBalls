@@ -25,9 +25,9 @@ signal dead
 ## 获得冰行技能
 @export var get_icewalk:bool = true
 ## 冰行CD
-@export var icewalk_CD:int = 5
+@export var icewalk_CD:float = 5
 ## 冰行持续时间
-@export var icewalk_time:int = 10
+@export var icewalk_time:float = 10
 
 @export_group("芥末酱")
 ## 获得芥末酱技能

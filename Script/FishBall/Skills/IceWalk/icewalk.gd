@@ -16,8 +16,12 @@ func _process(delta: float) -> void:
 	if is_icewalk:
 		ice_walk()
 
-func use() -> void:
+func use(icewalk_time:float,icewalk_CD) -> void:
 	is_icewalk = true
+	print("正在使用:冰霜行者 ","持续时间:",icewalk_time,"s")
+	await get_tree().create_timer(icewalk_time).timeout
+	print("结束使用：冰霜行者")
+	is_icewalk = false
 
 func ice_walk() -> void:
 	if !tilemapLayer:

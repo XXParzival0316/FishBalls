@@ -37,7 +37,6 @@ scale = Vector2(0.8, 0.8)
 JUMP_VELOCITY = -300.0
 
 [node name="Camera2D" type="Camera2D" parent="FishBall" unique_id=1829430]
-position = Vector2(-176, 64)
 zoom = Vector2(1.2, 1.2)
 
 [node name="Stair" type="Node2D" parent="." unique_id=1853662646]

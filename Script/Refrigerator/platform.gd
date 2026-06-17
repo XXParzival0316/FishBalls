@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var lift_dis: float 
 @export var lift_speed: float
 
-var is_active: bool = false       
+@export var is_active: bool = false       
 var going_up: bool = true          #true=上升，false=下降
 var top_y: float
 var bottom_y: float

@@ -5,14 +5,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52yc7"]
 size = Vector2(16, 16)
 
-[node name="IceBlock" type="Node2D" unique_id=1361971376]
+[node name="IceBlock" type="StaticBody2D" unique_id=69311770]
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1737917987]
 texture = ExtResource("1_etwcs")
 region_enabled = true
 region_rect = Rect2(176, 112, 16, 16)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=569940249]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1002375167]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1002375167]
 shape = SubResource("RectangleShape2D_52yc7")

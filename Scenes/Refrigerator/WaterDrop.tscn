@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d35p2cado42kl"]
+
+[ext_resource type="Script" uid="uid://7nij18mohv5b" path="res://Script/Refrigerator/water_drop.gd" id="1_1jpkw"]
+[ext_resource type="Texture2D" uid="uid://doxbxcq7odylf" path="res://icon.svg" id="1_wyy1j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyy1j"]
+size = Vector2(24, 25)
+
+[node name="WaterDrop" type="Area2D" unique_id=529806092]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_1jpkw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1787863207]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_wyy1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1876462148]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_wyy1j")

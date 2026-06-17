@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b4prx3lwjdwb6"]
+
+[ext_resource type="Script" uid="uid://cy0d815rsson5" path="res://Script/Refrigerator/platform.gd" id="1_n6m41"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6m41"]
+size = Vector2(94, 12)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1839372766]
+script = ExtResource("1_n6m41")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109449356]
+shape = SubResource("RectangleShape2D_n6m41")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1003850973]

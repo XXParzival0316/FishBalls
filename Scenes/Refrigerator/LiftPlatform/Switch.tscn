@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cynwrj6fqdujd"]
+
+[ext_resource type="Script" uid="uid://dev1cq55xngm4" path="res://Script/Refrigerator/switch.gd" id="1_ty7bc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rogjp"]
+
+[node name="Switch" type="Area2D" unique_id=671539225]
+script = ExtResource("1_ty7bc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=927275450]
+shape = SubResource("CircleShape2D_rogjp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=773880120]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

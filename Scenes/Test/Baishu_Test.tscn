@@ -2,9 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="1_qwvd0"]
 [ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="2_l70bw"]
-[ext_resource type="PackedScene" uid="uid://cau4sbgaaoit2" path="res://Scenes/Enemy/octopus.tscn" id="3_l70bw"]
 [ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="4_g22f7"]
-[ext_resource type="PackedScene" uid="uid://cxqkigulone8v" path="res://Scenes/Refrigerator/Tentacle.tscn" id="5_smpm2"]
+[ext_resource type="PackedScene" uid="uid://b4prx3lwjdwb6" path="res://Scenes/Refrigerator/LiftPlatform/Platform.tscn" id="5_3kylt"]
+[ext_resource type="PackedScene" uid="uid://cxqkigulone8v" path="res://Scenes/Refrigerator/Tentacle.tscn" id="6_3kylt"]
+[ext_resource type="PackedScene" uid="uid://cynwrj6fqdujd" path="res://Scenes/Refrigerator/LiftPlatform/Switch.tscn" id="6_a0p33"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g22f7"]
 texture = ExtResource("1_qwvd0")
@@ -166,15 +167,27 @@ sources/1 = SubResource("TileSetAtlasSource_smpm2")
 tile_map_data = PackedByteArray("AAAAABoAAAACAAUAAAABABoAAAACAAUAAAACABoAAAACAAUAAAADABoAAAACAAUAAAAEABoAAAACAAUAAAAFABoAAAACAAUAAAAGABoAAAACAAUAAAAHABoAAAACAAUAAAAIABoAAAACAAUAAAAJABoAAAACAAUAAAAKABoAAAACAAUAAAALABoAAAACAAUAAAAMABoAAAACAAUAAAANABoAAAACAAUAAAAOABoAAAACAAUAAAAPABoAAAACAAUAAAAQABoAAAACAAUAAAARABoAAAACAAUAAAASABoAAAACAAUAAAATABoAAAACAAUAAAAUABoAAAACAAUAAAAVABoAAAACAAUAAAAWABoAAAACAAUAAAAXABoAAAACAAUAAAAYABoAAAACAAUAAAAZABoAAAACAAUAAAAaABoAAAACAAUAAAAbABoAAAACAAUAAAAcABoAAAACAAUAAAAdABoAAAACAAUAAAAeABoAAAACAAUAAAAfABoAAAACAAUAAAAgABoAAAACAAUAAAAhABoAAAACAAUAAAAiABoAAAACAAUAAAAjABoAAAACAAUAAAAkABoAAAACAAUAAAAlABoAAAACAAUAAAAmABoAAAACAAUAAAAnABoAAAACAAUAAAAoABoAAAACAAUAAAApABoAAAACAAUAAAAqABoAAAACAAUAAAArABoAAAACAAUAAAAsABoAAAACAAUAAAAtABoAAAACAAUAAAAuABoAAAACAAUAAAAvABoAAAACAAUAAAAwABoAAAACAAUAAAAxABoAAAACAAUAAAAyABoAAAACAAUAAAAzABoAAAACAAUAAAA0ABoAAAACAAUAAAA1ABoAAAACAAUAAAA2ABoAAAACAAUAAAA3ABoAAAACAAUAAAA4ABoAAAACAAUAAAA5ABoAAAACAAUAAAA6ABoAAAACAAUAAAA7ABoAAAACAAUAAAA8ABoAAAACAAUAAAA9ABoAAAACAAUAAAA+ABoAAAACAAUAAAA/ABoAAAACAAUAAABAABoAAAACAAUAAABBABoAAAACAAUAAABCABoAAAACAAUAAABDABoAAAACAAUAAABEABoAAAACAAUAAABFABoAAAACAAUAAABGABoAAAACAAUAAABHABoAAAACAAUAAAAAABMAAAAAAAcAAAABABMAAAAAAAcAAAACABMAAAAAAAcAAAADABMAAAAAAAcAAAAEABMAAAAAAAcAAAAFABMAAAAAAAcAAAAGABMAAAAAAAcAAAAHABMAAAAAAAcAAAAJABMAAAAAAAcAAAAKABMAAAAAAAcAAAALABMAAAAAAAcAAAAMABMAAAAAAAcAAAANABMAAAAAAAcAAAAOABMAAAAAAAcAAAAPABMAAAAAAAcAAAAQABMAAAAAAAcAAAARABMAAAAAAAcAAAASABMAAAAAAAcAAAATABMAAAAAAAcAAAAUABMAAAAAAAcAAAAVABMAAAAAAAcAAAAWABMAAAAAAAcAAAAXABMAAAAAAAcAAAAYABMAAAAAAAcAAAAdABMAAAAAAAcAAAAeABMAAAAAAAcAAAAfABMAAAAAAAcAAAAgABMAAAAAAAcAAAAhABMAAAAAAAcAAAAiABMAAAAAAAcAAAAjABMAAAAAAAcAAAAkABMAAAAAAAcAAAAlABMAAAAAAAcAAAAmABMAAAAAAAcAAAAnABMAAAAAAAcAAAAIABMAAAABAAcAAAALABIAAQACAAQAAAAIAA4AAAAAAAcAAAAJAA4AAAAAAAcAAAAKAA4AAAAAAAcAAAAHABEAAAAAAAcAAAAHABIAAAAAAAcAAAA=")
 tile_set = SubResource("TileSet_3kylt")
 
-[node name="Octopus" parent="." unique_id=1517227325 instance=ExtResource("3_l70bw")]
-position = Vector2(69, 280)
-
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("4_g22f7")]
 position = Vector2(151, 214)
 
-[node name="Tentacle" parent="." unique_id=1013037171 instance=ExtResource("5_smpm2")]
-position = Vector2(150, 154)
+[node name="Platform" parent="." unique_id=1525674403 instance=ExtResource("5_3kylt")]
+position = Vector2(254, 273)
+rotation = 1.5707964
+lift_dis = 100.0
+lift_speed = 1.0
 
-[node name="Tentacle2" parent="." unique_id=575950593 instance=ExtResource("5_smpm2")]
-position = Vector2(249, 154)
-is_extending = false
+[node name="Switch" parent="." unique_id=671539225 node_paths=PackedStringArray("platform") instance=ExtResource("6_a0p33")]
+position = Vector2(121, 260)
+platform = NodePath("../Platform")
+
+[node name="Tentacle" parent="." unique_id=575950593 instance=ExtResource("6_3kylt")]
+position = Vector2(383, 161)
+
+[node name="CharacterBody2D" parent="." unique_id=1839372766 instance=ExtResource("5_3kylt")]
+position = Vector2(71, 183)
+lift_dis = 500.0
+lift_speed = 5.0
+
+[node name="Switch2" parent="." unique_id=2135248967 node_paths=PackedStringArray("platform") instance=ExtResource("6_a0p33")]
+position = Vector2(59, 218)
+platform = NodePath("../CharacterBody2D")

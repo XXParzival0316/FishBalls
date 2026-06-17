@@ -7,6 +7,7 @@ var skills_arr:Array = Array()
 # 当前选中技能
 var active_skill:String
 
+var can_use_icewalk:bool = true
 var icewalk:PackedScene = preload("res://Scenes/FishBall/Skills/IceWalk/icewalk.tscn")
 var icewalk_inst:RayCast2D
 
@@ -34,8 +35,7 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("ui_right"):
 			switch_skills("next")
 
-func _process(delta: float) -> void:
-	pass
+
 
 func switch_skills(direct:String) -> void:
 	var skill_index = skills_arr.find(active_skill)
@@ -54,17 +54,37 @@ func switch_skills(direct:String) -> void:
 				print("已经是最后的技能了")
 
 func use_skill() -> void:
-	var root_scene:Node = get_tree().current_scene
 	match active_skill:
 		"icewalk":
 			use_icewalk()
 		"wasabi":
 			use_wasabi()
 
+## 创建计时器
+func create_timer(wait_time:float,func_name:Callable,timer_name ="timer"):
+	var timer:Timer = Timer.new()
+	timer.name = timer_name
+	timer.set_wait_time(wait_time)
+	timer.timeout.connect(func_name)
+	add_child(timer)
+	timer.start()
+
 # 统一管理技能CD&持续时间
 func use_icewalk() -> void:
-	icewalk_inst.use()
-	
+	if can_use_icewalk:
+		can_use_icewalk = false
+		## 等冰行持续时间结束,才开始创建CD计时器
+		await icewalk_inst.use(fb.icewalk_time)
+		if not has_node("icewalk_timer"):
+			print("冰霜行者:冷却--",fb.icewalk_CD,"s")
+			create_timer(fb.icewalk_CD,_on_icewalk_CD_timeout,"icewalk_timer")
+
+
+func _on_icewalk_CD_timeout() -> void:
+		can_use_icewalk = true
+		print("冰霜行者:就绪")
+		$icewalk_timer.queue_free()
+		
 func use_wasabi() -> void:
 	var wasabi:PackedScene = load("res://Scenes/FishBall/Skills/wasabi.tscn")
 	var wasabi_inst = wasabi.instantiate()

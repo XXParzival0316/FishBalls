@@ -1,14 +1,14 @@
-[gd_resource type="TileSet" format=3 uid="uid://bjoc8gf5bo3vd"]
+[gd_resource type="TileSet" format=3 uid="uid://cqiedr16qrstv"]
 
-[ext_resource type="Texture2D" uid="uid://dewkm2iuddts4" path="res://Assest/Refrigerator/Refrigerator_Base_tilemap.png" id="1_m3iix"]
-[ext_resource type="Texture2D" uid="uid://dl3uqdadeaa88" path="res://Assest/Refrigerator/Refrigerator_Base2_tilemap.png" id="2_nkvls"]
-[ext_resource type="Texture2D" uid="uid://crxowogt6hsia" path="res://Assest/Refrigerator/Refrigerator_Second_tilemap.png" id="3_7v60o"]
-[ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="4_6c2kc"]
-[ext_resource type="Texture2D" uid="uid://b0birpedx8ui3" path="res://Assest/Refrigerator/Refrigerator_Topwater.png" id="4_6j5d1"]
-[ext_resource type="Texture2D" uid="uid://d1jrygaoi0j4d" path="res://Assest/Refrigerator/Refrigerator_Deadfish.PNG" id="5_bxglt"]
+[ext_resource type="Texture2D" uid="uid://dewkm2iuddts4" path="res://Assest/Refrigerator/Refrigerator_Base_tilemap.png" id="1_h7ock"]
+[ext_resource type="Texture2D" uid="uid://dl3uqdadeaa88" path="res://Assest/Refrigerator/Refrigerator_Base2_tilemap.png" id="2_c30s1"]
+[ext_resource type="Texture2D" uid="uid://crxowogt6hsia" path="res://Assest/Refrigerator/Refrigerator_Second_tilemap.png" id="3_twjg5"]
+[ext_resource type="Texture2D" uid="uid://b0birpedx8ui3" path="res://Assest/Refrigerator/Refrigerator_Topwater.png" id="4_p5y0q"]
+[ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="5_3n5vi"]
+[ext_resource type="Texture2D" uid="uid://d1jrygaoi0j4d" path="res://Assest/Refrigerator/Refrigerator_Deadfish.PNG" id="6_op6gp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hgrnn"]
-texture = ExtResource("1_m3iix")
+texture = ExtResource("1_h7ock")
 9:1/0 = 0
 10:1/0 = 0
 10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -241,7 +241,7 @@ texture = ExtResource("1_m3iix")
 27:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7v60o"]
-texture = ExtResource("2_nkvls")
+texture = ExtResource("2_c30s1")
 12:1/0 = 0
 13:1/0 = 0
 4:2/0 = 0
@@ -291,7 +291,7 @@ texture = ExtResource("2_nkvls")
 12:9/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6c2kc"]
-texture = ExtResource("3_7v60o")
+texture = ExtResource("3_twjg5")
 11:1/0 = 0
 16:1/0 = 0
 16:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -441,7 +441,7 @@ texture = ExtResource("3_7v60o")
 23:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_imywf"]
-texture = ExtResource("4_6j5d1")
+texture = ExtResource("4_p5y0q")
 1:1/0 = 0
 2:1/0 = 0
 2:2/0 = 0
@@ -526,14 +526,13 @@ texture = ExtResource("4_6j5d1")
 13:7/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bxglt"]
-texture = ExtResource("4_6c2kc")
+texture = ExtResource("5_3n5vi")
 2:4/animation_speed = 3.0
 2:4/animation_mode = 1
 2:4/animation_frame_0/duration = 1.0
 2:4/animation_frame_1/duration = 1.0
 2:4/animation_frame_2/duration = 1.0
 2:4/0 = 0
-2:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:6/animation_speed = 3.0
 2:6/animation_mode = 1
 2:6/animation_frame_0/duration = 1.0
@@ -548,7 +547,7 @@ texture = ExtResource("4_6c2kc")
 2:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6j5d1"]
-texture = ExtResource("5_bxglt")
+texture = ExtResource("6_op6gp")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -568,8 +567,6 @@ texture = ExtResource("5_bxglt")
 
 [resource]
 physics_layer_0/collision_layer = 1
-physics_layer_1/collision_layer = 4
-physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_hgrnn")
 sources/1 = SubResource("TileSetAtlasSource_7v60o")
 sources/2 = SubResource("TileSetAtlasSource_6c2kc")

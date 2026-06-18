@@ -36,6 +36,7 @@ func _on_attack_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		animated_sprite_2d.play(last_animation)
 
+
 func hurt_player():
 	if hurting_player != null:
 		if hurting_player.is_in_group("Player"):

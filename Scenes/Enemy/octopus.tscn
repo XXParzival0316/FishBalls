@@ -131,15 +131,13 @@ radius = 13.038404
 radius = 14.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rt28f"]
-size = Vector2(210, 50)
+size = Vector2(155, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvplx"]
 size = Vector2(2, 2)
 
 [node name="Octopus" type="CharacterBody2D" unique_id=1517227325]
 script = ExtResource("1_vvplx")
-ground_check_distance = null
-ground_check_height = null
 metadata/_custom_type_script = "uid://8yfbxnn3wf1l"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1764964283]
@@ -158,10 +156,9 @@ position = Vector2(-3, 2)
 shape = SubResource("CircleShape2D_rt28f")
 
 [node name="WarningArea" type="Area2D" parent="." unique_id=240772394]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WarningArea" unique_id=727287892]
-position = Vector2(69, -7)
+position = Vector2(41.5, 1.5)
 shape = SubResource("RectangleShape2D_rt28f")
 
 [node name="StateMachine" type="Node" parent="." unique_id=819558516]

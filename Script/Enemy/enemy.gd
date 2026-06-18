@@ -4,6 +4,7 @@ extends CharacterBody2D
 class_name Enemy
 
 #基本参数
+@export var invincible_time : float = 1
 var health : int = 100  #血量
 var normal_speed :float #正常速度吗
 var chase_speed : float #追击时速度
@@ -14,6 +15,7 @@ var on_ground
 var next_wall
 var last_animation : String = ""
 var facing_right = true
+var invincible : bool = false
 #储存玩家
 var player = null
 
@@ -46,6 +48,8 @@ func _ready() -> void: #awake
 	Ignore_player_collision()
 
 func _process(delta: float) -> void:
+	#if Input.is_key_pressed(KEY_K):
+		#take_damage(10)
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -102,3 +106,18 @@ func Ignore_player_collision():
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
 		add_collision_exception_with(player)
+
+func take_damage(damage:float):
+	if invincible == false:
+		invincible = true
+		health -= damage
+		#todo 动画
+		modulate = Color(1.0, 0.0, 0.0, 1.0)
+		print(name,"受到:",damage,"点伤害")
+		if health <= 0.0:
+			print(name,"死了")
+			queue_free()
+			return
+		await get_tree().create_timer(invincible_time).timeout
+		modulate = Color(1.0, 1.0, 1.0, 1.0)
+		invincible = false

@@ -10,4 +10,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("Enemy"):
+		if body.has_method("take_damage"):
+			body.take_damage(10.0)
 	queue_free()

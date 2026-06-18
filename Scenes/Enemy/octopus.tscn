@@ -136,7 +136,7 @@ size = Vector2(155, 29)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvplx"]
 size = Vector2(2, 2)
 
-[node name="Octopus" type="CharacterBody2D" unique_id=1517227325]
+[node name="Octopus" type="CharacterBody2D" unique_id=1517227325 groups=["Enemy"]]
 script = ExtResource("1_vvplx")
 metadata/_custom_type_script = "uid://8yfbxnn3wf1l"
 

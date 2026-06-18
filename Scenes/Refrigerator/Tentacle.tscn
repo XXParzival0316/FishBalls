@@ -148,7 +148,7 @@ shape = SubResource("CapsuleShape2D_oghk8")
 position = Vector2(0, 75)
 scale = Vector2(0.5, 1)
 sprite_frames = SubResource("SpriteFrames_oghk8")
-animation = &"extension"
+animation = &"shrink"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

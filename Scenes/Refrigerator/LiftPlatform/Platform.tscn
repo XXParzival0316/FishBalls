@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b4prx3lwjdwb6"]
+
+[ext_resource type="Script" uid="uid://cy0d815rsson5" path="res://Script/Refrigerator/platform.gd" id="1_n6m41"]
+[ext_resource type="Texture2D" uid="uid://dewkm2iuddts4" path="res://Assest/Refrigerator/Refrigerator_Base_tilemap.png" id="2_jfbx1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6m41"]
+size = Vector2(80, 12)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1839372766]
+script = ExtResource("1_n6m41")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109449356]
+shape = SubResource("RectangleShape2D_n6m41")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1003850973]
+position = Vector2(-1.66893e-06, 0.5)
+scale = Vector2(1.25, 1.0714285)
+texture = ExtResource("2_jfbx1")
+region_enabled = true
+region_rect = Rect2(161, 80, 63, 13)

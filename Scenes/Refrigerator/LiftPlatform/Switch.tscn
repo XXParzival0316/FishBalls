@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cynwrj6fqdujd"]
+
+[ext_resource type="Script" uid="uid://dev1cq55xngm4" path="res://Script/Refrigerator/switch.gd" id="1_ty7bc"]
+[ext_resource type="Texture2D" uid="uid://dl3uqdadeaa88" path="res://Assest/Refrigerator/Refrigerator_Base2_tilemap.png" id="2_6unnf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6unnf"]
+radius = 8.0
+
+[node name="Switch" type="Area2D" unique_id=671539225]
+script = ExtResource("1_ty7bc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=927275450]
+shape = SubResource("CircleShape2D_6unnf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=773880120]
+texture = ExtResource("2_6unnf")
+region_enabled = true
+region_rect = Rect2(45, 67, 22, 18)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

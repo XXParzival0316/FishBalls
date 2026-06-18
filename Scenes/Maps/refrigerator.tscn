@@ -46,7 +46,7 @@ tile_map_data = PackedByteArray("AAA0AAkAAAARAAsAAAA0AAoAAAARAAwAAAA1AAkAAAASAAs
 tile_set = ExtResource("3_ib0c0")
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("2_rf7us")]
-position = Vector2(768, 100)
+position = Vector2(224.00006, 384)
 scale = Vector2(0.8, 0.8)
 JUMP_VELOCITY = -300.0
 

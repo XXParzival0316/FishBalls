@@ -42,4 +42,7 @@ func ice_walk() -> void:
 		if source_id and ice_block_id and get_collider():
 			# 复用第一次添加的场景源
 			var target_vector = tilemapLayer.local_to_map(get_collision_point())
+			var uesd_vector = tilemapLayer.get_cell_atlas_coords(target_vector)
+			print(uesd_vector)
+			
 			tilemapLayer.set_cell(target_vector,source_id,Vector2i(0,0),ice_block_id)

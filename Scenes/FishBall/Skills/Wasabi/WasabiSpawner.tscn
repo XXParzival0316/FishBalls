@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dpw3r0g33fx0t"]
+
+[ext_resource type="Script" uid="uid://bj4g0vu035yl0" path="res://Script/FishBall/Skills/Wasabi/wasabi_spawner.gd" id="1_d0avc"]
+
+[node name="WasabiSpawner" type="Node2D" unique_id=610261167]
+script = ExtResource("1_d0avc")

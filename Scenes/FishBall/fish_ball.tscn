@@ -108,7 +108,7 @@ size = Vector2(24, 26)
 radius = 1.52
 
 [node name="FishBall" type="CharacterBody2D" unique_id=920739817 groups=["Player"]]
-scale = Vector2(0.5, 0.5)
+collision_layer = 2
 script = ExtResource("1_js28m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=744150829]

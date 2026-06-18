@@ -5,11 +5,10 @@ var tilemapLayer:TileMapLayer = null
 var ice_block:PackedScene = preload("res://Scenes/FishBall/Skills/IceWalk/ice_block.tscn")
 var source_id:int
 var ice_block_id:int
+var ice_block_time:float = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	set_collision_mask_value(1,false)
-	print(get_collision_mask())
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,7 +16,8 @@ func _process(delta: float) -> void:
 	if is_icewalk:
 		ice_walk()
 
-func use(icewalk_time:float) -> void:
+func use(icewalk_time:float,iceblock_time:float) -> void:
+	ice_block_time = iceblock_time
 	is_icewalk = true
 	print("冰霜行者:使用中 ","持续时间:",icewalk_time,"s")
 	await get_tree().create_timer(icewalk_time).timeout
@@ -42,7 +42,11 @@ func ice_walk() -> void:
 		if source_id and ice_block_id and get_collider():
 			# 复用第一次添加的场景源
 			var target_vector = tilemapLayer.local_to_map(get_collision_point())
-			var uesd_vector = tilemapLayer.get_cell_atlas_coords(target_vector)
-			print(uesd_vector)
-			
+			# 获取原始场景源
+			var original_source_id = tilemapLayer.get_cell_source_id(target_vector)
+			# 获取原瓦片坐标
+			var original_vector= tilemapLayer.get_cell_atlas_coords(target_vector)
 			tilemapLayer.set_cell(target_vector,source_id,Vector2i(0,0),ice_block_id)
+			await get_tree().create_timer(ice_block_time).timeout
+			if original_vector:
+				tilemapLayer.set_cell(target_vector,original_source_id,original_vector)

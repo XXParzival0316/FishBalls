@@ -150,12 +150,14 @@ visible = false
 shape = SubResource("CircleShape2D_0ok03")
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=235453944]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=2124771841]
 position = Vector2(-3, 2)
 shape = SubResource("CircleShape2D_rt28f")
 
 [node name="WarningArea" type="Area2D" parent="." unique_id=240772394]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WarningArea" unique_id=727287892]
 position = Vector2(41.5, 1.5)

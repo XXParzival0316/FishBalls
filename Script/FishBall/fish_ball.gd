@@ -24,7 +24,7 @@ signal dead
 @export_group("吸水反弹")
 var first_size
 ## 吸水反弹持续时间
-@export var BOUNCE_TIME:float = 15.0
+@export var BOUNCE_TIME:float = 10
 # 反弹系统
 var can_rebound:bool = false
 # 下落高度
@@ -36,13 +36,17 @@ var fall_height:float = 0.0
 ## 冰行CD
 @export var icewalk_CD:float = 5
 ## 冰行持续时间
-@export var icewalk_time:float = 10
+@export var icewalk_time:float = 5
+## 冰块持续时间
+@export var iceblock_time:float = 5
 
 @export_group("芥末酱")
 ## 获得芥末酱技能
 @export var get_wasabi:bool = true	
 ## 芥末酱料CD
-@export var wasabi_CD:int = 5
+@export var wasabi_CD:float = 0.5
+## 芥末酱料伤害
+@export var wasabi_damage:float = 20.0
 
 # 状态
 var active_state := STATE.FLOOR

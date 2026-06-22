@@ -72,6 +72,7 @@ func _ready() -> void:
 		var fb_tscn:PackedScene = load("res://Scenes/FishBall/fish_ball.tscn")
 		var fb_inst:CharacterBody2D = fb_tscn.instantiate()
 		fb_inst.name = "FishBall_Clone"
+		fb_inst.scale = self.scale
 		# 如果你看到这行报错，需要往鱼蛋下面挂一个Node2D节点用来确定克隆鱼蛋生成位置
 		fb_inst.position = target.global_position
 		get_tree().current_scene.call_deferred("add_child",fb_inst)

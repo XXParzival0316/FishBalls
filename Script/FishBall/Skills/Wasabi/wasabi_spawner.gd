@@ -1,4 +1,5 @@
 extends Node2D
+# Author XXParzival
 
 var wasabi:PackedScene = preload("res://Scenes/FishBall/Skills/Wasabi/wasabi.tscn")
 

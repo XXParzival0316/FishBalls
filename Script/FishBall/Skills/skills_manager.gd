@@ -1,4 +1,5 @@
 extends Node2D
+# Author XXParzival
 
 @onready var fb: CharacterBody2D = $".."
 

@@ -9,7 +9,9 @@ var ice_block_time:float = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	if get_tree().current_scene.find_child("TileMapLayer_MG"):
+		tilemapLayer = get_tree().current_scene.find_child("TileMapLayer_MG")
+		add_source()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -23,6 +25,16 @@ func use(icewalk_time:float,iceblock_time:float) -> void:
 	await get_tree().create_timer(icewalk_time).timeout
 	is_icewalk = false
 
+
+func add_source() -> void:
+	if not source_id and not ice_block_id:
+		var tile_set = tilemapLayer.tile_set
+		var scene_source = TileSetScenesCollectionSource.new()
+		# 对tileset添加一个新场景源
+		source_id = tile_set.add_source(scene_source)
+		# 对上面添加的场景源中添加冰砖块
+		ice_block_id = scene_source.create_scene_tile(ice_block)
+
 func ice_walk() -> void:
 	if not tilemapLayer:
 		# 获得水所在的TileMapLayer
@@ -30,13 +42,7 @@ func ice_walk() -> void:
 		if collider is TileMapLayer:
 			tilemapLayer = collider
 			# 对所在的TileMapLayer中的tileset进行设置,添加场景源
-			if not source_id and not ice_block_id:
-				var tile_set = tilemapLayer.tile_set
-				var scene_source = TileSetScenesCollectionSource.new()
-				# 对tileset添加一个新场景源
-				source_id = tile_set.add_source(scene_source)
-				# 对上面添加的场景源中添加冰砖块
-				ice_block_id = scene_source.create_scene_tile(ice_block)
+			add_source()
 	else:
 		# 确保碰到水和有之前的场景源才进行替换
 		if source_id and ice_block_id and get_collider():

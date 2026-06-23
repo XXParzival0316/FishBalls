@@ -3,9 +3,11 @@ extends CharacterBody2D
 
 class_name Enemy
 
+#信号
+signal enemy_died(enemy: Node2D)
 #基本参数
 @export var invincible_time : float = 1
-var health : int = 100  #血量
+@export var health : int = 100  #血量
 var normal_speed :float #正常速度吗
 var chase_speed : float #追击时速度
 var now_speed : float #当前速度
@@ -16,6 +18,7 @@ var next_wall
 var last_animation : String = ""
 var facing_right = true
 var invincible : bool = false
+var is_ground : bool 
 #储存玩家
 var player = null
 
@@ -53,16 +56,23 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	move_and_slide()
 	move(delta)
 	if not is_flipping and is_ground_ahead(dir.x):
 		wait_and_flip_direction(waittime)
+	if not is_on_floor():
+		is_ground = false
+		velocity.y += gravity * delta #加重力
+	else:
+		is_ground = true
 
 func move(delta):
 	if is_move == true:
 		velocity.x = now_speed * dir.x
-		move_and_slide()
-	if not is_on_floor():
-		velocity.y += gravity * delta #加重力
+	else:
+		velocity.x = 0
+
+
 
 func is_ground_ahead(direction: int) -> bool:
 	var dir_int = 0
@@ -87,7 +97,7 @@ func change_state(script : GDScript)-> void:#用于切换状态
 
 func wait_and_flip_direction(waittime):
 	#print("wait")
-	if is_flipping:  # 防止重复调用
+	if is_flipping or is_ground == false:  # 防止重复调用
 		return
 	is_move = false
 	is_flipping = true
@@ -116,6 +126,7 @@ func take_damage(damage:float):
 		print(name,"受到:",damage,"点伤害")
 		if health <= 0.0:
 			print(name,"死了")
+			enemy_died.emit(self)
 			queue_free()
 			return
 		await get_tree().create_timer(invincible_time).timeout

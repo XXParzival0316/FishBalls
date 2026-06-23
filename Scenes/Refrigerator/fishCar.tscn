@@ -1,8 +1,45 @@
 [gd_scene format=3 uid="uid://dr21ubqc5j0w1"]
 
+[ext_resource type="Script" uid="uid://cmrao8v6ly7y8" path="res://Script/Refrigerator/FishCar.gd" id="1_y31yk"]
+[ext_resource type="Texture2D" uid="uid://dgglk2xw20gk4" path="res://Assest/Refrigerator/fishcar_right.png" id="2_y31yk"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c8j"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fsp7"]
+atlas = ExtResource("2_y31yk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6t1l"]
+atlas = ExtResource("2_y31yk")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psn6w"]
+atlas = ExtResource("2_y31yk")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w7c8j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fsp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6t1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psn6w")
+}],
+"loop": true,
+"name": &"fishcar",
+"speed": 5.0
+}]
+
 [node name="fishCar" type="StaticBody2D" unique_id=1774908513]
+script = ExtResource("1_y31yk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1893628061]
 shape = SubResource("RectangleShape2D_w7c8j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1389106237]
+sprite_frames = SubResource("SpriteFrames_w7c8j")
+animation = &"fishcar"

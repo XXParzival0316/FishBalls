@@ -34,6 +34,7 @@ animations = [{
 }]
 
 [node name="Switch" type="Area2D" unique_id=671539225]
+collision_mask = 3
 script = ExtResource("1_ty7bc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=927275450]

@@ -184,4 +184,7 @@ position = Vector2(120, 264)
 platform = NodePath("../CharacterBody2D")
 
 [node name="Octopus" parent="." unique_id=1517227325 instance=ExtResource("7_a0p33")]
-position = Vector2(270, 251)
+position = Vector2(298, 253)
+invincible_time = null
+ground_check_distance = null
+ground_check_height = null

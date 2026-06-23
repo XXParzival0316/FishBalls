@@ -9,6 +9,8 @@ func _ready() -> void:
 
 # 碰到玩家销毁
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	await get_tree().create_timer(0.1).timeout
+	if body is TileMapLayer:
+		queue_free()	
 	if body.is_in_group("Player"):
+		await get_tree().create_timer(0.1).timeout
 		queue_free()

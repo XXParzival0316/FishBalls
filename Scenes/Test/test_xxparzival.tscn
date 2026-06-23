@@ -198,4 +198,4 @@ position = Vector2(320, 304)
 scale = Vector2(0.5, 0.5)
 
 [node name="DripSpawner" parent="." unique_id=1223855561 instance=ExtResource("4_brns1")]
-position = Vector2(371, 225)
+position = Vector2(367, 112)

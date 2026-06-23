@@ -38,7 +38,6 @@ var is_move : bool = true
 
 #组件
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var ground_checker = $GroundCheck
 @onready var wall_checker = $WallChecker
 
 func _enter_tree() -> void: #start

@@ -10,6 +10,7 @@ enum STATE{
 
 signal interact
 signal dead
+signal using_icewalk
 
 @export_group("基础属性")
 ## 血量

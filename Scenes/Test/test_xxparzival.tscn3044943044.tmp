@@ -200,4 +200,5 @@ position = Vector2(211, -3)
 position = Vector2(504, 289)
 scale = Vector2(0.8, 0.8)
 icewalk_CD = 0.1
+icewalk_time = 100.0
 iceblock_time = 2.0

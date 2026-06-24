@@ -35,13 +35,13 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	# 技能使用
 	if active_skill:
-		if event.is_action_pressed("ui_up"):
+		if event.is_action_pressed("Use_Skill"):
 			use_skill()
 	# 技能选择
 	if skills_arr:
-		if event.is_action_pressed("ui_left"):
+		if event.is_action_pressed("Last_Skill"):
 			switch_skills("last")
-		if event.is_action_pressed("ui_right"):
+		if event.is_action_pressed("Next_Skill"):
 			switch_skills("next")
 
 func switch_skills(direct:String) -> void:
@@ -81,7 +81,7 @@ func use_icewalk() -> void:
 	if can_use_icewalk:
 		can_use_icewalk = false
 		## 等冰行持续时间结束,才开始创建CD计时器
-		await icewalk_inst.use(fb.icewalk_time,fb.iceblock_time)
+		await icewalk_inst.use(fb.icewalk_time,fb.iceblock_time,fb.using_icewalk)
 		if not has_node("icewalk_timer"):
 			print("冰霜行者:冷却--",fb.icewalk_CD,"s")
 			create_timer(fb.icewalk_CD,_on_icewalk_CD_timeout,"icewalk_timer")

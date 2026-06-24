@@ -6,7 +6,7 @@ var ice_block:PackedScene = preload("res://Scenes/FishBall/Skills/IceWalk/ice_bl
 var source_id:int
 var ice_block_id:int
 var ice_block_time:float = 1.0
-
+var fb_using_icewalk:Signal
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if get_tree().current_scene.find_child("TileMapLayer_MG"):
@@ -17,10 +17,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_icewalk:
 		ice_walk()
+		fb_using_icewalk.emit()
 
-func use(icewalk_time:float,iceblock_time:float) -> void:
+func use(icewalk_time:float,iceblock_time:float,using_icewalk:Signal) -> void:
 	ice_block_time = iceblock_time
 	is_icewalk = true
+	fb_using_icewalk = using_icewalk
 	print("冰霜行者:使用中 ","持续时间:",icewalk_time,"s")
 	await get_tree().create_timer(icewalk_time).timeout
 	is_icewalk = false

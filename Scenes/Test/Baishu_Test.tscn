@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b4prx3lwjdwb6" path="res://Scenes/Refrigerator/LiftPlatform/Platform.tscn" id="5_3kylt"]
 [ext_resource type="PackedScene" uid="uid://cxqkigulone8v" path="res://Scenes/Refrigerator/Tentacle.tscn" id="6_3kylt"]
 [ext_resource type="PackedScene" uid="uid://cynwrj6fqdujd" path="res://Scenes/Refrigerator/LiftPlatform/Switch.tscn" id="6_a0p33"]
-[ext_resource type="PackedScene" uid="uid://cau4sbgaaoit2" path="res://Scenes/Enemy/octopus.tscn" id="7_a0p33"]
-[ext_resource type="PackedScene" uid="uid://bwgoj2x4esqbt" path="res://Scenes/Refrigerator/LiftPlatform/KillEnemyPlatform.tscn" id="8_x1cu0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g22f7"]
 texture = ExtResource("1_qwvd0")
@@ -176,28 +174,12 @@ position = Vector2(130, 205)
 position = Vector2(383, 161)
 
 [node name="CharacterBody2D" parent="." unique_id=1839372766 instance=ExtResource("5_3kylt")]
-position = Vector2(287, 277)
-lift_dis = 100.0
-lift_speed = 1.0
+position = Vector2(275, 137)
+y_move_dis = -50.0
+x_move_dis = -50.0
+lift_speed = 10.0
+is_destory = true
 
 [node name="Switch" parent="." unique_id=671539225 node_paths=PackedStringArray("platform") instance=ExtResource("6_a0p33")]
 position = Vector2(120, 264)
 platform = NodePath("../CharacterBody2D")
-
-[node name="Octopus" parent="." unique_id=1517227325 instance=ExtResource("7_a0p33")]
-position = Vector2(270, 251)
-health = 1
-
-[node name="KillEnemyPlatform" parent="." unique_id=1341866209 node_paths=PackedStringArray("enemy_list") instance=ExtResource("8_x1cu0")]
-position = Vector2(205, 277)
-lift_dis = 100.0
-lift_speed = 1.0
-enemy_list = [NodePath("../Octopus"), NodePath("../Octopus2"), NodePath("../Octopus3")]
-
-[node name="Octopus2" parent="." unique_id=1871628099 instance=ExtResource("7_a0p33")]
-position = Vector2(292, 239)
-health = 1
-
-[node name="Octopus3" parent="." unique_id=2088686653 instance=ExtResource("7_a0p33")]
-position = Vector2(313, 249)
-health = 1

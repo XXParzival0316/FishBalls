@@ -10,6 +10,6 @@ func _enter_tree() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and platform != null:
 		animatied_sprite_2d.play("on")
 		platform.is_active = true 

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://xadiy5wv4agx"]
+
+[ext_resource type="Script" uid="uid://cy0d815rsson5" path="res://Script/Refrigerator/platform.gd" id="1_c7vox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6m41"]
+size = Vector2(32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dbr7r"]
+load_path = "res://.godot/imported/Refrigerator_Base2_tilemap.png-3333d7456bc8ec8f3e5d5a84faf8cff4.ctex"
+
+[node name="Platform3" type="CharacterBody2D" unique_id=1839372766]
+collision_mask = 3
+script = ExtResource("1_c7vox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109449356]
+shape = SubResource("RectangleShape2D_n6m41")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1334507145]
+texture = SubResource("CompressedTexture2D_dbr7r")
+region_enabled = true
+region_rect = Rect2(192, 31, 33, 34)

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bfyvco4nuscqc"]
+
+[ext_resource type="Script" uid="uid://cy0d815rsson5" path="res://Script/Refrigerator/platform.gd" id="1_fvhuy"]
+[ext_resource type="Texture2D" uid="uid://8xvcg2amesxh" path="res://Assest/Refrigerator/platform.png" id="2_0j5lr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6m41"]
+size = Vector2(222, 112)
+
+[node name="Platform4" type="CharacterBody2D" unique_id=1839372766]
+scale = Vector2(0.3, 0.3)
+collision_mask = 3
+script = ExtResource("1_fvhuy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109449356]
+shape = SubResource("RectangleShape2D_n6m41")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1334507145]
+texture = ExtResource("2_0j5lr")
+region_rect = Rect2(192, 31, 33, 34)

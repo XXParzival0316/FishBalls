@@ -2,9 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="1_mbb1q"]
 [ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="2_nh3y6"]
-[ext_resource type="PackedScene" uid="uid://po42unj73fhl" path="res://Scenes/KitchenTraps/Cabinet.tscn" id="3_gs6rn"]
 [ext_resource type="PackedScene" uid="uid://c5wvhiobdhof" path="res://Scenes/Refrigerator/Icicle.tscn" id="4_f743o"]
-[ext_resource type="PackedScene" uid="uid://dr21ubqc5j0w1" path="res://Scenes/Refrigerator/fishCar.tscn" id="5_nh3y6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ngua7"]
 texture = ExtResource("2_nh3y6")
@@ -12,10 +10,15 @@ texture = ExtResource("2_nh3y6")
 5:0/0 = 0
 6:0/0 = 0
 9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:0/0 = 0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:0/0 = 0
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:0/0 = 0
+12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:0/0 = 0
+13:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:0/0 = 0
 4:1/0 = 0
 5:1/0 = 0
@@ -139,23 +142,20 @@ texture = ExtResource("2_nh3y6")
 14:15/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_ad1s7"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ngua7")
 
 [node name="Node2D" type="Node2D" unique_id=838889194]
-
-[node name="FishBall_Base" parent="." unique_id=920739817 instance=ExtResource("1_mbb1q")]
-position = Vector2(449, 172)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1102749344]
 position = Vector2(387, 167)
 tile_map_data = PackedByteArray("AAD0/wUAAAAJAAAAAAD1/wUAAAAKAAAAAAD2/wUAAAALAAAAAAD3/wUAAAAMAAAAAAD4/wUAAAANAAAAAAD5/wUAAAAJAAAAAAD6/wUAAAAKAAAAAAD7/wUAAAALAAAAAAD8/wUAAAAMAAAAAAD9/wUAAAANAAAAAAD+/wUAAAAJAAAAAAD//wUAAAAKAAAAAAAAAAUAAAALAAAAAAABAAUAAAAMAAAAAAACAAUAAAANAAAAAAADAAUAAAAJAAAAAAAEAAUAAAAKAAAAAAAFAAUAAAALAAAAAAAGAAUAAAAMAAAAAAAHAAUAAAANAAAAAAA=")
 tile_set = SubResource("TileSet_ad1s7")
 
-[node name="Cabinet" parent="TileMapLayer" unique_id=1205623102 instance=ExtResource("3_gs6rn")]
-position = Vector2(-8, 47)
+[node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("1_mbb1q")]
+position = Vector2(319, 233)
 
-[node name="StaticBody2D" parent="." unique_id=663586642 instance=ExtResource("4_f743o")]
-position = Vector2(426, 145)
-
-[node name="fishCar" parent="." unique_id=1774908513 instance=ExtResource("5_nh3y6")]
-position = Vector2(392, 96)
+[node name="Icicle" parent="." unique_id=663586642 instance=ExtResource("4_f743o")]
+position = Vector2(357, 197)
+collision_layer = 255
+collision_mask = 255

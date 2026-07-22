@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://c5wvhiobdhof"]
 
-[ext_resource type="Script" uid="uid://77wvd122x836" path="res://Script/Refrigerator/Icecle.gd" id="1_3cn8g"]
+[ext_resource type="Script" uid="uid://77wvd122x836" path="res://Script/Refrigerator/Icicle.gd" id="1_3cn8g"]
 [ext_resource type="Texture2D" uid="uid://cldrknwijuce4" path="res://Assest/Refrigerator/Icicle.png" id="1_y0uc1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0uc1"]
 size = Vector2(6, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3cn8g"]
-size = Vector2(10, 39)
+size = Vector2(37, 51.5)
 
 [node name="Icicle" type="StaticBody2D" unique_id=663586642]
 script = ExtResource("1_3cn8g")
@@ -23,7 +23,7 @@ shape = SubResource("RectangleShape2D_y0uc1")
 [node name="Area2D" type="Area2D" parent="." unique_id=441758589]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1257623883]
-position = Vector2(0, 17)
+position = Vector2(0, 23.25)
 shape = SubResource("RectangleShape2D_3cn8g")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

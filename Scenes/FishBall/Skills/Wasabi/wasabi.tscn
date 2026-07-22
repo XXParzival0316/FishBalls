@@ -8,10 +8,11 @@ size = Vector2(8, 14.000016)
 
 [node name="Wasabi" type="RigidBody2D" unique_id=1027648530]
 collision_layer = 0
+collision_mask = 8
 mass = 0.2
 contact_monitor = true
 max_contacts_reported = 1
-linear_velocity = Vector2(-500, -250)
+linear_velocity = Vector2(-500, -150)
 script = ExtResource("1_uu1er")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1942331441]

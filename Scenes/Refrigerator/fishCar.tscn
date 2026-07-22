@@ -41,6 +41,7 @@ size = Vector2(78, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0fsp7"]
 
 [node name="fishCar" type="StaticBody2D" unique_id=1774908513 groups=["Enemy"]]
+collision_layer = 9
 script = ExtResource("1_y31yk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1389106237]

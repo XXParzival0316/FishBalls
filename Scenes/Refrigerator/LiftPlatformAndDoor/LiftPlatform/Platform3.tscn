@@ -9,6 +9,7 @@ size = Vector2(32, 32)
 load_path = "res://.godot/imported/Refrigerator_Base2_tilemap.png-3333d7456bc8ec8f3e5d5a84faf8cff4.ctex"
 
 [node name="Platform3" type="CharacterBody2D" unique_id=1839372766]
+z_index = 1
 collision_mask = 3
 script = ExtResource("1_c7vox")
 

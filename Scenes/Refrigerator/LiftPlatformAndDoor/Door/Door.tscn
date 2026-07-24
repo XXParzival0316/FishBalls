@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bg4um3gvwqhtx"]
+
+[ext_resource type="Script" uid="uid://unchgeqk6ysx" path="res://Script/Refrigerator/Doors.gd" id="1_deav3"]
+[ext_resource type="Texture2D" uid="uid://cayyw6hvtdqbc" path="res://Assest/Refrigerator/Refrigerator_Third_tilemap.png" id="1_qeye8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1eksp"]
+size = Vector2(8, 48)
+
+[node name="Door" type="CharacterBody2D" unique_id=155980651]
+script = ExtResource("1_deav3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1011444616]
+shape = SubResource("RectangleShape2D_1eksp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=513492902]
+texture = ExtResource("1_qeye8")
+region_enabled = true
+region_rect = Rect2(20, 47, 8, 50)

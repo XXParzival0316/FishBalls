@@ -27,7 +27,6 @@ func use(icewalk_time:float,iceblock_time:float,using_icewalk:Signal) -> void:
 	await get_tree().create_timer(icewalk_time).timeout
 	is_icewalk = false
 
-
 func add_source() -> void:
 	if not source_id and not ice_block_id:
 		var tile_set = tilemapLayer.tile_set
@@ -54,6 +53,7 @@ func ice_walk() -> void:
 			var original_source_id = tilemapLayer.get_cell_source_id(target_vector)
 			# 获取原瓦片坐标
 			var original_vector= tilemapLayer.get_cell_atlas_coords(target_vector)
+			#替换成冰方块
 			tilemapLayer.set_cell(target_vector,source_id,Vector2i(0,0),ice_block_id)
 			await get_tree().create_timer(ice_block_time).timeout
 			if original_vector:

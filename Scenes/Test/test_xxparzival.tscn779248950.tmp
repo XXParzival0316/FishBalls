@@ -193,5 +193,4 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(54, 233)
 collision_layer = 1
 icewalk_CD = 0.1
-iceblock_time = 8.0
 wasabi_damage = 500.0

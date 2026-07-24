@@ -191,8 +191,13 @@ position = Vector2(320, 304)
 scale = Vector2(0.5, 0.5)
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("3_hu080")]
-position = Vector2(131, 267)
+position = Vector2(54, 233)
+collision_layer = 1
+clone = true
 wasabi_damage = 500.0
 
+[node name="Node2D" type="Node2D" parent="FishBall" unique_id=498432260]
+position = Vector2(425, 0)
+
 [node name="Octopus" parent="." unique_id=1517227325 instance=ExtResource("4_brns1")]
-position = Vector2(271, 253)
+position = Vector2(360, 281)

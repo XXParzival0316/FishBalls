@@ -21,6 +21,7 @@ signal using_icewalk
 @export var JUMP_VELOCITY := -270.0
 ## 开启克隆
 @export var clone:bool = false
+var is_clone = false
 
 @export_group("吸水反弹")
 var first_size
@@ -69,11 +70,14 @@ var invincible_time : float = 0.8
 func _ready() -> void:
 	first_size = scale
 	if clone:
+		print("hi I am clone egg")
 		var target:Node2D=$Node2D
 		var fb_tscn:PackedScene = load("res://Scenes/FishBall/fish_ball.tscn")
 		var fb_inst:CharacterBody2D = fb_tscn.instantiate()
 		fb_inst.name = "FishBall_Clone"
 		fb_inst.scale = self.scale
+		fb_inst.modulate = Color(0.0, 1.0, 0.0, 1.0)
+		fb_inst.is_clone = true
 		# 如果你看到这行报错，需要往鱼蛋下面挂一个Node2D节点用来确定克隆鱼蛋生成位置
 		fb_inst.position = target.global_position
 		get_tree().current_scene.call_deferred("add_child",fb_inst)
@@ -82,12 +86,13 @@ func _physics_process(delta: float) -> void:
 	# 检测按下互动,发射型号
 	if Input.is_action_just_pressed("Interact"):
 		interact.emit()
-	if not clone:
+	if not is_clone:
 		var direction := Input.get_axis("Left","Right")
 		match_active_state(delta,direction)
 	else:
 		var direction := Input.get_axis("Right","Left")
 		match_active_state(delta,direction)
+
 	move_and_slide()
 	
 	# 滴水粒子开关
@@ -202,8 +207,10 @@ func smoonth_scale(target_scale:Vector2,duration:float)->void:
 # 受伤
 func take_damage(damage:float):
 	if invincible == false:
+		var last_color = get_modulate()
 		invincible = true
 		HP -= damage
+		
 		#todo 动画
 		modulate = Color(1.0, 0.0, 0.0, 1.0)
 		print(name,"受到:",damage,"点伤害")
@@ -213,7 +220,7 @@ func take_damage(damage:float):
 			queue_free()
 			return
 		await get_tree().create_timer(invincible_time).timeout
-		modulate = Color(1.0, 1.0, 1.0, 1.0)
+		modulate = last_color
 		invincible = false
 		
 func apply_knockback(force_x: float):

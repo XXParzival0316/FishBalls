@@ -112,9 +112,10 @@ func wait_and_flip_direction(waittime):
 	
 func Ignore_player_collision():
 	await get_tree().process_frame
-	var player = get_tree().get_first_node_in_group("Player")
-	if player:
-		add_collision_exception_with(player)
+	var players = get_tree().get_nodes_in_group("Player")
+	if players:
+		for player in players:
+			add_collision_exception_with(player)
 
 func take_damage(damage:float):
 	if invincible == false:

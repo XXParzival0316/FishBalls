@@ -3,9 +3,11 @@ extends CharacterBody2D
 
 class_name Enemy
 
+#信号
+signal enemy_died(enemy: Node2D)
 #基本参数
 @export var invincible_time : float = 1
-var health : int = 100  #血量
+@export var health : int = 100  #血量
 var normal_speed :float #正常速度吗
 var chase_speed : float #追击时速度
 var now_speed : float #当前速度
@@ -36,7 +38,6 @@ var is_move : bool = true
 
 #组件
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var ground_checker = $GroundCheck
 @onready var wall_checker = $WallChecker
 
 func _enter_tree() -> void: #start
@@ -111,9 +112,10 @@ func wait_and_flip_direction(waittime):
 	
 func Ignore_player_collision():
 	await get_tree().process_frame
-	var player = get_tree().get_first_node_in_group("Player")
-	if player:
-		add_collision_exception_with(player)
+	var players = get_tree().get_nodes_in_group("Player")
+	if players:
+		for player in players:
+			add_collision_exception_with(player)
 
 func take_damage(damage:float):
 	if invincible == false:
@@ -124,6 +126,7 @@ func take_damage(damage:float):
 		print(name,"受到:",damage,"点伤害")
 		if health <= 0.0:
 			print(name,"死了")
+			enemy_died.emit(self)
 			queue_free()
 			return
 		await get_tree().create_timer(invincible_time).timeout

@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://cmrao8v6ly7y8" path="res://Script/Refrigerator/FishCar.gd" id="1_y31yk"]
 [ext_resource type="Texture2D" uid="uid://dgglk2xw20gk4" path="res://Assest/Refrigerator/fishcar_right.png" id="2_y31yk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c8j"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_0fsp7"]
 atlas = ExtResource("2_y31yk")
 region = Rect2(0, 0, 64, 64)
@@ -34,12 +32,45 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="fishCar" type="StaticBody2D" unique_id=1774908513]
-script = ExtResource("1_y31yk")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c8j"]
+size = Vector2(61, 23.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1893628061]
-shape = SubResource("RectangleShape2D_w7c8j")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y31yk"]
+size = Vector2(78, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fsp7"]
+
+[node name="fishCar" type="StaticBody2D" unique_id=1774908513 groups=["Enemy"]]
+collision_layer = 9
+script = ExtResource("1_y31yk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1389106237]
 sprite_frames = SubResource("SpriteFrames_w7c8j")
 animation = &"fishcar"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1893628061]
+position = Vector2(0.5, -0.25)
+shape = SubResource("RectangleShape2D_w7c8j")
+
+[node name="HitDetech" type="Area2D" parent="." unique_id=448204650]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetech" unique_id=1108372802]
+shape = SubResource("RectangleShape2D_y31yk")
+debug_color = Color(0.96340424, 0, 0.5017515, 0.41960785)
+
+[node name="IceWalkDetech" type="Area2D" parent="." unique_id=1638186473]
+position = Vector2(1, -7)
+scale = Vector2(2.9600017, 1)
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IceWalkDetech" unique_id=284677825]
+shape = SubResource("RectangleShape2D_0fsp7")
+debug_color = Color(0.68765396, 0.49987972, 0, 0.41960785)
+
+[connection signal="body_entered" from="HitDetech" to="." method="_on_hit_detech_body_entered"]
+[connection signal="body_entered" from="IceWalkDetech" to="." method="_on_ice_walk_detech_body_entered"]
+[connection signal="body_exited" from="IceWalkDetech" to="." method="_on_ice_walk_detech_body_exited"]

@@ -1,17 +1,56 @@
 [gd_scene format=3 uid="uid://uuaegfofs4vf"]
 
-[ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="1_etwcs"]
+[ext_resource type="Script" uid="uid://dg2jry4yrk5nr" path="res://Script/FishBall/Skills/IceWalk/ice_block.gd" id="1_cl6yu"]
+[ext_resource type="Texture2D" uid="uid://xn2bvqp6uf5t" path="res://Assest/FishBall_Base/Skills/ice_block.png" id="1_uobrj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uobrj"]
+atlas = ExtResource("1_uobrj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl6yu"]
+atlas = ExtResource("1_uobrj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pgtw"]
+atlas = ExtResource("1_uobrj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq4sv"]
+atlas = ExtResource("1_uobrj")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kj213"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uobrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cl6yu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pgtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jq4sv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52yc7"]
 size = Vector2(16, 16)
 
 [node name="IceBlock" type="StaticBody2D" unique_id=69311770]
 collision_mask = 0
+script = ExtResource("1_cl6yu")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1737917987]
-texture = ExtResource("1_etwcs")
-region_enabled = true
-region_rect = Rect2(176, 112, 16, 16)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1383529867]
+sprite_frames = SubResource("SpriteFrames_kj213")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1002375167]
 shape = SubResource("RectangleShape2D_52yc7")

@@ -26,8 +26,10 @@ func _on_wall_checker_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
 		wait_and_flip_direction(waittime)
 		current_enemy = null
-
-
+	elif body.is_in_group("Wall"):
+		wait_and_flip_direction(waittime)
+		current_enemy = null
+		
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	hurting_player = body
 

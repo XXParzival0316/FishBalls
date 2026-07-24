@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b62aiw4htm3pq"]
+
+[ext_resource type="Script" uid="uid://cuh21cxtsnwok" path="res://Script/Refrigerator/Drip/drip_spawner.gd" id="1_mecy8"]
+
+[node name="DripSpawner" type="Marker2D" unique_id=1223855561]
+script = ExtResource("1_mecy8")
+
+[node name="Timer" type="Timer" parent="." unique_id=1331265320]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

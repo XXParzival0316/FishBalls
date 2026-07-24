@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bwgoj2x4esqbt"]
+
+[ext_resource type="Script" uid="uid://cacppkaqsucjt" path="res://Script/Refrigerator/kill_enemy_platform.gd" id="1_fxys8"]
+[ext_resource type="Texture2D" uid="uid://dl3uqdadeaa88" path="res://Assest/Refrigerator/Refrigerator_Base2_tilemap.png" id="2_566jp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ocqj"]
+size = Vector2(31, 53)
+
+[node name="KillEnemyPlatform" type="CharacterBody2D" unique_id=1341866209 groups=["Wall"]]
+z_index = 1
+script = ExtResource("1_fxys8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1465479885]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_2ocqj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=313994106]
+scale = Vector2(1, 1.1249996)
+texture = ExtResource("2_566jp")
+region_enabled = true
+region_rect = Rect2(144, 32, 33, 48)

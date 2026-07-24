@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://lc0ii2on8ukl"]
+
+[ext_resource type="Script" uid="uid://uthjeetsm67r" path="res://Script/Refrigerator/Drip/drip.gd" id="1_dpav2"]
+[ext_resource type="Texture2D" uid="uid://3xypy1i2lwo1" path="res://Assest/Refrigerator/Drip/Drip.png" id="2_gb644"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brns1"]
+size = Vector2(6.2750626, 16.319443)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dlnsd"]
+radius = 5.0990195
+
+[node name="Drip" type="RigidBody2D" unique_id=1715593773]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_dpav2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=540137684]
+texture = ExtResource("2_gb644")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1226548087]
+position = Vector2(0.47794065, 1.1249999)
+scale = Vector2(1.7600014, 0.72)
+shape = SubResource("RectangleShape2D_brns1")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=879684927]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=417254464]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_dlnsd")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

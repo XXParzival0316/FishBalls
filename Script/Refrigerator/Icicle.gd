@@ -1,64 +1,101 @@
 extends StaticBody2D
 
-# 和锅一样，先拿到Area2D
-@onready var area_2d: Area2D = $Area2D
-@onready var coll_shape: CollisionShape2D = $CollisionShape2D
+# ========== 公开面板可调参数 ==========
+@export var fall_distance: float = 80.0        # 第一段下落距离
+@export var shake_pre_delay: float = 0.1       # 下落完→抖动的间隔前摇
+@export var shake_duration: float = 0.3        # 左右抖动总时长
+@export var shake_range: float = 7.0           # 左右抖动幅度
+@export var shake_frequency: float = 8.0        # 抖动频率：每秒摆动来回次数
+@export var first_fall_speed: float = 300.0    # 第一段慢速下落速度
+@export var real_fall_speed: float = 500.0     # 抖动结束高速下坠速度
+@export var ice_damage: float = 25.0           # 击中玩家伤害值
 
-# 编辑器可调参数
-@export var delay_before_shake: float = 0.5   # 踩后多久抖
-@export var shake_duration: float = 0.3       # 抖动多久
-@export var shake_strength: float = 1.0       # 抖动幅度
-@export var respawn_delay: float = 2.0         # 销毁后等待2秒重生
+# 状态枚举
+enum ConeState {
+	IDLE,        # 待机
+	PRE_FALL,    # 第一段下落
+	WAIT_SHAKE,  # 等待抖动前摇
+	SHAKE,       # 左右抖动
+	REAL_FALL,   # 高速坠落
+	DESTROYED    # 销毁
+}
 
+var current_state: ConeState = ConeState.IDLE
+var original_global_pos: Vector2
 var is_triggered: bool = false
-var original_pos: Vector2
-var shake_timer: float = 0.0
+var shake_tween: Tween
 
+# 识别区域（仅用来触发冰锥启动，不再管伤害）
+@onready var main_area: Area2D = $Area2D
+@onready var hit_area: Area2D = $HitArea
 
 func _ready() -> void:
-	original_pos = position
-	randomize()  # 随机种子，抖动自然
+	original_global_pos = global_position
+	main_area.body_entered.connect(_trigger_icecone_start)
+	hit_area.body_entered.connect(_on_cone_body_collide)
 
 
-# 玩家进入
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player") and not is_triggered:
+
+
+func _process(delta: float) -> void:
+	match current_state:
+		ConeState.PRE_FALL:
+			global_position.y += first_fall_speed * delta
+		ConeState.REAL_FALL:
+			global_position.y += real_fall_speed * delta
+
+# 玩家进入识别区 → 只启动冰锥整套下落流程，无任何伤害
+func _trigger_icecone_start(body: Node2D) -> void:
+	if body.name == "FishBall" and not is_triggered and current_state == ConeState.IDLE:
 		is_triggered = true
-		# 延迟后开始抖
-		get_tree().create_timer(delay_before_shake).timeout.connect(_start_shake)
+		current_state = ConeState.PRE_FALL
+		var fall_time = fall_distance / first_fall_speed
+		await get_tree().create_timer(fall_time).timeout
 
+		current_state = ConeState.WAIT_SHAKE
+		await get_tree().create_timer(shake_pre_delay).timeout
 
-# 玩家离开（可选：离开就取消计时）
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player") and not shake_timer > 0:
-		is_triggered = false
+		start_shake()
+		await get_tree().create_timer(shake_duration).timeout
+		stop_shake()
 
+		current_state = ConeState.REAL_FALL
 
-func _start_shake():
-	shake_timer = shake_duration
+# 冰锥实体碰撞统一处理：区分撞到玩家 / 撞到地面
+func _on_cone_body_collide(hit_body: Node2D) -> void:
+	if current_state != ConeState.REAL_FALL:
+		return
+	
+	# 碰撞到玩家：造成伤害+销毁冰锥
+	if hit_body.name == "FishBall":
+		hit_body.take_damage(ice_damage)
+		destroy_icecone()
+	# 碰撞到其他实体(地面、墙体)：直接销毁，不掉血
+	else:
+		destroy_icecone()
 
+# 开启左右往复抖动
+func start_shake() -> void:
+	current_state = ConeState.SHAKE
+	shake_tween = create_tween()
+	shake_tween.set_loops() # 无限循环
+	shake_tween.set_ease(Tween.EASE_IN_OUT)
+	
+	var one_cycle_time = 1.0 / shake_frequency
+	var half_time = one_cycle_time / 2
+	
+	shake_tween.tween_property(self, "global_position:x", original_global_pos.x + shake_range, half_time)
+	shake_tween.tween_property(self, "global_position:x", original_global_pos.x - shake_range, half_time)
 
-func _physics_process(delta: float) -> void:
-	if shake_timer > 0:
-		shake_timer -= delta
-		# 抖动：原地随机偏移
-		position.x = original_pos.x + randf_range(-shake_strength, shake_strength)
-		position.y = original_pos.y + randf_range(-shake_strength, shake_strength)
+# 关闭抖动、回归原始X坐标
+func stop_shake() -> void:
+	if shake_tween != null:
+		shake_tween.kill()
+	global_position.x = original_global_pos.x
 
-		# 抖动结束：隐藏+关闭碰撞，2秒后重生
-		if shake_timer <= 0:
-			# 模拟销毁：隐藏+禁用实体碰撞
-			visible = false
-			coll_shape.disabled = true
-			# 启动重生计时器
-			get_tree().create_timer(respawn_delay).timeout.connect(_respawn_icefloor)
-
-
-# 重生恢复函数
-func _respawn_icefloor() -> void:
-	# 复位到初始状态
-	position = original_pos
-	visible = true
-	coll_shape.disabled = false
-	is_triggered = false
-	shake_timer = 0.0
+# 销毁冰锥
+func destroy_icecone() -> void:
+	current_state = ConeState.DESTROYED
+	if shake_tween:
+		shake_tween.kill()
+	queue_free()

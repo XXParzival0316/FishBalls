@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 
 # 玩家进入识别区 → 只启动冰锥整套下落流程，无任何伤害
 func _trigger_icecone_start(body: Node2D) -> void:
-	if body.name == "FishBall" and not is_triggered and current_state == ConeState.IDLE:
+	if body.is_in_group("Player") and not is_triggered and current_state == ConeState.IDLE:
 		is_triggered = true
 		current_state = ConeState.PRE_FALL
 		var fall_time = fall_distance / first_fall_speed
@@ -67,7 +67,7 @@ func _on_cone_body_collide(hit_body: Node2D) -> void:
 		return
 	
 	# 碰撞到玩家：造成伤害+销毁冰锥
-	if hit_body.name == "FishBall":
+	if hit_body.is_in_group("Player"):
 		hit_body.take_damage(ice_damage)
 		destroy_icecone()
 	# 碰撞到其他实体(地面、墙体)：直接销毁，不掉血

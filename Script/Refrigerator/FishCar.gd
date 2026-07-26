@@ -13,6 +13,12 @@ extends StaticBody2D
 @export var icewalk_time:float = 10.0
 ## 受到冰霜行者影响后，鱼车的移动速度
 @export var icewalk_fishcar_speed:float = 200
+@onready var rigth_bar_col: CollisionShape2D = $RightBar/CollisionShape2D
+@onready var left_bar_col: CollisionShape2D = $LeftBar/CollisionShape2D
+
+# 记录鱼车是否有被冰霜行者影响过
+var icewalk_effected:bool = false
+
 
 # 记录鱼车原始移速
 var origin_speed:float
@@ -20,6 +26,8 @@ var move_dir: float = -1.0  # 1向右，-1向左
 var origin_y: float
 
 func _ready() -> void:
+	rigth_bar_col.disabled = true
+	left_bar_col.disabled = true
 	origin_speed = move_speed
 	origin_y = position.y
 	# 限制初始位置在区间内
@@ -54,8 +62,10 @@ func take_damage(damage):
 	$AnimatedSprite2D.play()
 	$IceWalkDetech.monitoring = false
 	$HitDetech.monitoring = true
-	move_speed = origin_speed
-	modulate = Color(1.0, 1.0, 1.0, 1.0)
+	# 要是没受ic影响
+	if not icewalk_effected:
+		move_speed = origin_speed
+		modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 # 传送玩家
 func tp_Player(body:Node2D) -> void:
@@ -67,14 +77,25 @@ func _on_hit_detech_body_entered(body: Node2D) -> void:
 		tp_Player(body)
 
 func used_icewalk() -> void:
-	move_speed = icewalk_fishcar_speed
-	modulate = Color(1.0, 0.0, 1.0, 1.0)
-	$HitDetech.monitorable = false
-	await get_tree().create_timer(icewalk_time).timeout
-	$HitDetech.monitorable = true
-	modulate = Color(1.0, 1.0, 1.0, 1.0)
-	move_speed = origin_speed
+	# 受到过影响后不再执行
+	if not icewalk_effected:
+		icewalk_effected = true
+		move_speed = icewalk_fishcar_speed
+		modulate = Color(1.0, 0.0, 1.0, 1.0)
+		$HitDetech.monitorable = false
+		rigth_bar_col.disabled = false
+		left_bar_col.disabled = false
+		await get_tree().create_timer(icewalk_time).timeout
+		print("你好")
+		icewalk_effected = false
+		$HitDetech.monitorable = true
+		rigth_bar_col.disabled = true
+		left_bar_col.disabled = true
+		modulate = Color(1.0, 1.0, 1.0, 1.0)
+		move_speed = origin_speed
 		
+	
+	
 # 检测玩家时候使用冰霜行者
 func _on_ice_walk_detech_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and body.has_signal("using_icewalk"):

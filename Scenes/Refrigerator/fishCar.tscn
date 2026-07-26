@@ -40,6 +40,9 @@ size = Vector2(78, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0fsp7"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6t1l"]
+size = Vector2(6.075, 20)
+
 [node name="fishCar" type="StaticBody2D" unique_id=1774908513 groups=["Enemy"]]
 collision_layer = 9
 script = ExtResource("1_y31yk")
@@ -54,7 +57,6 @@ shape = SubResource("RectangleShape2D_w7c8j")
 
 [node name="HitDetech" type="Area2D" parent="." unique_id=448204650]
 collision_layer = 0
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetech" unique_id=1108372802]
 shape = SubResource("RectangleShape2D_y31yk")
@@ -64,12 +66,23 @@ debug_color = Color(0.96340424, 0, 0.5017515, 0.41960785)
 position = Vector2(1, -7)
 scale = Vector2(2.9600017, 1)
 collision_layer = 0
-collision_mask = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IceWalkDetech" unique_id=284677825]
 shape = SubResource("RectangleShape2D_0fsp7")
 debug_color = Color(0.68765396, 0.49987972, 0, 0.41960785)
+
+[node name="RightBar" type="StaticBody2D" parent="." unique_id=1113108217]
+position = Vector2(33, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBar" unique_id=1426744344]
+shape = SubResource("RectangleShape2D_u6t1l")
+
+[node name="LeftBar" type="StaticBody2D" parent="." unique_id=328450181]
+position = Vector2(-31, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBar" unique_id=1569357192]
+shape = SubResource("RectangleShape2D_u6t1l")
 
 [connection signal="body_entered" from="HitDetech" to="." method="_on_hit_detech_body_entered"]
 [connection signal="body_entered" from="IceWalkDetech" to="." method="_on_ice_walk_detech_body_entered"]

@@ -186,6 +186,10 @@ sources/3 = SubResource("TileSetAtlasSource_brns1")
 tile_map_data = PackedByteArray("AAAAABMAAAATAAIAAAABABMAAAATAAIAAAACABMAAAATAAIAAAADABMAAAATAAIAAAAEABMAAAATAAIAAAAFABMAAAATAAIAAAAGABMAAAATAAIAAAAHABMAAAATAAIAAAAIABMAAAATAAIAAAAJABMAAAATAAIAAAAKABMAAAATAAIAAAALABMAAAATAAIAAAAMABMAAAATAAIAAAANABMAAAATAAIAAAAOABMAAAATAAIAAAAPABMAAAAQAAIAAAAQABMAAAAQAAMAAAARABMAAAAQAAMAAAASABMAAAAQAAMAAAATABMAAAAQAAMAAAAUABMAAAAQAAMAAAAWABMAAAATAAIAAAAXABMAAAATAAIAAAAYABMAAAATAAIAAAAZABMAAAATAAIAAAAaABMAAAATAAIAAAAbABMAAAATAAIAAAAcABMAAAATAAIAAAAdABMAAAATAAIAAAAeABMAAAATAAIAAAAfABMAAAATAAIAAAAgABMAAAATAAIAAAAhABMAAAATAAIAAAAiABMAAAATAAIAAAAjABMAAAATAAIAAAAkABMAAAATAAIAAAAlABMAAAATAAIAAAAmABMAAAATAAIAAAAnABMAAAATAAIAAAAVABMAAAARAAIAAAA=")
 tile_set = SubResource("TileSet_brns1")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1994545243]
+position = Vector2(320, 304)
+scale = Vector2(0.5, 0.5)
+
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("3_hu080")]
 position = Vector2(542, 283)
 collision_layer = 1
@@ -193,12 +197,13 @@ icewalk_CD = 0.1
 iceblock_time = 8.0
 wasabi_damage = 500.0
 
-[node name="Camera2D" type="Camera2D" parent="FishBall" unique_id=1994545243]
-position = Vector2(-222, 21)
-scale = Vector2(0.5, 0.5)
-
 [node name="fishCar" parent="." unique_id=1774908513 instance=ExtResource("4_brns1")]
 position = Vector2(242, 288)
+left_bound_x = null
+right_bound_x = null
+wasabi_syncope_time = null
+icewalk_time = null
+icewalk_fishcar_speed = null
 
 [node name="Marker2D" type="Marker2D" parent="fishCar" unique_id=863826296]
 position = Vector2(306, -4)

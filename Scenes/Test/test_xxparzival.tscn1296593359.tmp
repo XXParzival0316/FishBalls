@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="2_brns1"]
 [ext_resource type="Texture2D" uid="uid://crxowogt6hsia" path="res://Assest/Refrigerator/Refrigerator_Second_tilemap.png" id="2_ul61f"]
+[ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="3_hu080"]
 [ext_resource type="PackedScene" uid="uid://dr21ubqc5j0w1" path="res://Scenes/Refrigerator/fishCar.tscn" id="4_brns1"]
-[ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="4_hu080"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52yc7"]
 texture = ExtResource("2_ul61f")
@@ -189,19 +189,21 @@ tile_set = SubResource("TileSet_brns1")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1994545243]
 position = Vector2(320, 304)
 scale = Vector2(0.5, 0.5)
-zoom = Vector2(0.83, 0.83)
+
+[node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("3_hu080")]
+position = Vector2(542, 283)
+collision_layer = 1
+icewalk_CD = 0.1
+iceblock_time = 8.0
+wasabi_damage = 500.0
 
 [node name="fishCar" parent="." unique_id=1774908513 instance=ExtResource("4_brns1")]
-position = Vector2(244, 285)
+position = Vector2(242, 288)
+left_bound_x = null
+right_bound_x = null
+wasabi_syncope_time = null
+icewalk_time = null
+icewalk_fishcar_speed = null
 
-[node name="LeftBound" type="Node2D" parent="fishCar" unique_id=1118763351]
-position = Vector2(-241, -5)
-
-[node name="RightBound" type="Node2D" parent="fishCar" unique_id=735152993]
-position = Vector2(123, -4)
-
-[node name="Marker2D" type="Marker2D" parent="fishCar" unique_id=1114122301]
-position = Vector2(338, -6)
-
-[node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("4_hu080")]
-position = Vector2(541, 274)
+[node name="Marker2D" type="Marker2D" parent="fishCar" unique_id=863826296]
+position = Vector2(306, -4)

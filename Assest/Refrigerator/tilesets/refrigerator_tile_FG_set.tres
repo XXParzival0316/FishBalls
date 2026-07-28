@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b0birpedx8ui3" path="res://Assest/Refrigerator/Refrigerator_Topwater.png" id="4_p5y0q"]
 [ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="5_3n5vi"]
 [ext_resource type="Texture2D" uid="uid://d1jrygaoi0j4d" path="res://Assest/Refrigerator/Refrigerator_Deadfish.PNG" id="6_op6gp"]
+[ext_resource type="Texture2D" uid="uid://cl1q8m4qtb147" path="res://Assest/Refrigerator/Refrigerator_Venom.png" id="6_twjg5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hgrnn"]
 texture = ExtResource("1_h7ock")
@@ -617,6 +618,77 @@ texture = ExtResource("4_p5y0q")
 14:7/0 = 0
 13:7/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p5y0q"]
+texture = ExtResource("6_twjg5")
+15:1/animation_speed = 3.0
+15:1/animation_mode = 1
+15:1/animation_frame_0/duration = 1.0
+15:1/animation_frame_1/duration = 1.0
+15:1/animation_frame_2/duration = 1.0
+15:1/animation_frame_3/duration = 1.0
+15:1/animation_frame_4/duration = 1.0
+15:1/animation_frame_5/duration = 1.0
+15:1/animation_frame_6/duration = 1.0
+15:1/animation_frame_7/duration = 1.0
+15:1/animation_frame_8/duration = 1.0
+15:1/animation_frame_9/duration = 1.0
+15:1/animation_frame_10/duration = 1.0
+15:1/animation_frame_11/duration = 1.0
+15:1/animation_frame_12/duration = 1.0
+15:1/animation_frame_13/duration = 1.0
+15:1/0 = 0
+15:2/animation_speed = 3.0
+15:2/animation_mode = 1
+15:2/animation_frame_0/duration = 1.0
+15:2/animation_frame_1/duration = 1.0
+15:2/animation_frame_2/duration = 1.0
+15:2/animation_frame_3/duration = 1.0
+15:2/animation_frame_4/duration = 1.0
+15:2/animation_frame_5/duration = 1.0
+15:2/animation_frame_6/duration = 1.0
+15:2/animation_frame_7/duration = 1.0
+15:2/animation_frame_8/duration = 1.0
+15:2/animation_frame_9/duration = 1.0
+15:2/animation_frame_10/duration = 1.0
+15:2/animation_frame_11/duration = 1.0
+15:2/animation_frame_12/duration = 1.0
+15:2/animation_frame_13/duration = 1.0
+15:2/0 = 0
+15:3/animation_speed = 3.0
+15:3/animation_mode = 1
+15:3/animation_frame_0/duration = 1.0
+15:3/animation_frame_1/duration = 1.0
+15:3/animation_frame_2/duration = 1.0
+15:3/animation_frame_3/duration = 1.0
+15:3/animation_frame_4/duration = 1.0
+15:3/animation_frame_5/duration = 1.0
+15:3/animation_frame_6/duration = 1.0
+15:3/animation_frame_7/duration = 1.0
+15:3/animation_frame_8/duration = 1.0
+15:3/animation_frame_9/duration = 1.0
+15:3/animation_frame_10/duration = 1.0
+15:3/animation_frame_11/duration = 1.0
+15:3/animation_frame_12/duration = 1.0
+15:3/animation_frame_13/duration = 1.0
+15:3/0 = 0
+15:0/animation_speed = 3.0
+15:0/animation_mode = 1
+15:0/animation_frame_0/duration = 1.0
+15:0/animation_frame_1/duration = 1.0
+15:0/animation_frame_2/duration = 1.0
+15:0/animation_frame_3/duration = 1.0
+15:0/animation_frame_4/duration = 1.0
+15:0/animation_frame_5/duration = 1.0
+15:0/animation_frame_6/duration = 1.0
+15:0/animation_frame_7/duration = 1.0
+15:0/animation_frame_8/duration = 1.0
+15:0/animation_frame_9/duration = 1.0
+15:0/animation_frame_10/duration = 1.0
+15:0/animation_frame_11/duration = 1.0
+15:0/animation_frame_12/duration = 1.0
+15:0/animation_frame_13/duration = 1.0
+15:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bxglt"]
 texture = ExtResource("5_3n5vi")
 2:4/animation_speed = 3.0
@@ -666,3 +738,4 @@ sources/6 = SubResource("TileSetAtlasSource_bxglt")
 sources/7 = SubResource("TileSetAtlasSource_6j5d1")
 sources/4 = SubResource("TileSetAtlasSource_imywf")
 sources/3 = SubResource("TileSetAtlasSource_twjg5")
+sources/5 = SubResource("TileSetAtlasSource_p5y0q")

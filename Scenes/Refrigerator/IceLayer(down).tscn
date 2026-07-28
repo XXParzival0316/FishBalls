@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://hmf2yx6iq30k"]
 
-[ext_resource type="Script" uid="uid://dnvlcxvtqdse0" path="res://Script/Refrigerator/IceSpikeLayer(low).gd" id="1_rytdm"]
+[ext_resource type="Script" uid="uid://dnvlcxvtqdse0" path="res://Script/Refrigerator/IceLayer(down).gd" id="1_rytdm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rytdm"]
 size = Vector2(80, 0)

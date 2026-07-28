@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c5wvhiobdhof" path="res://Scenes/Refrigerator/Icicle.tscn" id="4_f743o"]
 [ext_resource type="PackedScene" uid="uid://hmf2yx6iq30k" path="res://Scenes/Refrigerator/IceLayer(down).tscn" id="4_mbb1q"]
 [ext_resource type="PackedScene" uid="uid://cyj464o580583" path="res://Scenes/Refrigerator/IceLayer(up).tscn" id="5_nh3y6"]
+[ext_resource type="PackedScene" uid="uid://ealxjtpsyoiy" path="res://Scenes/Refrigerator/IceSpike.tscn" id="6_gs6rn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ngua7"]
 texture = ExtResource("2_nh3y6")
@@ -168,3 +169,17 @@ ice_cone_scene = ExtResource("4_f743o")
 
 [node name="Ice Spike Layer(low)" parent="." unique_id=243871470 instance=ExtResource("4_mbb1q")]
 position = Vector2(235, 237)
+
+[node name="IceSpike" parent="." unique_id=1852851309 instance=ExtResource("6_gs6rn")]
+position = Vector2(296, 218)
+
+[node name="IceSpike2" parent="." unique_id=1775507328 instance=ExtResource("6_gs6rn")]
+position = Vector2(315, 218)
+
+[node name="IceSpike3" parent="." unique_id=1260601581 instance=ExtResource("6_gs6rn")]
+position = Vector2(332, 218)
+
+[node name="IceSpike4" parent="." unique_id=326529130 instance=ExtResource("6_gs6rn")]
+position = Vector2(316.00003, 264)
+rotation = -3.1335077
+move_down_distance = -13.0

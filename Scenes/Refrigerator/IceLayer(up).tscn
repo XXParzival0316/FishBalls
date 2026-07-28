@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cyj464o580583"]
 
 [ext_resource type="Texture2D" uid="uid://dewkm2iuddts4" path="res://Assest/Refrigerator/Refrigerator_Base_tilemap.png" id="1_6il4i"]
-[ext_resource type="Script" uid="uid://dkn5c3wisylnw" path="res://Script/Refrigerator/IceSpikeLayer(up).gd" id="1_j5pdu"]
+[ext_resource type="Script" uid="uid://dkn5c3wisylnw" path="res://Script/Refrigerator/IceLayer(up).gd" id="1_j5pdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5pdu"]
 size = Vector2(80, 7)

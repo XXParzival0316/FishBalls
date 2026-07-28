@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://hmf2yx6iq30k"]
+
+[ext_resource type="Script" uid="uid://dnvlcxvtqdse0" path="res://Script/Refrigerator/IceSpikeLayer(low).gd" id="1_rytdm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rytdm"]
+size = Vector2(80, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wanto"]
+load_path = "res://.godot/imported/Refrigerator_Base_tilemap.png-9a38550201a19406a038ff0b989ac999.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5703j"]
+size = Vector2(80, 20)
+
+[node name="Ice Spike Layer(low)" type="StaticBody2D" unique_id=243871470]
+script = ExtResource("1_rytdm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=471045640]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_rytdm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1965963254]
+texture = SubResource("CompressedTexture2D_wanto")
+region_enabled = true
+region_rect = Rect2(335.90253, 76.945816, 80.15317, 19.067207)
+
+[node name="HitArea" type="Area2D" parent="." unique_id=783530495]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1135105985]
+shape = SubResource("RectangleShape2D_5703j")
+
+[connection signal="area_entered" from="HitArea" to="." method="_on_hit_area_area_entered"]
+[connection signal="area_exited" from="HitArea" to="." method="_on_hit_area_area_exited"]

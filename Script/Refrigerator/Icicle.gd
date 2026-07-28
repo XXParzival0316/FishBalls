@@ -9,6 +9,7 @@ extends StaticBody2D
 @export var first_fall_speed: float = 300.0    # 第一段慢速下落速度
 @export var real_fall_speed: float = 500.0     # 抖动结束高速下坠速度
 @export var ice_damage: float = 25.0           # 击中玩家伤害值
+@export var auto_drop_delay: float = 0.5       # 【新增】实例生成后自动下落延迟时间
 
 # 状态枚举
 enum ConeState {
@@ -25,7 +26,7 @@ var original_global_pos: Vector2
 var is_triggered: bool = false
 var shake_tween: Tween
 
-# 识别区域（仅用来触发冰锥启动，不再管伤害）
+# 识别区域（现在不再用来触发，仅保留原有节点不报错）
 @onready var main_area: Area2D = $Area2D
 @onready var hit_area: Area2D = $HitArea
 
@@ -33,9 +34,31 @@ func _ready() -> void:
 	original_global_pos = global_position
 	main_area.body_entered.connect(_trigger_icecone_start)
 	hit_area.body_entered.connect(_on_cone_body_collide)
+	# 实例加载完毕，延时0.5秒自动启动下落流程
+	await get_tree().create_timer(auto_drop_delay).timeout
+	auto_start_drop()
 
+# 自动启动冰锥下落整套流程
+func auto_start_drop() -> void:
+	if is_triggered or current_state != ConeState.IDLE:
+		return
+	is_triggered = true
+	current_state = ConeState.PRE_FALL
+	var fall_time = fall_distance / first_fall_speed
+	await get_tree().create_timer(fall_time).timeout
 
+	current_state = ConeState.WAIT_SHAKE
+	await get_tree().create_timer(shake_pre_delay).timeout
 
+	start_shake()
+	await get_tree().create_timer(shake_duration).timeout
+	stop_shake()
+
+	current_state = ConeState.REAL_FALL
+
+# 保留原有触发函数（兼容旧节点信号绑定，不会报错，实际不再生效）
+func _trigger_icecone_start(body: Node2D) -> void:
+	pass
 
 func _process(delta: float) -> void:
 	match current_state:
@@ -43,23 +66,6 @@ func _process(delta: float) -> void:
 			global_position.y += first_fall_speed * delta
 		ConeState.REAL_FALL:
 			global_position.y += real_fall_speed * delta
-
-# 玩家进入识别区 → 只启动冰锥整套下落流程，无任何伤害
-func _trigger_icecone_start(body: Node2D) -> void:
-	if body.is_in_group("Player") and not is_triggered and current_state == ConeState.IDLE:
-		is_triggered = true
-		current_state = ConeState.PRE_FALL
-		var fall_time = fall_distance / first_fall_speed
-		await get_tree().create_timer(fall_time).timeout
-
-		current_state = ConeState.WAIT_SHAKE
-		await get_tree().create_timer(shake_pre_delay).timeout
-
-		start_shake()
-		await get_tree().create_timer(shake_duration).timeout
-		stop_shake()
-
-		current_state = ConeState.REAL_FALL
 
 # 冰锥实体碰撞统一处理：区分撞到玩家 / 撞到地面
 func _on_cone_body_collide(hit_body: Node2D) -> void:

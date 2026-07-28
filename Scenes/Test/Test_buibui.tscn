@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="1_mbb1q"]
 [ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="2_nh3y6"]
 [ext_resource type="PackedScene" uid="uid://c5wvhiobdhof" path="res://Scenes/Refrigerator/Icicle.tscn" id="4_f743o"]
+[ext_resource type="PackedScene" uid="uid://hmf2yx6iq30k" path="res://Scenes/Refrigerator/IceLayer(down).tscn" id="4_mbb1q"]
+[ext_resource type="PackedScene" uid="uid://cyj464o580583" path="res://Scenes/Refrigerator/IceLayer(up).tscn" id="5_nh3y6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ngua7"]
 texture = ExtResource("2_nh3y6")
@@ -156,6 +158,13 @@ tile_set = SubResource("TileSet_ad1s7")
 position = Vector2(319, 233)
 
 [node name="Icicle" parent="." unique_id=663586642 instance=ExtResource("4_f743o")]
-position = Vector2(357, 197)
+position = Vector2(488, 197)
 collision_layer = 255
 collision_mask = 255
+
+[node name="IceSpikeLayer(up)" parent="." unique_id=23337407 instance=ExtResource("5_nh3y6")]
+position = Vector2(389, 177)
+ice_cone_scene = ExtResource("4_f743o")
+
+[node name="Ice Spike Layer(low)" parent="." unique_id=243871470 instance=ExtResource("4_mbb1q")]
+position = Vector2(235, 237)

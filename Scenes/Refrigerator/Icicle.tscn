@@ -14,18 +14,16 @@ size = Vector2(6, 22)
 
 [node name="Icicle" type="StaticBody2D" unique_id=663586642]
 script = ExtResource("1_3cn8g")
-fall_distance = 10.0
-shake_pre_delay = 1.0
-shake_duration = 0.5
+fall_distance = 2.0
 shake_range = 5.0
 shake_frequency = 30.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1764273797]
+position = Vector2(0, 13)
 scale = Vector2(0.375, 1)
 texture = ExtResource("1_y0uc1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=832888130]
-position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_y0uc1")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=441758589]
@@ -35,6 +33,7 @@ position = Vector2(0, 23.25)
 shape = SubResource("RectangleShape2D_3cn8g")
 
 [node name="HitArea" type="Area2D" parent="." unique_id=1338186584]
+position = Vector2(0, 13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=835370129]
 position = Vector2(0, -13)

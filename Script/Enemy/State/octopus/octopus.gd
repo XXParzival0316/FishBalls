@@ -1,8 +1,8 @@
 # Author Baishu
 extends Enemy
 
-@export var current_enemy : Node2D 
-@export var hurting_player : Node2D
+var current_enemy : Node2D 
+var hurting_player : Node2D
 func _enter_tree() -> void:
 	super._enter_tree()
 	normal_speed = 100

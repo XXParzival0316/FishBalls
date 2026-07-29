@@ -21,11 +21,10 @@ func _ready() -> void:
 	if owner is Player:
 		fishball = owner
 	if fishball:
-		# 获取技能才有UI
-		if fishball.get_icewalk:
-			ice_walk_icon.visible = true
-		if fishball.get_wasabi:
-			wasabi_icon.visible = true
+		# 获取了技能才会显示UI
+		ice_walk_icon.visible = fishball.get_icewalk
+		wasabi_icon.visible = fishball.get_wasabi
+		
 		hp_bar.value = fishball.HP
 		# 修改动画时长
 		change_animation(ice_walk_cd_player,"icewalktime",fishball.icewalk_time)

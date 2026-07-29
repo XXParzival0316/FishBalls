@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 # Author XXParzival
 
@@ -11,6 +12,7 @@ enum STATE{
 signal interact
 signal dead
 signal using_icewalk
+signal take_damage_singal(damage:float)
 
 @export_group("基础属性")
 ## 血量
@@ -34,9 +36,9 @@ var fall_height:float = 0.0
 
 @export_group("冰霜行者")
 ## 获得冰行技能
-@export var get_icewalk:bool = true
+@export var get_icewalk:bool = false
 ## 冰行CD
-@export var icewalk_CD:float = 5
+@export var icewalk_CD:float = 10
 ## 冰行持续时间
 @export var icewalk_time:float = 5
 ## 冰块持续时间
@@ -44,7 +46,7 @@ var fall_height:float = 0.0
 
 @export_group("芥末酱")
 ## 获得芥末酱技能
-@export var get_wasabi:bool = true	
+@export var get_wasabi:bool = false
 ## 芥末酱料CD
 @export var wasabi_CD:float = 0.5
 ## 芥末酱料伤害
@@ -207,6 +209,7 @@ func smoonth_scale(target_scale:Vector2,duration:float)->void:
 # 受伤
 func take_damage(damage:float):
 	if invincible == false:
+		take_damage_singal.emit(damage)
 		var last_color = get_modulate()
 		invincible = true
 		HP -= damage

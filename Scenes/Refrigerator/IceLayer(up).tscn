@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cyj464o580583"]
+[gd_scene format=3 uid="uid://duch4yqy6qs54"]
 
 [ext_resource type="Texture2D" uid="uid://dewkm2iuddts4" path="res://Assest/Refrigerator/Refrigerator_Base_tilemap.png" id="1_6il4i"]
 [ext_resource type="Script" uid="uid://dkn5c3wisylnw" path="res://Script/Refrigerator/IceLayer(up).gd" id="1_j5pdu"]
@@ -16,19 +16,10 @@ script = ExtResource("1_j5pdu")
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_j5pdu")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1770149062]
-rotation = 3.1390898
-texture = ExtResource("1_6il4i")
-region_enabled = true
-region_rect = Rect2(335.6949, 76.92542, 80.55713, 19.108727)
-
 [node name="HitArea" type="Area2D" parent="." unique_id=38867089]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=2048761594]
 shape = SubResource("RectangleShape2D_6il4i")
-
-[node name="IceSpawn" type="Node2D" parent="." unique_id=1997790340 groups=["Icicle"]]
-position = Vector2(-33, 0)
 
 [node name="Node2D2" type="Node2D" parent="." unique_id=1169303508 groups=["Icicle"]]
 position = Vector2(-13, 0)
@@ -36,8 +27,12 @@ position = Vector2(-13, 0)
 [node name="Node2D3" type="Node2D" parent="." unique_id=834144422 groups=["Icicle"]]
 position = Vector2(21, 0)
 
-[node name="Node2D4" type="Node2D" parent="." unique_id=987775633 groups=["Icicle"]]
-position = Vector2(32, 0)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1770149062]
+rotation = 3.1390898
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("1_6il4i")
+region_enabled = true
+region_rect = Rect2(335.6949, 76.92542, 80.55713, 19.108727)
 
 [connection signal="area_entered" from="HitArea" to="." method="_on_hit_area_area_entered"]
 [connection signal="area_exited" from="HitArea" to="." method="_on_hit_area_area_exited"]

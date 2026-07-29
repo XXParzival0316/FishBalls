@@ -4,29 +4,25 @@
 [ext_resource type="Texture2D" uid="uid://cldrknwijuce4" path="res://Assest/Refrigerator/Icicle.png" id="1_fv1xg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fv1xg"]
-size = Vector2(0, 4)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dk0u"]
-size = Vector2(4, 20)
+size = Vector2(0, 3.5)
 
 [node name="IceSpike" type="StaticBody2D" unique_id=1852851309]
 script = ExtResource("1_8dk0u")
 move_down_distance = 13.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=397066559]
-position = Vector2(0, -5.5)
-scale = Vector2(0.25, 0.7291667)
+position = Vector2(4.2632564e-14, 16)
+scale = Vector2(0.63541675, 0.99739575)
 texture = ExtResource("1_fv1xg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2094588676]
-position = Vector2(0, -21)
+position = Vector2(0, -1.75)
 shape = SubResource("RectangleShape2D_fv1xg")
 
 [node name="HitArea" type="Area2D" parent="." unique_id=1863838754]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=628707205]
-position = Vector2(0, -13)
-shape = SubResource("RectangleShape2D_8dk0u")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitArea" unique_id=1791398267]
+polygon = PackedVector2Array(-4.8795395, -8, 4.786188, -8, 0, 16)
 
 [connection signal="area_entered" from="HitArea" to="." method="_on_hit_area_area_entered"]
 [connection signal="area_exited" from="HitArea" to="." method="_on_hit_area_area_exited"]

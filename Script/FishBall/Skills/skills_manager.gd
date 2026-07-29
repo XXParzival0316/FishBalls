@@ -65,10 +65,8 @@ func switch_skills(direct:String) -> void:
 func use_skill() -> void:
 	match active_skill:
 		"icewalk":
-			use_skill_signal.emit("icewalk")
 			use_icewalk()
 		"wasabi":
-			use_skill_signal.emit("wasabi")
 			use_wasabi()
 
 ## 创建计时器
@@ -83,6 +81,7 @@ func create_timer(wait_time:float,func_name:Callable,timer_name ="timer"):
 # 统一管理技能CD&持续时间
 func use_icewalk() -> void:
 	if can_use_icewalk:
+		use_skill_signal.emit("icewalk")
 		can_use_icewalk = false
 		## 等冰行持续时间结束,才开始创建CD计时器
 		await icewalk_inst.use(fb.icewalk_time,fb.iceblock_time,fb.using_icewalk)
@@ -98,6 +97,7 @@ func _on_icewalk_CD_timeout() -> void:
 		
 func use_wasabi() -> void:
 	if can_use_wasabi:
+		use_skill_signal.emit("wasabi")
 		var is_flip = fb.get_node("AnimatedSprite2D").flip_h
 		can_use_wasabi = false
 		wasabi_spawner_inst.use(is_flip,fb.position,fb.wasabi_damage)

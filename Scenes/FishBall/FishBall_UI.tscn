@@ -1,0 +1,208 @@
+[gd_scene format=3 uid="uid://b0agq0ccmdspw"]
+
+[ext_resource type="Texture2D" uid="uid://bb56xmv4t3834" path="res://Assest/FishBall_Base/UI/FishBall_UI.png" id="1_3jttq"]
+[ext_resource type="Script" uid="uid://bq2u5nuu5s128" path="res://Script/FishBall/UI/fish_ball_ui.gd" id="1_hk4nn"]
+[ext_resource type="Texture2D" uid="uid://b1gmhtw8nqvra" path="res://Assest/FishBall_Base/UI/UIBar.png" id="2_atfqa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jttq"]
+resource_local_to_scene = true
+atlas = ExtResource("1_3jttq")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atfqa"]
+atlas = ExtResource("1_3jttq")
+region = Rect2(52, 11, 9, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2sap"]
+atlas = ExtResource("2_atfqa")
+region = Rect2(17, 4, 69, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opxou"]
+resource_local_to_scene = true
+atlas = ExtResource("2_atfqa")
+region = Rect2(99, 5, 67, 4)
+margin = Rect2(0, 0, 0, 0.78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_injun"]
+resource_local_to_scene = true
+atlas = ExtResource("1_3jttq")
+region = Rect2(48, 51, 25, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk4nn"]
+atlas = ExtResource("1_3jttq")
+region = Rect2(48, 51, 25, 21)
+
+[sub_resource type="Animation" id="Animation_y2sap"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WasabiCDBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hk4nn"]
+resource_name = "cooldown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WasabiCDBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y2sap"]
+_data = {
+&"RESET": SubResource("Animation_y2sap"),
+&"default": SubResource("Animation_hk4nn")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2top6"]
+atlas = ExtResource("1_3jttq")
+region = Rect2(96, 51, 25, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhsru"]
+atlas = ExtResource("1_3jttq")
+region = Rect2(96, 51, 25, 21)
+
+[sub_resource type="Animation" id="Animation_injun"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%IceWalkCDBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2top6"]
+resource_name = "icewalkcd"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%IceWalkCDBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
+[sub_resource type="Animation" id="Animation_opxou"]
+resource_name = "icewalktime"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%IceWalkCDBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [100.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_injun"]
+_data = {
+&"RESET": SubResource("Animation_injun"),
+&"icewalkcd": SubResource("Animation_2top6"),
+&"icewalktime": SubResource("Animation_opxou")
+}
+
+[node name="FishBallUi" type="Control" unique_id=834021621]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 10.0
+script = ExtResource("1_hk4nn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=235431081]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2132064465]
+layout_mode = 2
+
+[node name="FishBallPic" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1495011813]
+layout_mode = 2
+texture = SubResource("AtlasTexture_3jttq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=453110636]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1138431401]
+layout_mode = 2
+
+[node name="HP" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1682238280]
+layout_mode = 2
+texture = SubResource("AtlasTexture_atfqa")
+
+[node name="HPBar" type="TextureProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1640562077]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+texture_over = SubResource("AtlasTexture_y2sap")
+texture_progress = SubResource("AtlasTexture_opxou")
+texture_progress_offset = Vector2(0.95, 1)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1550083382]
+layout_mode = 2
+
+[node name="WasabiIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer2" unique_id=1024798381]
+unique_name_in_owner = true
+self_modulate = Color(0.16924527, 0.1692453, 0.16924521, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_injun")
+
+[node name="WasabiCDBar" type="TextureProgressBar" parent="VBoxContainer/HBoxContainer2/WasabiIcon" unique_id=939287001]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+fill_mode = 4
+texture_progress = SubResource("AtlasTexture_hk4nn")
+
+[node name="WasabiCDPlayer" type="AnimationPlayer" parent="VBoxContainer/HBoxContainer2/WasabiIcon" unique_id=591954688]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_y2sap")
+
+[node name="IceWalkIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer2" unique_id=892622643]
+unique_name_in_owner = true
+self_modulate = Color(0.16862746, 0.16862746, 0.16862746, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_2top6")
+
+[node name="IceWalkCDBar" type="TextureProgressBar" parent="VBoxContainer/HBoxContainer2/IceWalkIcon" unique_id=584537706]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+fill_mode = 3
+texture_progress = SubResource("AtlasTexture_yhsru")
+
+[node name="IceWalkCDPlayer" type="AnimationPlayer" parent="VBoxContainer/HBoxContainer2/IceWalkIcon" unique_id=1781842883]
+libraries/ = SubResource("AnimationLibrary_injun")

@@ -3,6 +3,8 @@ extends Node2D
 
 @onready var fb: CharacterBody2D = $".."
 
+signal	use_skill_signal(skill_name:String)
+
 # 获得的技能
 var skills_arr:Array = Array()
 # 当前选中技能
@@ -63,8 +65,10 @@ func switch_skills(direct:String) -> void:
 func use_skill() -> void:
 	match active_skill:
 		"icewalk":
+			use_skill_signal.emit("icewalk")
 			use_icewalk()
 		"wasabi":
+			use_skill_signal.emit("wasabi")
 			use_wasabi()
 
 ## 创建计时器

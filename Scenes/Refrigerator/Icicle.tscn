@@ -18,11 +18,10 @@ fall_distance = 2.0
 shake_pre_delay = 0.0
 shake_duration = 0.0
 shake_range = 0.0
-shake_frequency = 30.0
+shake_frequency = 5.0
 first_fall_speed = 10.0
-real_fall_speed = 60.0
+real_fall_speed = 50.0
 ice_damage = 10.0
-auto_drop_delay = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1764273797]
 position = Vector2(0, 13)

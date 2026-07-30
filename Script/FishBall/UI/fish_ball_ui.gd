@@ -3,14 +3,17 @@ extends Control
 @onready var hp_bar: TextureProgressBar = %HPBar
 
 @onready var wasabi_icon: TextureRect = %WasabiIcon
-# 芥末酱CD动画
+
+# 芥末酱UICD动画
 @onready var wasabi_cd_bar: TextureProgressBar = %WasabiCDBar
 @onready var wasabi_cd_player: AnimationPlayer = %WasabiCDPlayer
+@onready var wasabi_choose_border: TextureRect = %WasabiChooseBorder
 
-# 冰霜行者CD动画
+# 冰霜行者UICD动画
 @onready var ice_walk_cd_bar: TextureProgressBar = %IceWalkCDBar
 @onready var ice_walk_cd_player: AnimationPlayer = $VBoxContainer/HBoxContainer2/IceWalkIcon/IceWalkCDPlayer
 @onready var ice_walk_icon: TextureRect = %IceWalkIcon
+@onready var ice_walk_choose_border: TextureRect = %IceWalkChooseBorder
 
 var fishball:Player
 var SkillsManager:Node2D
@@ -30,12 +33,14 @@ func _ready() -> void:
 		change_animation(ice_walk_cd_player,"icewalktime",fishball.icewalk_time)
 		change_animation(ice_walk_cd_player,"icewalkcd",fishball.icewalk_CD)
 		change_animation(wasabi_cd_player,"default",fishball.wasabi_CD)
-		if fishball.has_signal("take_damage_singal"):
-			fishball.take_damage_singal.connect(_on_take_damage)
+		if fishball.has_signal("take_damage_signal"):
+			fishball.take_damage_signal.connect(_on_take_damage)
 		if fishball.has_node("SkillsManager"):
 			SkillsManager = fishball.get_node("SkillsManager")
 			if SkillsManager.has_signal("use_skill_signal"):
 				SkillsManager.use_skill_signal.connect(_on_use_skill)
+			if SkillsManager.has_signal("show_skill_select_signal"):
+				SkillsManager.show_skill_select_signal.connect(_on_show_skill_select_)
 
 func _on_take_damage(damage:float):
 	hp_bar.value -= damage
@@ -54,6 +59,12 @@ func _on_use_skill(skill_name:String):
 	if skill_name == "wasabi":
 		wasabi_cd_player.play("default")
 	
-	
-	
+func _on_show_skill_select_(skill_name:String):
+	ice_walk_choose_border.visible = false
+	wasabi_choose_border.visible = false
+
+	if skill_name == "wasabi":
+		wasabi_choose_border.visible = true
+	if skill_name == "icewalk":
+		ice_walk_choose_border.visible = true
 	

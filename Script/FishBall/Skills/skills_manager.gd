@@ -4,6 +4,7 @@ extends Node2D
 @onready var fb: CharacterBody2D = $".."
 
 signal	use_skill_signal(skill_name:String)
+signal show_skill_select_signal(skill_name:String)
 
 # 获得的技能
 var skills_arr:Array = Array()
@@ -33,6 +34,9 @@ func _ready() -> void:
 	# 选中最后一个获得的技能
 	if skills_arr:
 		active_skill = skills_arr[skills_arr.size()-1]
+		# 空闲时发射信号，直接发射UI节点还没初始化完毕
+		call_deferred("_emit_show_skill_select_signal")
+	
 
 func _input(event: InputEvent) -> void:
 	# 技能使用
@@ -51,17 +55,16 @@ func switch_skills(direct:String) -> void:
 	match direct:
 		"last":
 			if skill_index:
-				print("切换上一个技能")
 				active_skill = skills_arr[skill_index-1]
-			else:
-				print("已经是最开始的技能了")
+				show_skill_select_signal.emit(active_skill)
 		"next":
 			if skill_index != skills_arr.size()-1:
 				active_skill = skills_arr[skill_index+1]
-				print("切换下一个技能")
-			else:
-				print("已经是最后的技能了")
+				show_skill_select_signal.emit(active_skill)
 
+func _emit_show_skill_select_signal():
+	show_skill_select_signal.emit(active_skill)
+	
 func use_skill() -> void:
 	match active_skill:
 		"icewalk":

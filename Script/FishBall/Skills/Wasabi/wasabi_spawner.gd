@@ -18,4 +18,3 @@ func use(is_filp:bool,fb_position:Vector2,wasabi_damage:float) -> void:
 		wasabi_inst.linear_velocity.x = 500
 	wasabi_inst.damage = wasabi_damage
 	add_child(wasabi_inst)
-	print(wasabi_inst.linear_velocity.x)

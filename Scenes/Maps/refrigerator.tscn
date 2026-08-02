@@ -211,7 +211,7 @@ tile_map_data = PackedByteArray("AAA0AAkAAAARAAsAAAA0AAoAAAARAAwAAAA1AAkAAAASAAs
 tile_set = ExtResource("3_ib0c0")
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("2_rf7us")]
-position = Vector2(1537, 470)
+position = Vector2(1564.0001, 491)
 scale = Vector2(0.8, 0.8)
 JUMP_VELOCITY = -300.0
 get_icewalk = true
@@ -287,6 +287,11 @@ scale = Vector2(1, 1.3)
 position = Vector2(1928, 240)
 rotation = 3.1415927
 scale = Vector2(1, 1.3)
+
+[node name="Tentacle4" parent="Tentacles" unique_id=1761702833 instance=ExtResource("6_ib0c0")]
+position = Vector2(1682, 605.99994)
+rotation = 3.1724544
+scale = Vector2(0.7458317, 0.7268021)
 
 [node name="PlatformAndSwitch" type="Node" parent="." unique_id=1358986010]
 

@@ -31,6 +31,7 @@ var original_scale
 @export var BOUNCE_TIME:float = 10
 # 反弹系统
 var can_rebound:bool = false
+var is_scale_down:bool = true
 # 下落高度
 var fall_height:float = 0.0
 
@@ -66,6 +67,7 @@ var invincible_time : float = 0.8
 
 # 获取子节点
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var timer: Timer = $Timer
 # 粒子特效
 @onready var water_drop_particles: CPUParticles2D = $Particles/WaterDrop
 @onready var water_explosion_particles: CPUParticles2D = $Particles/WaterExplosion
@@ -109,6 +111,7 @@ func match_active_state(delta:float,direction:float) -> void:
 				animated_sprite_2d.play("Walk")
 			else :
 				animated_sprite_2d.play("Idle")
+
 			#velocity.x = direction * SPEED
 			if abs(knockback_velocity_x) > 1:
 				velocity.x = knockback_velocity_x
@@ -116,6 +119,7 @@ func match_active_state(delta:float,direction:float) -> void:
 			else:
 				knockback_velocity_x = 0
 				velocity.x = direction * SPEED
+
 			if can_rebound:
 				# 下落高度不为0才判断
 				if fall_height:
@@ -130,10 +134,12 @@ func match_active_state(delta:float,direction:float) -> void:
 								bounce(bounce_height)
 							else :
 								bounce(800)
+							is_scale_down = true
 						else:
 							print("高度差不足100，无法反弹")
 					# 重置下落高度为0
 					fall_height = 0.0
+
 			# 处理跳跃
 			if Input.is_action_just_pressed("Jump"):
 				active_state = STATE.JUMP
@@ -149,7 +155,6 @@ func match_active_state(delta:float,direction:float) -> void:
 			if not is_on_floor():
 				active_state = STATE.FALL
 
-	
 		STATE.FALL:
 			# 记录吸水后下落高度
 			if can_rebound:
@@ -203,7 +208,7 @@ func bounce(bounce_target:float) -> void:
 	print("反弹高度为:",bounce_target)
 	smooth_scale (original_scale,0.25)
 	velocity.y = -bounce_target
-	water_explosion_particles.emitting = true	
+	water_explosion_particles.emitting = true
 	can_rebound = false
 
 # 大小缩放
@@ -231,9 +236,16 @@ func apply_knockback(force_x: float):
 	knockback_velocity_x = force_x
 
 func _entered_water(body: Node2D) -> void:
-	smooth_scale(original_scale * 1.5,0.75)
-	can_rebound = true
-	# 等待持续时间
-	await  get_tree().create_timer(BOUNCE_TIME).timeout
-	smooth_scale(original_scale,0.75)
-	can_rebound = false
+	if not can_rebound:
+		smooth_scale(original_scale * 1.5,0.75)
+		is_scale_down = false
+		can_rebound = true
+		timer.start(BOUNCE_TIME)
+
+
+func _on_timer_timeout() -> void:
+	# 时间到--自动缩小
+	if not is_scale_down:
+		print("时间到了，该缩小了")
+		smooth_scale(original_scale,0.75)
+		can_rebound = false

@@ -197,9 +197,12 @@ emitting = false
 [node name="SkillsManager" type="Node2D" parent="." unique_id=794075905]
 script = ExtResource("7_avsej")
 
+[node name="Timer" type="Timer" parent="." unique_id=1430770562]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1822502409]
 
 [node name="FishBallUi" parent="CanvasLayer" unique_id=834021621 instance=ExtResource("8_wbxwx")]
 unique_name_in_owner = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_entered_water"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

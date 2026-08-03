@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FishBalls"
-run/main_scene="uid://bsi12em562xgs"
+run/main_scene="uid://1p475pjkinnt"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [display]

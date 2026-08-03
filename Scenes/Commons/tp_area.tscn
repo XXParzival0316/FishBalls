@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dd75cedhc855w"]
+
+[ext_resource type="Script" uid="uid://rvumb5f1dd1a" path="res://Scenes/Commons/tp_area.gd" id="1_2c5f6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bi7d"]
+
+[node name="TPArea" type="Area2D" unique_id=1122976440]
+script = ExtResource("1_2c5f6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=393108270]
+shape = SubResource("RectangleShape2D_8bi7d")
+debug_color = Color(0.86089665, 0.361771, 0, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

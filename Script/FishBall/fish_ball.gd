@@ -140,11 +140,11 @@ func match_active_state(delta:float,direction:float) -> void:
 						# 要到一定的高度差才反弹
 						if floor_height - fall_height >100:
 							var bounce_height = (floor_height -fall_height) * 3
+							is_scale_down = true
 							if bounce_height < 800:
 								bounce(bounce_height)
 							else :
 								bounce(800)
-							is_scale_down = true
 						else:
 							print("高度差不足100，无法反弹")
 					# 重置下落高度为0
@@ -247,6 +247,7 @@ func apply_knockback(force_x: float):
 
 func _entered_water(body: Node2D) -> void:
 	if not can_rebound:
+		print("hello")
 		smooth_scale(original_scale * 1.5,0.75)
 		is_scale_down = false
 		can_rebound = true

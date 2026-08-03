@@ -10,7 +10,7 @@ size = Vector2(6.2750626, 16.319443)
 radius = 5.0990195
 
 [node name="Drip" type="RigidBody2D" unique_id=1715593773]
-collision_layer = 4
+collision_layer = 512
 collision_mask = 0
 script = ExtResource("1_dpav2")
 

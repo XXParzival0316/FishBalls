@@ -12,6 +12,7 @@ var player_target:CharacterBody2D = null
 
 
 func _ready() -> void:
+	$InteractLabel.visible = false
 	$Area2D.connect("body_entered",_on_area_2d_body_entered)
 	$Area2D.connect("body_exited",_on_area_2d_body_exited)
 
@@ -26,6 +27,7 @@ func _physics_process(delta: float) -> void:
 
 # 玩家进入识别区：开启交互
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	$InteractLabel.visible = true
 	if body.is_in_group("Player"):
 		player_target = body
 		player_target.connect("interact",_player_interacted)
@@ -33,6 +35,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 # 玩家离开识别区：关闭交互
 func _on_area_2d_body_exited(body: Node2D) -> void:
+	$InteractLabel.visible = false	
 	if body == player_target:
 		player_target.disconnect("interact",_player_interacted)
 		player_target = null

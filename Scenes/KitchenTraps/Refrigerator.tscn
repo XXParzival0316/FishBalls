@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ddcnt4bc236x3" path="res://Script/KitchenTraps/reuqest_switch.gd" id="1_lbhfx"]
 [ext_resource type="Texture2D" uid="uid://dwqkbj4tbcfqi" path="res://Assest/Kitchen/Kitchen_furniture2_tilemap.png" id="2_wdw0a"]
 [ext_resource type="Texture2D" uid="uid://cj5a1p8ogr23n" path="res://Assest/Kitchen/Kitchen_Old_furniture2.png" id="3_lfnaf"]
+[ext_resource type="PackedScene" uid="uid://dg7swr76uvpt7" path="res://Scenes/UI/interact_label.tscn" id="4_lfnaf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0piek"]
 size = Vector2(80, 11)
@@ -32,3 +33,11 @@ shape = SubResource("RectangleShape2D_0piek")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1542206662]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_lbhfx")
+
+[node name="InteractLabel" parent="." unique_id=1999183986 instance=ExtResource("4_lfnaf")]
+offset_left = -40.0
+offset_top = -120.0
+offset_right = 10.0
+offset_bottom = -97.0
+text = "按\"F\"进入关卡"
+metadata/_edit_use_anchors_ = true

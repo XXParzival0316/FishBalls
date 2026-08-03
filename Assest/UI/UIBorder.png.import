@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dl7j1e6uugtuo"
-path="res://.godot/imported/ui框-Sheet.png-f36899c3d93f8d4cade997286278540f.ctex"
+path="res://.godot/imported/UIBorder.png-4af36ccd53ee4b1e3b5ce68746cb4370.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/UI/ui框-Sheet.png"
-dest_files=["res://.godot/imported/ui框-Sheet.png-f36899c3d93f8d4cade997286278540f.ctex"]
+source_file="res://Assest/UI/UIBorder.png"
+dest_files=["res://.godot/imported/UIBorder.png-4af36ccd53ee4b1e3b5ce68746cb4370.ctex"]
 
 [params]
 

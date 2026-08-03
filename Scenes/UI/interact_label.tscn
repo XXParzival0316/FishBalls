@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dg7swr76uvpt7"]
+
+[ext_resource type="FontFile" uid="uid://clj2x82ubn706" path="res://Fonts/VonwaonBitmap-12px.ttf" id="1_jqta7"]
+[ext_resource type="Texture2D" uid="uid://dl7j1e6uugtuo" path="res://Assest/UI/UIBorder.png" id="2_uodtr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5dovj"]
+texture = ExtResource("2_uodtr")
+
+[node name="InteractLabel" type="Label" unique_id=1999183986]
+offset_left = 19.0
+offset_top = -24.0
+offset_right = 59.0
+offset_bottom = -1.0
+scale = Vector2(0.67999995, 0.8108284)
+theme_override_colors/font_color = Color(0.3647059, 0.2784314, 0.09411765, 1)
+theme_override_fonts/font = ExtResource("1_jqta7")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxTexture_5dovj")
+text = "按\"F\"查看"
+vertical_alignment = 1

@@ -6,7 +6,7 @@ class_name Enemy
 #信号
 signal enemy_died(enemy: Node2D)
 #基本参数
-@export var invincible_time : float = 1
+@export var invincible_time : float = 0.2
 @export var health : int = 100  #血量
 var normal_speed :float #正常速度吗
 var chase_speed : float #追击时速度

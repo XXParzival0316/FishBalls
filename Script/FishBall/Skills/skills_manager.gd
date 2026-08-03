@@ -22,15 +22,11 @@ var wasabi_spawner_inst
 # 各技能初始化
 func _ready() -> void:
 	if fb.get_wasabi:
-		print("获得芥末酱技能")
-		skills_arr.append("wasabi")
-		wasabi_spawner_inst = wasabi_spawner.instantiate()
-		add_child(wasabi_spawner_inst)
+		get_wasabi()
+		
 	if fb.get_icewalk:
-		icewalk_inst = icewalk.instantiate()
-		add_child(icewalk_inst)
-		print("获得冰霜行者技能")
-		skills_arr.append("icewalk")
+		get_icewalk()
+
 	# 选中最后一个获得的技能
 	if skills_arr:
 		active_skill = skills_arr[skills_arr.size()-1]
@@ -83,6 +79,15 @@ func create_timer(wait_time:float,func_name:Callable,timer_name ="timer"):
 	add_child(timer)
 	timer.start()
 
+func get_icewalk() -> void:
+	if not has_node("IceWalk"):
+		fb.get_icewalk = true
+		icewalk_inst = icewalk.instantiate()
+		add_child(icewalk_inst)
+		print("获得冰霜行者技能")
+		skills_arr.append("icewalk")
+		switch_skills("next")
+		
 # 统一管理技能CD&持续时间
 func use_icewalk() -> void:
 	if can_use_icewalk:
@@ -99,6 +104,15 @@ func _on_icewalk_CD_timeout() -> void:
 		can_use_icewalk = true
 		print("冰霜行者:就绪")
 		$icewalk_timer.queue_free()
+
+func get_wasabi() -> void:
+	if not has_node("WasabiSpawner"):
+		fb.get_wasabi = true
+		print("获得芥末酱技能")
+		skills_arr.append("wasabi")
+		wasabi_spawner_inst = wasabi_spawner.instantiate()
+		add_child(wasabi_spawner_inst)
+		switch_skills("next")
 		
 func use_wasabi() -> void:
 	if can_use_wasabi:

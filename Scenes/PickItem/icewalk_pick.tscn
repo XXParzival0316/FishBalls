@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ej2pyu3bby41"]
+
+[ext_resource type="Script" uid="uid://brakc4oa0wng8" path="res://Script/pick_item.gd" id="1_1il7q"]
+[ext_resource type="Texture2D" uid="uid://crxowogt6hsia" path="res://Assest/Refrigerator/Refrigerator_Second_tilemap.png" id="1_78au8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfv61"]
+size = Vector2(12.54, 17.745)
+
+[node name="icewalk_pick" type="Sprite2D" unique_id=688055498]
+texture = ExtResource("1_78au8")
+region_enabled = true
+region_rect = Rect2(178, 31, 11, 17)
+script = ExtResource("1_1il7q")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=100539144]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=893729339]
+shape = SubResource("RectangleShape2D_mfv61")

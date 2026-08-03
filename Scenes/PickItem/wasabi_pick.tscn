@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bthao4itsc3ci"]
+
+[ext_resource type="Texture2D" uid="uid://dewkm2iuddts4" path="res://Assest/Refrigerator/Refrigerator_Base_tilemap.png" id="1_swn8m"]
+[ext_resource type="Script" uid="uid://brakc4oa0wng8" path="res://Script/pick_item.gd" id="1_wq2mn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swn8m"]
+size = Vector2(9.865, 16.24)
+
+[node name="WasabiPick" type="Sprite2D" unique_id=1374159557]
+texture = ExtResource("1_swn8m")
+region_enabled = true
+region_rect = Rect2(115, 32, 10, 16)
+script = ExtResource("1_wq2mn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=631848708]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=169059434]
+shape = SubResource("RectangleShape2D_swn8m")

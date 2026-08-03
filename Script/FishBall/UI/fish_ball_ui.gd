@@ -18,6 +18,7 @@ extends Control
 var fishball:Player
 var SkillsManager:Node2D
 
+
 func _ready() -> void:
 	wasabi_cd_bar.value = 100
 	ice_walk_cd_bar.value = 100
@@ -41,7 +42,12 @@ func _ready() -> void:
 				SkillsManager.use_skill_signal.connect(_on_use_skill)
 			if SkillsManager.has_signal("show_skill_select_signal"):
 				SkillsManager.show_skill_select_signal.connect(_on_show_skill_select_)
-
+				
+func _physics_process(delta: float) -> void:
+		if fishball:
+		# 获取了技能才会显示UI
+			ice_walk_icon.visible = fishball.get_icewalk
+			wasabi_icon.visible = fishball.get_wasabi
 func _on_take_damage(damage:float):
 	hp_bar.value -= damage
 

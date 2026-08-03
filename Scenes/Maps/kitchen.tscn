@@ -2930,7 +2930,7 @@ position = Vector2(243, 160)
 
 [node name="Tips" parent="TileMapLayers" unique_id=197285256 instance=ExtResource("13_o81y8")]
 position = Vector2(181, 213)
-new_text = "使用[A D]移动~~~~~~~~~~~[空格] 跳跃~~~~~~~~~~~~~~~~~~~~~~~~~~~~~想办法跳到冰箱顶上~~~~~~~~~~~~~~~~~~~~~~~~~~~[ESC]关闭提示~~~~~~"
+new_text = "使用[A D]左右移动~~~~~~~~~~~[空格]跳跃~~~~~~~~~~~~~~~~~~~~~~~~~~~~~想办法跳到冰箱顶上~~~~~~~~~~~~~~~~~~~~~~~~~~~[ESC]关闭提示~~~~~~"
 new_text2 = "跳进水槽看看？？~~~~~~~~~~~然后从高处跳下！！！~~~~~~~~~~~"
 
 [node name="WorldBounds" type="Node2D" parent="." unique_id=12720428]
@@ -2980,3 +2980,4 @@ region_rect = Rect2(206, 115, 36, 29)
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("14_gjruh")]
 position = Vector2(163, 227)
+Show_UI = false

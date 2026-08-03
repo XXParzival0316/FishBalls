@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+var Refrigerator_Map:PackedScene = preload("uid://cecqctcxwm7d8")
+
 enum State {
 	CLEAN,
 	DIRTY
@@ -42,5 +44,5 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		
 
 func _player_interacted() -> void:
-	print("请求跳转到:",name)
-	request_switch.emit(name)
+	get_tree().change_scene_to_packed(Refrigerator_Map)
+	

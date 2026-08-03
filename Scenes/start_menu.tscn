@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://1p475pjkinnt"]
 
 [ext_resource type="Script" uid="uid://bu54w7jgrmfg0" path="res://Script/StartMenu/start_menu.gd" id="1_juhg0"]
+[ext_resource type="FontFile" uid="uid://clj2x82ubn706" path="res://Fonts/VonwaonBitmap-12px.ttf" id="2_jgtwh"]
 
 [node name="StartMenu" type="Control" unique_id=1821323715]
 layout_mode = 3
@@ -28,11 +29,13 @@ grow_vertical = 2
 [node name="Start" type="Button" parent="VBoxContainer" unique_id=74296510]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jgtwh")
 text = "开始游戏"
 
 [node name="Exit" type="Button" parent="VBoxContainer" unique_id=1670046889]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jgtwh")
 text = "退出游戏"
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]

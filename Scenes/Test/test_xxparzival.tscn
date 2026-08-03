@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="2_brns1"]
 [ext_resource type="Texture2D" uid="uid://crxowogt6hsia" path="res://Assest/Refrigerator/Refrigerator_Second_tilemap.png" id="2_ul61f"]
+[ext_resource type="PackedScene" uid="uid://bsxqqku06djro" path="res://Scenes/Commons/tips.tscn" id="4_brns1"]
 [ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="4_hu080"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52yc7"]
@@ -184,6 +185,9 @@ sources/3 = SubResource("TileSetAtlasSource_brns1")
 [node name="TileMapLayer_MG" type="TileMapLayer" parent="." unique_id=953626597]
 tile_map_data = PackedByteArray("AAAAABMAAAATAAIAAAABABMAAAATAAIAAAACABMAAAATAAIAAAADABMAAAATAAIAAAAEABMAAAATAAIAAAAFABMAAAATAAIAAAAGABMAAAATAAIAAAAHABMAAAATAAIAAAAIABMAAAATAAIAAAAJABMAAAATAAIAAAAKABMAAAATAAIAAAALABMAAAATAAIAAAAMABMAAAATAAIAAAANABMAAAATAAIAAAAOABMAAAATAAIAAAAPABMAAAAQAAIAAAAQABMAAAAQAAMAAAARABMAAAAQAAMAAAASABMAAAAQAAMAAAATABMAAAAQAAMAAAAUABMAAAAQAAMAAAAWABMAAAATAAIAAAAXABMAAAATAAIAAAAYABMAAAATAAIAAAAZABMAAAATAAIAAAAaABMAAAATAAIAAAAbABMAAAATAAIAAAAcABMAAAATAAIAAAAdABMAAAATAAIAAAAeABMAAAATAAIAAAAfABMAAAATAAIAAAAgABMAAAATAAIAAAAhABMAAAATAAIAAAAiABMAAAATAAIAAAAjABMAAAATAAIAAAAkABMAAAATAAIAAAAlABMAAAATAAIAAAAmABMAAAATAAIAAAAnABMAAAATAAIAAAAVABMAAAARAAIAAAA=")
 tile_set = SubResource("TileSet_brns1")
+
+[node name="Tips" parent="." unique_id=197285256 instance=ExtResource("4_brns1")]
+position = Vector2(317, 281)
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("4_hu080")]
 position = Vector2(262, 286)

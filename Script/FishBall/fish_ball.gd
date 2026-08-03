@@ -15,6 +15,8 @@ signal using_icewalk
 signal take_damage_signal(damage:float)
 
 @export_group("基础属性")
+## 显示UI
+@export var Show_UI:bool = true
 ## 血量
 @export var HP:float = 100.0
 ## 移动速度
@@ -53,6 +55,9 @@ var fall_height:float = 0.0
 ## 芥末酱料伤害
 @export var wasabi_damage:float = 20.0
 
+# 禁止玩家输入
+var input_locked:bool = false
+
 # 状态
 var active_state := STATE.FLOOR
 var is_dead:bool = false
@@ -73,10 +78,15 @@ var invincible_time : float = 0.8
 @onready var water_explosion_particles: CPUParticles2D = $Particles/WaterExplosion
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	$CanvasLayer.visible = Show_UI
 	original_scale = scale
 	if clone:spawn_clone()
 	
 func _physics_process(delta: float) -> void:
+	# 禁止玩家输入
+	if input_locked:
+		return
 	if is_dead:
 		animated_sprite_2d.play("Dead")
 		return

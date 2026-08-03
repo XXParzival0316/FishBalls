@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4s586ufy32am"
-path="res://.godot/imported/鱼蛋技能ui.png-8187a6ae24ff6ae1ffd1835d8f1aab6d.ctex"
+uid="uid://c55x8io6n8dl7"
+path="res://.godot/imported/Tips.png-cd9b47b9f581eff0112f248347bc34de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/UI/鱼蛋技能ui.png"
-dest_files=["res://.godot/imported/鱼蛋技能ui.png-8187a6ae24ff6ae1ffd1835d8f1aab6d.ctex"]
+source_file="res://Assest/UI/Tips.png"
+dest_files=["res://.godot/imported/Tips.png-cd9b47b9f581eff0112f248347bc34de.ctex"]
 
 [params]
 

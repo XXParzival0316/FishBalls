@@ -1,7 +1,7 @@
 extends Node2D
 # Author XXParzival
 
-@onready var fb: CharacterBody2D = $".."
+@onready var fb: Player = $".."
 
 signal	use_skill_signal(skill_name:String)
 signal show_skill_select_signal(skill_name:String)
@@ -39,6 +39,8 @@ func _ready() -> void:
 	
 
 func _input(event: InputEvent) -> void:
+	if fb.input_locked:
+		return
 	# 技能使用
 	if active_skill:
 		if event.is_action_pressed("Use_Skill"):

@@ -28,7 +28,6 @@ func _on_body_exited(body: Node2D) -> void:
 
 func get_angular_speed (distance : float) -> float:
 	var speed = coefficient * distance
-	print(speed)
 	return speed
 
 

@@ -13,7 +13,7 @@ func _refresh_camera() -> void:
 	
 func _calculate_zoom():
 	var maxDistance = _get_max_player_distance()
-	var zoomLevel = clamp(maxZoom - (maxDistance/500),minZoom,maxZoom)
+	var zoomLevel = clamp(maxZoom - (maxDistance/650),minZoom,maxZoom)
 	return Vector2(zoomLevel,zoomLevel)
 
 func _get_max_player_distance():

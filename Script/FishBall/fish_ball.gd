@@ -88,7 +88,6 @@ func _physics_process(delta: float) -> void:
 	if input_locked:
 		return
 	if is_dead:
-		animated_sprite_2d.play("Dead")
 		return
 
 	# 检测按下互动,发射型号
@@ -237,6 +236,7 @@ func take_damage(damage:float):
 		if HP <= 0.0:
 			for target in get_tree().get_nodes_in_group("Player"):
 				target.is_dead = true
+				target.animated_sprite_2d.play("Dead")
 			print(name,"死了")
 			dead.emit()
 			return

@@ -619,16 +619,16 @@ tile_set = SubResource("TileSet_52yc7")
 [node name="Octopus" parent="TileMapLayer" unique_id=1517227325 instance=ExtResource("3_brns1")]
 position = Vector2(61, 260)
 
+[node name="Camera2D" type="Camera2D" parent="TileMapLayer" unique_id=1994545243]
+position = Vector2(156, 298)
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(0.83, 0.83)
+
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("4_hu080")]
 position = Vector2(156, 282)
 Show_UI = false
 clone = true
 icewalk_time = 2.0
-
-[node name="Camera2D" type="Camera2D" parent="FishBall" unique_id=1994545243]
-position = Vector2(0, 16)
-scale = Vector2(0.5, 0.5)
-zoom = Vector2(0.83, 0.83)
 
 [node name="Node2D" type="Node2D" parent="FishBall" unique_id=1892140246]
 position = Vector2(275, -12)

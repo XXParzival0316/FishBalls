@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bnd6rla26p24a"]
+
+[ext_resource type="Texture2D" uid="uid://cldrknwijuce4" path="res://Assest/Refrigerator/Icicle.png" id="1_1n3by"]
+[ext_resource type="Script" uid="uid://ppu4vsjmy2k6" path="res://Script/Refrigerator/Icicle(alone).gd" id="1_mtmvb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1n3by"]
+size = Vector2(5, 18.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtmvb"]
+size = Vector2(14, 33)
+
+[node name="Icicle(alone)" type="StaticBody2D" unique_id=1419033471]
+script = ExtResource("1_mtmvb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=853776803]
+position = Vector2(1.1920929e-07, -2)
+scale = Vector2(0.41250017, 0.8541667)
+texture = ExtResource("1_1n3by")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=253642719]
+position = Vector2(0, -13.25)
+scale = Vector2(1.2000005, 1)
+shape = SubResource("RectangleShape2D_1n3by")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1112389947]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=387585770]
+position = Vector2(0, 9)
+scale = Vector2(1, 1.2799994)
+shape = SubResource("RectangleShape2D_mtmvb")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

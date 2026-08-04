@@ -28,6 +28,19 @@
 [ext_resource type="PackedScene" uid="uid://dd75cedhc855w" path="res://Scenes/Commons/tp_area.tscn" id="22_b6dsn"]
 [ext_resource type="PackedScene" uid="uid://y7ve74s60i0y" path="res://Scenes/UI/dead_menu.tscn" id="27_poeo5"]
 
+[sub_resource type="GDScript" id="GDScript_60tdj"]
+script/source = "extends Area2D
+
+var refrigerator_animaiton:PackedScene = preload(\"uid://cfm6n75qub11s\")
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		get_tree().change_scene_to_packed(refrigerator_animaiton)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60tdj"]
+size = Vector2(43.475, 32.13)
+
 [node name="Refrigerator" type="Node2D" unique_id=773591878]
 script = ExtResource("1_60tdj")
 
@@ -616,6 +629,14 @@ ice_cone_scene = ExtResource("19_wbonp")
 position = Vector2(1528, 872)
 ice_cone_scene = ExtResource("19_wbonp")
 
+[node name="SwitchAnimations" type="Area2D" parent="." unique_id=547121316]
+position = Vector2(917, 656)
+script = SubResource("GDScript_60tdj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwitchAnimations" unique_id=1049865265]
+shape = SubResource("RectangleShape2D_60tdj")
+debug_color = Color(0.82554233, 0.0016104549, 0.95607144, 0.41960785)
+
 [node name="TPAreas" type="Node2D" parent="." unique_id=365719801]
 
 [node name="TPArea" parent="TPAreas" unique_id=1122976440 instance=ExtResource("22_b6dsn")]
@@ -661,3 +682,5 @@ zoom = Vector2(0.5, 0.5)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=891947372]
 
 [node name="DeadMenu" parent="CanvasLayer" unique_id=962510847 instance=ExtResource("27_poeo5")]
+
+[connection signal="body_entered" from="SwitchAnimations" to="SwitchAnimations" method="_on_body_entered"]

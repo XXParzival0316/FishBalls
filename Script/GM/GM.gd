@@ -8,4 +8,5 @@ func _ready() -> void:
 	fish_ball.dead.connect(func():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		dead_menu.visible = fish_ball.is_dead
+		fish_ball.HP = 100
 		)

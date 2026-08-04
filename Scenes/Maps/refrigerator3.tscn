@@ -189,7 +189,7 @@ maxZoom = 1.5
 minZoom = 0.3
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("11_8x2pw")]
-position = Vector2(796.00006, 919)
+position = Vector2(874, 800)
 scale = Vector2(0.8, 0.8)
 JUMP_VELOCITY = -300.0
 clone = true
@@ -198,7 +198,7 @@ icewalk_time = 10.0
 wasabi_damage = 50.0
 
 [node name="Node2D" type="Node2D" parent="FishBall" unique_id=2140629194]
-position = Vector2(288.75024, -3.7500076)
+position = Vector2(283.74994, 6.2499914)
 
 [node name="PlatformAndSwitch" type="Node" parent="." unique_id=1358986010]
 

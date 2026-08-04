@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://cfm6n75qub11s"]
+
+[ext_resource type="Texture2D" uid="uid://b3sbsn71mf4ke" path="res://Assest/Animation/RefrigeratorAnimaiton.png" id="1_u86ed"]
+[ext_resource type="FontFile" uid="uid://clj2x82ubn706" path="res://Fonts/VonwaonBitmap-12px.ttf" id="2_cimdi"]
+
+[sub_resource type="GDScript" id="GDScript_u86ed"]
+script/source = "extends Control
+
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var next: Button = $Next
+var refrigerator3:PackedScene = preload(\"uid://b7akbsj6mntqu\")
+
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	animated_sprite_2d.frame = 0
+	
+
+func _on_next_pressed() -> void:
+	if animated_sprite_2d.frame != 4:
+		animated_sprite_2d.frame += 1
+		if animated_sprite_2d.frame == 4:
+			next.text = \"看完了\"
+	else :
+		get_tree().change_scene_to_packed(refrigerator3)
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cimdi"]
+atlas = ExtResource("1_u86ed")
+region = Rect2(0, 0, 652, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leja0"]
+atlas = ExtResource("1_u86ed")
+region = Rect2(652, 0, 652, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atcs3"]
+atlas = ExtResource("1_u86ed")
+region = Rect2(1304, 0, 652, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osgyy"]
+atlas = ExtResource("1_u86ed")
+region = Rect2(1956, 0, 652, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa4f7"]
+atlas = ExtResource("1_u86ed")
+region = Rect2(2608, 0, 652, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgd6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cimdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_leja0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atcs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osgyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa4f7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RefrigeratorAnimaiton" type="Control" unique_id=855665745]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_u86ed")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1871231579]
+position = Vector2(310, 148)
+scale = Vector2(1.0433857, 1.0202656)
+sprite_frames = SubResource("SpriteFrames_qgd6u")
+frame = 4
+
+[node name="Next" type="Button" parent="." unique_id=2070276848]
+layout_mode = 0
+offset_left = 581.0
+offset_top = 285.0
+offset_right = 637.0
+offset_bottom = 310.0
+theme_override_fonts/font = ExtResource("2_cimdi")
+text = "下一页"
+
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]

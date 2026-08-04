@@ -3,8 +3,9 @@ extends Control
 @onready var restar: Button = $Restar
 @onready var main_meu: Button = $MainMeu
 
-var kitchen:PackedScene = preload("uid://dwn585jhghlg5")
-
+var kitchen:PackedScene
+func _ready() -> void:
+	kitchen = load("res://Scenes/Maps/kitchen.tscn")
 func _on_restar_pressed() -> void:
 	get_tree().reload_current_scene()
 

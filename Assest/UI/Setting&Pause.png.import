@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://y5pmjtslwrtx"
-path="res://.godot/imported/鱼蛋设置与暂停按钮.png-9b27217002ca471babdb578c5a473480.ctex"
+path="res://.godot/imported/Setting&Pause.png-03b0d70ec8e50ef1419483ae79501ceb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assest/UI/鱼蛋设置与暂停按钮.png"
-dest_files=["res://.godot/imported/鱼蛋设置与暂停按钮.png-9b27217002ca471babdb578c5a473480.ctex"]
+source_file="res://Assest/UI/Setting&Pause.png"
+dest_files=["res://.godot/imported/Setting&Pause.png-03b0d70ec8e50ef1419483ae79501ceb.ctex"]
 
 [params]
 

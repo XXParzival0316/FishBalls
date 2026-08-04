@@ -186,7 +186,7 @@ maxZoom = 1.5
 minZoom = 0.3
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("11_8x2pw")]
-position = Vector2(866, 802)
+position = Vector2(821.99994, 812)
 scale = Vector2(0.8, 0.8)
 JUMP_VELOCITY = -300.0
 clone = true
@@ -195,7 +195,7 @@ icewalk_time = 10.0
 wasabi_damage = 50.0
 
 [node name="Node2D" type="Node2D" parent="FishBall" unique_id=2140629194]
-position = Vector2(284.99994, -1.2500038)
+position = Vector2(353.75024, -27.5)
 
 [node name="PlatformAndSwitch" type="Node" parent="." unique_id=1358986010]
 
@@ -306,12 +306,11 @@ is_active = true
 lift_speed = 2.0
 loop = true
 
-[node name="Switch" parent="PlatformAndSwitch/9" unique_id=2135685607 node_paths=PackedStringArray("platform", "door1", "door2", "door3") instance=ExtResource("14_fpe3u")]
+[node name="Switch" parent="PlatformAndSwitch/9" unique_id=2135685607 node_paths=PackedStringArray("platform", "door1", "door2") instance=ExtResource("14_fpe3u")]
 position = Vector2(162, 925)
 platform = NodePath("../../8/Platform5")
 door1 = NodePath("../../8/Door")
 door2 = NodePath("../../8/Door2")
-door3 = NodePath("")
 
 [node name="Door2" parent="PlatformAndSwitch/9" unique_id=1185629574 instance=ExtResource("19_3bm3e")]
 position = Vector2(1957, 697)
@@ -325,11 +324,9 @@ speed = 2.0
 
 [node name="10" type="Node" parent="PlatformAndSwitch" unique_id=249264240]
 
-[node name="Switch" parent="PlatformAndSwitch/10" unique_id=1856886898 node_paths=PackedStringArray("platform", "door1", "door2") instance=ExtResource("14_fpe3u")]
+[node name="Switch" parent="PlatformAndSwitch/10" unique_id=1856886898 node_paths=PackedStringArray("platform") instance=ExtResource("14_fpe3u")]
 position = Vector2(2000, 925)
 platform = NodePath("../Platform4")
-door1 = NodePath("")
-door2 = NodePath("")
 
 [node name="Platform4" parent="PlatformAndSwitch/10" unique_id=1091768175 instance=ExtResource("18_gijds")]
 position = Vector2(288, 989)
@@ -341,35 +338,27 @@ loop = true
 [node name="11" type="Node" parent="PlatformAndSwitch" unique_id=1587762391]
 
 [node name="Door" parent="PlatformAndSwitch/11" unique_id=717935801 instance=ExtResource("19_3bm3e")]
-position = Vector2(357, 937)
+position = Vector2(354, 937)
 move_dis = 45.0
 speed = 2.0
 
 [node name="Door2" parent="PlatformAndSwitch/11" unique_id=754793335 instance=ExtResource("19_3bm3e")]
-position = Vector2(427, 937)
+position = Vector2(427, 938)
 move_dis = 45.0
 speed = 2.0
 
-[node name="Switch" parent="PlatformAndSwitch/11" unique_id=753554957 node_paths=PackedStringArray("platform", "door1", "door2", "door3") instance=ExtResource("14_fpe3u")]
+[node name="Switch" parent="PlatformAndSwitch/11" unique_id=753554957 node_paths=PackedStringArray("platform", "door1", "door2") instance=ExtResource("14_fpe3u")]
 position = Vector2(393, 909)
 platform = NodePath("../Platform4")
 door1 = NodePath("../Door")
 door2 = NodePath("../Door2")
-door3 = NodePath("")
 
 [node name="Platform4" parent="PlatformAndSwitch/11" unique_id=1709257827 instance=ExtResource("18_gijds")]
 position = Vector2(1856, 976)
 scale = Vector2(1, 1)
 y_move_dis = 90.0
-is_active = true
 lift_speed = 2.0
 loop = true
-
-[node name="12" type="Node" parent="PlatformAndSwitch" unique_id=807474718]
-
-[node name="13" type="Node" parent="PlatformAndSwitch" unique_id=1658831909]
-
-[node name="14" type="Node" parent="PlatformAndSwitch" unique_id=1322028637]
 
 [node name="Enemys" type="Node2D" parent="." unique_id=1828079428]
 

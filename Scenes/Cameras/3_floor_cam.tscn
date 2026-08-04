@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dsjhxgoly6gkm"]
+
+[ext_resource type="Script" uid="uid://c7i270c52qk2e" path="res://Script/Cameras/3_floor_cam.gd" id="1_53a33"]
+
+[node name="3FloorCam" type="Camera2D" unique_id=1745347325]
+scale = Vector2(0.8, 0.8)
+limit_left = 0
+limit_top = 640
+limit_right = 42143
+script = ExtResource("1_53a33")

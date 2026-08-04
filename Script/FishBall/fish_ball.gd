@@ -18,7 +18,7 @@ signal take_damage_signal(damage:float)
 ## 显示UI
 @export var Show_UI:bool = true
 ## 血量
-@export var HP:float = 100.0
+static  var HP:float = 100.0
 ## 移动速度
 @export var SPEED := 150.0
 ## 跳跃高度
@@ -229,13 +229,14 @@ func smooth_scale(target_scale:Vector2,duration:float)->void:
 # 受伤
 func take_damage(damage:float):
 	if invincible == false:
-		animated_sprite_2d.play("TakeDamage")
-		take_damage_signal.emit(damage)
+		for target in get_tree().get_nodes_in_group("Player"):
+			target.take_damage_signal.emit(damage)
 		invincible = true
 		HP -= damage
 		print(name,"受到:",damage,"点伤害")
 		if HP <= 0.0:
-			is_dead = true
+			for target in get_tree().get_nodes_in_group("Player"):
+				target.is_dead = true
 			print(name,"死了")
 			dead.emit()
 			return
@@ -247,7 +248,6 @@ func apply_knockback(force_x: float):
 
 func _entered_water(body: Node2D) -> void:
 	if not can_rebound:
-		print("hello")
 		smooth_scale(original_scale * 1.5,0.75)
 		is_scale_down = false
 		can_rebound = true

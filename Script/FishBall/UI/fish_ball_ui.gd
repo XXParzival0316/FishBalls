@@ -49,6 +49,7 @@ func _physics_process(delta: float) -> void:
 			ice_walk_icon.visible = fishball.get_icewalk
 			wasabi_icon.visible = fishball.get_wasabi
 func _on_take_damage(damage:float):
+	print("接收到扣血信号来自:",fishball.name)
 	hp_bar.value -= damage
 
 func change_animation(animation_plaer:AnimationPlayer,anim_name:String,changetime:float):

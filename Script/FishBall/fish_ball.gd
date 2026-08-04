@@ -18,7 +18,7 @@ signal take_damage_signal(damage:float)
 ## 显示UI
 @export var Show_UI:bool = true
 ## 血量
-static  var HP:float = 100.0
+static  var HP:float = 10
 ## 移动速度
 @export var SPEED := 150.0
 ## 跳跃高度

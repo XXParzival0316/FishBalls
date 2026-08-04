@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ch2f5lsjh2byx" path="res://Assest/FishBall_Base/fish_ball_dead.png" id="2_y4dcs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4dcs"]
-bg_color = Color(0.56078434, 0.7372549, 0.9137255, 1)
+bg_color = Color(0.2851916, 0.14786795, 0.015918259, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tmxuf"]
 atlas = ExtResource("2_y4dcs")

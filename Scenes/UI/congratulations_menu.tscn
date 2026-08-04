@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://d13b0ohxjywll"]
+
+[ext_resource type="FontFile" uid="uid://clj2x82ubn706" path="res://Fonts/VonwaonBitmap-12px.ttf" id="1_0wf7r"]
+[ext_resource type="Texture2D" uid="uid://bpeminrpyfrse" path="res://FBicon.png" id="2_rire5"]
+[ext_resource type="Texture2D" uid="uid://bb56xmv4t3834" path="res://Assest/FishBall_Base/UI/FishBall_UI.png" id="2_xiqxl"]
+
+[sub_resource type="GDScript" id="GDScript_0wf7r"]
+script/source = "extends Control
+
+var kitchen:PackedScene = preload(\"uid://dwn585jhghlg5\")
+
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func _on_back_kitchen_pressed() -> void:
+	get_tree().change_scene_to_packed(kitchen)
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wf7r"]
+bg_color = Color(0.4115174, 0.58663774, 0.89575535, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uhpn"]
+atlas = ExtResource("2_xiqxl")
+region = Rect2(48, 51, 25, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xiqxl"]
+atlas = ExtResource("2_xiqxl")
+region = Rect2(96, 51, 25, 21)
+
+[node name="CongratulationsMenu" type="Control" unique_id=424774797]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = SubResource("GDScript_0wf7r")
+
+[node name="Label" type="Label" parent="." unique_id=2137872138]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_0wf7r")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_0wf7r")
+text = "Congratulations!
+恭喜你！成为一颗合格的鱼蛋！"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackKitchen" type="Button" parent="." unique_id=346093815]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = 19.0
+offset_right = 36.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_0wf7r")
+theme_override_font_sizes/font_size = 12
+text = "返回厨房"
+
+[node name="Quit" type="Button" parent="." unique_id=1632692518]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = 62.0
+offset_right = 28.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_0wf7r")
+theme_override_font_sizes/font_size = 12
+text = "结束试玩"
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=669305517]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 134.0
+offset_right = 223.0
+offset_bottom = 174.0
+texture = SubResource("AtlasTexture_6uhpn")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=861445388]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 134.0
+offset_right = 458.0
+offset_bottom = 174.0
+texture = SubResource("AtlasTexture_xiqxl")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1547179564]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -90.0
+offset_right = 220.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_rire5")
+
+[connection signal="pressed" from="BackKitchen" to="." method="_on_back_kitchen_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

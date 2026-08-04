@@ -19,24 +19,25 @@ func _enter_tree() -> void:
 func _ready():
 	play_animation()
 func _physics_process(delta: float) -> void:
+	play_animation()
 	hurt_player()
 
 func play_animation():  #用于循环动画的函数
-	while true:
-		if is_extending:
-			animated_sprite_2d.play("extension")
-			current_animation = animated_sprite_2d.animation
-			animate_collision()
-			await animated_sprite_2d.animation_finished
-			is_extending = false
-		else:
-			animated_sprite_2d.play("shrink")
-			current_animation = animated_sprite_2d.animation
-			animate_collision()
-			await animated_sprite_2d.animation_finished
-			is_extending = true
+	if is_extending:
+		animated_sprite_2d.play("extension")
+		current_animation = animated_sprite_2d.animation
+		animate_collision()
+		await animated_sprite_2d.animation_finished
+		is_extending = false
+	else:
+		animated_sprite_2d.play("shrink")
+		current_animation = animated_sprite_2d.animation
+		animate_collision()
+		await animated_sprite_2d.animation_finished
+		is_extending = true
+
 func animate_collision():
-	while animated_sprite_2d.is_playing():
+	if animated_sprite_2d.is_playing():
 		var frame_count = animated_sprite_2d.sprite_frames.get_frame_count(current_animation)
 		var current_frame = animated_sprite_2d.frame
 		var percent = float(current_frame) / float(frame_count - 1)
@@ -50,7 +51,8 @@ func animate_collision():
 			enable_collision_3()
 		elif percent >= 0.75 and percent <= 1.0:
 			enable_collision_4()
-		await get_tree().process_frame
+		await get_tree().create_timer(0.8).timeout
+		
 func enable_collision_1():
 	collision1.disabled = false
 	collision2.disabled = true
@@ -79,10 +81,12 @@ func hurt_player():
 				hurting_player.take_damage(10)
 				var direction = 1 if hurting_player.global_position.x - global_position.x > 0 else -1
 				hurting_player.apply_knockback(600 * direction)
+				
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		print("检测到")
 		hurting_player = body
+
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		hurting_player = null

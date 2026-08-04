@@ -14,6 +14,7 @@ script = ExtResource("1_d6ows")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109449356]
 shape = SubResource("RectangleShape2D_n6m41")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1334507145]
 texture = ExtResource("2_d6ows")

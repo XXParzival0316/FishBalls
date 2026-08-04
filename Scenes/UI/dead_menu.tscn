@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://y7ve74s60i0y"]
+
+[ext_resource type="FontFile" uid="uid://clj2x82ubn706" path="res://Fonts/VonwaonBitmap-12px.ttf" id="1_ktfog"]
+[ext_resource type="Script" uid="uid://br8brbf6qc7kv" path="res://Script/dead_menu.gd" id="1_tmxuf"]
+[ext_resource type="Texture2D" uid="uid://ch2f5lsjh2byx" path="res://Assest/FishBall_Base/fish_ball_dead.png" id="2_y4dcs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4dcs"]
+bg_color = Color(0.56078434, 0.7372549, 0.9137255, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmxuf"]
+atlas = ExtResource("2_y4dcs")
+region = Rect2(0, 3, 31, 27)
+
+[node name="DeadMenu" type="Control" unique_id=962510847]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tmxuf")
+
+[node name="Label" type="Label" parent="." unique_id=1218381392]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ktfog")
+theme_override_styles/normal = SubResource("StyleBoxFlat_y4dcs")
+text = "GAME OVER!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=360048252]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 154.00002
+offset_right = 418.0
+offset_bottom = 194.00002
+rotation = -0.5235988
+texture = SubResource("AtlasTexture_tmxuf")
+
+[node name="Restar" type="Button" parent="." unique_id=1264774178]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 194.0
+offset_right = 356.0
+offset_bottom = 219.0
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_ktfog")
+text = "重新开始"
+
+[node name="MainMeu" type="Button" parent="." unique_id=1376660938]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 241.0
+offset_right = 356.0
+offset_bottom = 266.0
+theme_override_fonts/font = ExtResource("1_ktfog")
+text = "返回厨房"
+
+[connection signal="pressed" from="Restar" to="." method="_on_restar_pressed"]
+[connection signal="pressed" from="MainMeu" to="." method="_on_main_meu_pressed"]

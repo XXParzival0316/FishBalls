@@ -252,7 +252,7 @@ new_text2 = "~~~~~~芥末..章鱼??~~~~~~~~~好像.......还能把什么东西�
 
 [node name="Tips2" parent="Tips" unique_id=379254666 instance=ExtResource("8_mwhjt")]
 position = Vector2(1635, 545)
-new_text = "~~~~恭喜你捡到了--薄荷酱!!! ~~~冰冰凉凉OvO~~~~能把脚底的水变成冰(注意把握时机！)~~按[Q][E] 来切换技能~~~~~~~~~~~~~~~~~~~~~"
+new_text = "~~~~恭喜你捡到了--薄荷酱!!! ~~~冰冰凉凉OvO~~~~能把脚底的水变成冰(注意把握时机！)~~按[Q][E] 来选择换技能~~~~~~~~~~~~~~记得按[J]使用技能！~~~~~~~~~~~~~~~~~~"
 new_text2 = "~~~~~~好像还能把什么东西速度降下来~~~~~"
 
 [node name="PickItems" type="Node2D" parent="." unique_id=487031124]
@@ -264,7 +264,7 @@ position = Vector2(607, 56)
 position = Vector2(1657, 551)
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("2_rf7us")]
-position = Vector2(201.00002, 172)
+position = Vector2(199, 180)
 scale = Vector2(0.8, 0.8)
 JUMP_VELOCITY = -300.0
 icewalk_CD = 2.0
@@ -682,5 +682,6 @@ zoom = Vector2(0.5, 0.5)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=891947372]
 
 [node name="DeadMenu" parent="CanvasLayer" unique_id=962510847 instance=ExtResource("27_poeo5")]
+visible = false
 
 [connection signal="body_entered" from="SwitchAnimations" to="SwitchAnimations" method="_on_body_entered"]

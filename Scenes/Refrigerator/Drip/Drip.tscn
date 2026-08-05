@@ -10,8 +10,10 @@ size = Vector2(6.2750626, 16.319443)
 radius = 5.0990195
 
 [node name="Drip" type="RigidBody2D" unique_id=1715593773]
+position = Vector2(0, 1)
 collision_layer = 512
 collision_mask = 0
+gravity_scale = 0.25
 script = ExtResource("1_dpav2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=540137684]

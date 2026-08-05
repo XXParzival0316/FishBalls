@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="2_brns1"]
 [ext_resource type="Texture2D" uid="uid://ck8741ninfiem" path="res://Assest/Kitchen/Kitchen_Wall_tilemap.png" id="3_52yc7"]
-[ext_resource type="PackedScene" uid="uid://bnd6rla26p24a" path="res://Scenes/Refrigerator/Icicle(alone).tscn" id="4_brns1"]
+[ext_resource type="PackedScene" uid="uid://b62aiw4htm3pq" path="res://Scenes/Refrigerator/Drip/DripSpawner.tscn" id="4_brns1"]
 [ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="4_hu080"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ul61f"]
@@ -612,19 +612,17 @@ sources/1 = SubResource("TileSetAtlasSource_52yc7")
 
 [node name="Test" type="Node2D" unique_id=1968407514]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=367423192]
+[node name="TileMapLayer_MG" type="TileMapLayer" parent="." unique_id=367423192]
 tile_map_data = PackedByteArray("AAAAABMAAQAAAAAAAAABABMAAQAAAAAAAAACABMAAQAAAAAAAAADABMAAQAAAAAAAAAEABMAAQAAAAAAAAAFABMAAQAAAAAAAAAGABMAAQAAAAAAAAAHABMAAQAAAAAAAAAIABMAAQAAAAAAAAAJABMAAQAAAAAAAAAKABMAAQAAAAAAAAALABMAAQAAAAAAAAAMABMAAQAAAAAAAAANABMAAQAAAAAAAAAOABMAAQAAAAAAAAAPABMAAQAAAAAAAAAQABMAAQAAAAAAAAARABMAAQAAAAAAAAASABMAAQAAAAAAAAATABMAAQAAAAAAAAAUABMAAQAAAAAAAAAVABMAAQAAAAAAAAAWABMAAQAAAAAAAAAXABMAAQAAAAAAAAAYABMAAQAAAAAAAAAZABMAAQAAAAAAAAAaABMAAQAAAAAAAAAbABMAAQAAAAAAAAAcABMAAQAAAAAAAAAdABMAAQAAAAAAAAAeABMAAQAAAAAAAAAfABMAAQAAAAAAAAAgABMAAQAAAAAAAAAhABMAAQAAAAAAAAAiABMAAQAAAAAAAAASABEAAQAIAAMAAAA=")
 tile_set = SubResource("TileSet_52yc7")
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("4_hu080")]
 position = Vector2(156, 282)
-Show_UI = false
-clone = true
-icewalk_time = 2.0
+get_icewalk = true
+icewalk_CD = 0.5
 
 [node name="Node2D" type="Node2D" parent="FishBall" unique_id=1892140246]
 position = Vector2(275, -12)
 
-[node name="Icicle(alone)" parent="." unique_id=1419033471 instance=ExtResource("4_brns1")]
-position = Vector2(200, 207)
-fall_distance = 100.0
+[node name="DripSpawner" parent="." unique_id=1223855561 instance=ExtResource("4_brns1")]
+position = Vector2(201, 64)

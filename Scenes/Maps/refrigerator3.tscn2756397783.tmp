@@ -224,7 +224,7 @@ maxZoom = 1.5
 minZoom = 0.3
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("6_jnppy")]
-position = Vector2(865, 798)
+position = Vector2(891, 986)
 scale = Vector2(0.8, 0.8)
 JUMP_VELOCITY = -300.0
 clone = true

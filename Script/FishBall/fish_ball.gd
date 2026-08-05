@@ -15,10 +15,10 @@ signal using_icewalk
 signal take_damage_signal(damage:float)
 
 @export_group("基础属性")
-## 显示UI
-@export var Show_UI:bool = true
 ## 血量
 static  var HP:float = 100.0
+## 显示UI
+@export var Show_UI:bool = true
 ## 移动速度
 @export var SPEED := 150.0
 ## 跳跃高度
@@ -87,10 +87,10 @@ func _ready() -> void:
 		remove_child(%PauseUI)
 	
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
 	# 禁止玩家输入
 	if input_locked:
-		return
-	if is_dead:
 		return
 
 	# 检测按下互动,发射型号
@@ -240,10 +240,11 @@ func take_damage(damage:float):
 		print(name,"受到:",damage,"点伤害")
 		if HP <= 0.0:
 			for target in get_tree().get_nodes_in_group("Player"):
-				target.is_dead = true
+				print(target.name)
+				target.dead.emit()
 				target.animated_sprite_2d.play("Dead")
+				target.is_dead = true
 			print(name,"死了")
-			dead.emit()
 			return
 		await get_tree().create_timer(invincible_time).timeout
 		modulate = original_color

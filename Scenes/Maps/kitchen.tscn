@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://dwn585jhghlg5"]
 
+[ext_resource type="Script" uid="uid://4pjgopj82mkj" path="res://Script/GM/kitchenGM.gd" id="1_c8tov"]
 [ext_resource type="Texture2D" uid="uid://bkrybx6mkx7ne" path="res://Assest/Kitchen/Kitchen_Base_tilemap.png" id="1_ws8sa"]
 [ext_resource type="Texture2D" uid="uid://ck8741ninfiem" path="res://Assest/Kitchen/Kitchen_Wall_tilemap.png" id="2_vqcsi"]
 [ext_resource type="Texture2D" uid="uid://bubc3eli5xqq3" path="res://Assest/Kitchen/Kitchen_Floor_tilemap.png" id="3_mhcli"]
@@ -16,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bsxqqku06djro" path="res://Scenes/Commons/tips.tscn" id="13_o81y8"]
 [ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="14_gjruh"]
 [ext_resource type="Texture2D" uid="uid://cj5a1p8ogr23n" path="res://Assest/Kitchen/Kitchen_Old_furniture2.png" id="14_oysoi"]
+[ext_resource type="PackedScene" uid="uid://7vqcvys3d7vx" path="res://Scenes/KitchenTraps/frame_animation.tscn" id="18_rw82g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jolfa"]
 texture = ExtResource("1_ws8sa")
@@ -2880,6 +2882,7 @@ b = Vector2(640, 320)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjruh"]
 
 [node name="Kitchen" type="Node2D" unique_id=2133362733]
+script = ExtResource("1_c8tov")
 
 [node name="TileMapLayers" type="Node2D" parent="." unique_id=897348656]
 
@@ -2965,5 +2968,17 @@ region_enabled = true
 region_rect = Rect2(206, 115, 36, 29)
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("14_gjruh")]
+unique_name_in_owner = true
 position = Vector2(163, 227)
 Show_UI = false
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=580251348]
+position = Vector2(206, 170)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 320
+
+[node name="FrameAnimation" parent="." unique_id=1813364554 instance=ExtResource("18_rw82g")]
+visible = false
+position = Vector2(163, 223)

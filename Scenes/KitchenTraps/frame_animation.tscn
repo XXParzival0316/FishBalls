@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://7vqcvys3d7vx"]
+
+[ext_resource type="Script" uid="uid://crb6o7kev4314" path="res://Script/KitchenTraps/frame_animation.gd" id="1_f0s3h"]
+[ext_resource type="Texture2D" uid="uid://cvjjqphix2m25" path="res://Assest/FishBall_Base/fish_ball_show.png" id="1_tdugq"]
+
+[node name="FrameAnimation" type="Node2D" unique_id=1813364554]
+script = ExtResource("1_f0s3h")
+
+[node name="1" type="Sprite2D" parent="." unique_id=107400141]
+position = Vector2(0, 8)
+texture = ExtResource("1_tdugq")
+region_enabled = true
+region_rect = Rect2(41, 48, 21, 18)
+
+[node name="2" type="Sprite2D" parent="." unique_id=796317971]
+visible = false
+position = Vector2(-2, 9)
+texture = ExtResource("1_tdugq")
+region_enabled = true
+region_rect = Rect2(104, 47, 24, 19)
+
+[node name="3" type="Sprite2D" parent="." unique_id=348371659]
+visible = false
+position = Vector2(-1, 7)
+texture = ExtResource("1_tdugq")
+region_enabled = true
+region_rect = Rect2(169, 46, 26, 20)
+
+[node name="4" type="Sprite2D" parent="." unique_id=1104300804]
+visible = false
+position = Vector2(0, 7)
+texture = ExtResource("1_tdugq")
+region_enabled = true
+region_rect = Rect2(235, 45, 29, 21)
+
+[node name="5" type="Sprite2D" parent="." unique_id=1662792839]
+visible = false
+position = Vector2(1, 5)
+texture = ExtResource("1_tdugq")
+region_enabled = true
+region_rect = Rect2(314, 41, 30, 25)
+
+[node name="6" type="Sprite2D" parent="." unique_id=856407652]
+visible = false
+position = Vector2(2, 5)
+texture = ExtResource("1_tdugq")
+region_enabled = true
+region_rect = Rect2(381, 40, 31, 26)
+
+[node name="7" type="Sprite2D" parent="." unique_id=1380927838]
+visible = false
+position = Vector2(-1, -1)
+texture = ExtResource("1_tdugq")
+region_enabled = true
+region_rect = Rect2(454, 28, 43, 38)

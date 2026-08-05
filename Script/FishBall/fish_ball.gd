@@ -18,7 +18,7 @@ signal take_damage_signal(damage:float)
 ## 显示UI
 @export var Show_UI:bool = true
 ## 血量
-static  var HP:float = 10
+static  var HP:float = 100.0
 ## 移动速度
 @export var SPEED := 150.0
 ## 跳跃高度
@@ -82,6 +82,7 @@ func _ready() -> void:
 	$CanvasLayer.visible = Show_UI
 	original_scale = scale
 	if clone:spawn_clone()
+	if is_clone:%PauseUI.visible = false
 	
 func _physics_process(delta: float) -> void:
 	# 禁止玩家输入

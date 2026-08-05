@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bemf58yduupi5" path="res://Scenes/FishBall/Particles/water_explosion.tscn" id="6_tf1wl"]
 [ext_resource type="Script" uid="uid://d4jwkrfcrr7qe" path="res://Script/FishBall/Skills/skills_manager.gd" id="7_avsej"]
 [ext_resource type="PackedScene" uid="uid://b0agq0ccmdspw" path="res://Scenes/FishBall/FishBall_UI.tscn" id="8_wbxwx"]
+[ext_resource type="PackedScene" uid="uid://b6tr18u8lmnxd" path="res://Scenes/UI/pause_ui.tscn" id="10_rcbsf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcbsf"]
 atlas = ExtResource("2_w0hpu")
@@ -202,6 +203,9 @@ script = ExtResource("7_avsej")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1822502409]
 
 [node name="FishBallUi" parent="CanvasLayer" unique_id=834021621 instance=ExtResource("8_wbxwx")]
+unique_name_in_owner = true
+
+[node name="PauseUI" parent="." unique_id=1307599785 instance=ExtResource("10_rcbsf")]
 unique_name_in_owner = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_entered_water"]

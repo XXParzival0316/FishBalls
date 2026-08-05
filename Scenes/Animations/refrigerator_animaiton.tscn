@@ -19,7 +19,7 @@ func _on_next_pressed() -> void:
 	if animated_sprite_2d.frame != 4:
 		animated_sprite_2d.frame += 1
 		if animated_sprite_2d.frame == 4:
-			next.text = \"看完了\"
+			next.text = \"看完啦\"
 	else :
 		get_tree().change_scene_to_packed(refrigerator3)
 "
@@ -67,6 +67,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="InputEventKey" id="InputEventKey_cimdi"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_leja0"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_leja0"]
+events = [SubResource("InputEventKey_cimdi"), SubResource("InputEventKey_leja0")]
+
 [node name="RefrigeratorAnimaiton" type="Control" unique_id=855665745]
 layout_mode = 3
 anchors_preset = 15
@@ -89,6 +101,7 @@ offset_top = 285.0
 offset_right = 637.0
 offset_bottom = 310.0
 theme_override_fonts/font = ExtResource("2_cimdi")
+shortcut = SubResource("Shortcut_leja0")
 text = "下一页"
 
 [connection signal="pressed" from="Next" to="." method="_on_next_pressed"]

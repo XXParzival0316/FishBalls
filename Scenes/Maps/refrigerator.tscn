@@ -273,11 +273,12 @@ icewalk_CD = 2.0
 icewalk_time = 10.0
 wasabi_damage = 50.0
 
-[node name="Node2D" type="Node2D" parent="FishBall" unique_id=2140629194]
-
 [node name="Camera2D" type="Camera2D" parent="FishBall" unique_id=408340260]
 limit_left = 0
 limit_top = 0
+drag_vertical_enabled = true
+drag_bottom_margin = 0.7
+editor_draw_drag_margin = true
 
 [node name="Stairs" type="Node2D" parent="." unique_id=1853662646]
 

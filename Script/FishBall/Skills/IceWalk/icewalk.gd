@@ -53,8 +53,12 @@ func ice_walk() -> void:
 			var original_source_id = tilemapLayer.get_cell_source_id(target_vector)
 			# 获取原瓦片坐标
 			var original_vector= tilemapLayer.get_cell_atlas_coords(target_vector)
+			if get_collider() is Drip:
+				tilemapLayer.set_cell(target_vector,source_id,Vector2i(0,0),ice_block_id)
+				
+			else:
 			#替换成冰方块
-			tilemapLayer.set_cell(target_vector,source_id,Vector2i(0,0),ice_block_id)
+				tilemapLayer.set_cell(target_vector,source_id,Vector2i(0,0),ice_block_id)
 			await get_tree().create_timer(ice_block_time).timeout
 			if original_vector:
 				tilemapLayer.set_cell(target_vector,original_source_id,original_vector)

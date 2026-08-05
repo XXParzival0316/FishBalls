@@ -30,6 +30,7 @@ scale = Vector2(0.7038042, 0.44743145)
 shape = SubResource("RectangleShape2D_p46wl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=905590350]
+visible = false
 
 [node name="BlurBg" type="TextureRect" parent="CanvasLayer" unique_id=1119988043]
 anchors_preset = 15

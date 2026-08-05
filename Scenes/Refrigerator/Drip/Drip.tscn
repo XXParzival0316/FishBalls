@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://3xypy1i2lwo1" path="res://Assest/Refrigerator/Drip/Drip.png" id="2_gb644"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brns1"]
-size = Vector2(6.2750626, 16.319443)
+size = Vector2(7.345, 8.786861)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dlnsd"]
 radius = 5.0990195
@@ -20,7 +20,7 @@ script = ExtResource("1_dpav2")
 texture = ExtResource("2_gb644")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1226548087]
-position = Vector2(0.47794065, 1.1249999)
+position = Vector2(0.47794065, 3.83673)
 scale = Vector2(1.7600014, 0.72)
 shape = SubResource("RectangleShape2D_brns1")
 

@@ -23,6 +23,10 @@ region = Rect2(0, 70, 58, 19)
 atlas = ExtResource("1_mx7s6")
 region = Rect2(87, 98, 58, 19)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0vfa"]
+atlas = ExtResource("1_mx7s6")
+region = Rect2(86, 69, 58, 19)
+
 [node name="PauseUI" type="CanvasLayer" unique_id=1307599785]
 process_mode = 3
 script = ExtResource("1_e158m")
@@ -121,6 +125,15 @@ grow_horizontal = 2
 grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_175hy")
 
+[node name="RestarButton" type="TextureButton" parent="PausePanel" unique_id=654979533]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 177.0
+offset_right = 305.0
+offset_bottom = 217.0
+texture_normal = SubResource("AtlasTexture_i0vfa")
+
 [connection signal="pressed" from="Control/PauseButton" to="." method="pause"]
 [connection signal="pressed" from="PausePanel/ResumeButton" to="." method="unpause"]
 [connection signal="pressed" from="PausePanel/QuitButton" to="." method="quit_game"]
+[connection signal="pressed" from="PausePanel/RestarButton" to="." method="restart"]

@@ -1,3 +1,4 @@
+class_name Drip
 extends RigidBody2D
 
 # Author XXParzival

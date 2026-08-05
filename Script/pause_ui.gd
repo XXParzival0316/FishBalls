@@ -1,6 +1,9 @@
 extends CanvasLayer
 @onready var pause_panel: Panel = %PausePanel
 
+func _ready() -> void:
+	unpause()
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_P and event.pressed:
@@ -18,6 +21,11 @@ func unpause():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	get_tree().paused = false
 	pause_panel.visible = false
+
+# 重新开始 要在_ready 取消停止游戏
+func restart():
+	get_tree().reload_current_scene()
+	
 
 func quit_game():
 	get_tree().quit()

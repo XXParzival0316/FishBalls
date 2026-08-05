@@ -618,18 +618,12 @@ tile_set = SubResource("TileSet_52yc7")
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("4_hu080")]
 position = Vector2(156, 282)
-clone = true
 get_icewalk = true
 icewalk_CD = 0.5
 
 [node name="Node2D" type="Node2D" parent="FishBall" unique_id=1892140246]
 position = Vector2(275, -12)
 
-[node name="2TPArea2D" parent="." unique_id=55154829 instance=ExtResource("4_brns1")]
-position = Vector2(239, 280)
-
-[node name="Node2D" type="Node2D" parent="2TPArea2D" unique_id=485246962]
-position = Vector2(-125, -5)
-
-[node name="Marker2D" type="Marker2D" parent="2TPArea2D" unique_id=1882449408]
-position = Vector2(227, -4)
+[node name="2TPArea2D" parent="FishBall" unique_id=55154829 instance=ExtResource("4_brns1")]
+position = Vector2(84, -4)
+scale = Vector2(3.4399989, 1)

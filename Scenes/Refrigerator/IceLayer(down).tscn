@@ -9,7 +9,7 @@ size = Vector2(80, 0)
 load_path = "res://.godot/imported/Refrigerator_Base_tilemap.png-9a38550201a19406a038ff0b989ac999.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5703j"]
-size = Vector2(80, 20)
+size = Vector2(77.77, 13.76)
 
 [node name="Ice Spike Layer(low)" type="StaticBody2D" unique_id=243871470]
 script = ExtResource("1_rytdm")

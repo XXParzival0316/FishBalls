@@ -26,7 +26,7 @@ var is_triggered: bool = false                  # 是否已触发
 
 # 节点引用
 @onready var detect_area: Area2D = $Area2D
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+#@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var sprite: Sprite2D = $Sprite2D
 
 func _ready() -> void:
@@ -38,11 +38,7 @@ func _ready() -> void:
 		detect_area.body_entered.connect(_on_detect_area_body_entered)
 		detect_area.body_exited.connect(_on_detect_area_body_exited)
 	
-	# 绑定碰撞体信号（用于伤害检测）
-	if collision_shape:
-		# 注意：StaticBody2D 的 CollisionShape2D 没有 body_entered 信号
-		# 需要使用 Area2D 作为伤害检测，或者检测父节点的碰撞
-		pass
+
 
 # ========== 识别区信号 ==========
 func _on_detect_area_body_entered(body: Node2D) -> void:
@@ -134,56 +130,58 @@ func _handle_falling(delta: float) -> void:
 	current_fall_distance = new_distance
 	
 	# 下落过程中检测碰撞（手动检测）
-	_check_collision_during_fall()
+	#_check_collision_during_fall()
 
-# ========== 碰撞检测（更新版） ==========
-func _check_collision_during_fall() -> void:
-	if current_state != ConeState.FALLING or has_hit_player:
-		return
-	
-	# 获取物理空间状态
-	var space_state = get_world_2d().direct_space_state
-	
-	# 创建形状查询
-	var query = PhysicsShapeQueryParameters2D.new()
-	query.shape = collision_shape.shape
-	query.transform = global_transform
-	query.collision_mask = 1  # 根据实际碰撞层调整，检测玩家层
-	query.exclude = [self]    # 排除自身
-	
-	var results = space_state.intersect_shape(query)
-	
-	for result in results:
-		var collider = result.collider
-		
-		# 如果碰撞体为空，跳过
-		if collider == null:
-			continue
-		
-		# 检测到玩家
-		if collider.is_in_group("Player"):
-			has_hit_player = true
-			# 造成伤害
-			if collider.has_method("take_damage"):
-				collider.take_damage(ice_damage)
-			# 销毁冰锥
-			_destroy_icecone()
-			return
-		
-		# 检测到其他物体（地面、墙体、平台等）
-		# 包括 StaticBody2D 和 CharacterBody2D（非玩家）
-		else:
-			# 如果是物理体（StaticBody2D 或 CharacterBody2D）
-			if collider is StaticBody2D or collider is CharacterBody2D:
-				# 确保不是玩家（虽然前面已经判断过了，但为了安全再次确认）
-				if not collider.is_in_group("Player"):
-					_destroy_icecone()
-					return
-			
-			# 如果是 TileMap（瓦片地图）
-			elif collider is TileMap:
-				_destroy_icecone()
-				return
+## XXParzival:新建一个area2d用来检测是否有碰撞到玩家
+
+## ========== 碰撞检测（更新版） ==========
+#func _check_collision_during_fall() -> void:
+	#if current_state != ConeState.FALLING or has_hit_player:
+		#return
+	#
+	## 获取物理空间状态
+	#var space_state = get_world_2d().direct_space_state
+	#
+	## 创建形状查询
+	#var query = PhysicsShapeQueryParameters2D.new()
+	#query.shape = collision_shape.shape
+	#query.transform = global_transform
+	#query.collision_mask = 1  # 根据实际碰撞层调整，检测玩家层
+	#query.exclude = [self]    # 排除自身
+	#
+	#var results = space_state.intersect_shape(query)
+	#
+	#for result in results:
+		#var collider = result.collider
+		#
+		## 如果碰撞体为空，跳过
+		#if collider == null:
+			#continue
+		#
+		## 检测到玩家
+		#if collider.is_in_group("Player"):
+			#has_hit_player = true
+			## 造成伤害
+			#if collider.has_method("take_damage"):
+				#collider.take_damage(ice_damage)
+			## 销毁冰锥
+			#_destroy_icecone()
+			#return
+		#
+		## 检测到其他物体（地面、墙体、平台等）
+		## 包括 StaticBody2D 和 CharacterBody2D（非玩家）
+		#else:
+			## 如果是物理体（StaticBody2D 或 CharacterBody2D）
+			#if collider is StaticBody2D or collider is CharacterBody2D:
+				## 确保不是玩家（虽然前面已经判断过了，但为了安全再次确认）
+				#if not collider.is_in_group("Player"):
+					#_destroy_icecone()
+					#return
+			#
+			## 如果是 TileMap（瓦片地图）
+			#elif collider is TileMap:
+				#_destroy_icecone()
+				#return
 
 # ========== 销毁功能 ==========
 func _destroy_icecone() -> void:
@@ -231,3 +229,11 @@ func _get_configuration_warnings() -> PackedStringArray:
 		warnings.append("缺少 Sprite2D 节点，建议添加视觉显示")
 	
 	return warnings
+
+# XXParzival 碰到玩家会自动触发
+func _on_hit_area_2d_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.take_damage(ice_damage)
+		_destroy_icecone()
+	else:
+		_destroy_icecone()

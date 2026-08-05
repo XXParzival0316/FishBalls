@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bfyvco4nuscqc" path="res://Scenes/Refrigerator/LiftPlatformAndDoor/LiftPlatform/Platform4.tscn" id="11_ygius"]
 [ext_resource type="PackedScene" uid="uid://deqg0bq2haoyp" path="res://Scenes/Refrigerator/LiftPlatformAndDoor/LiftPlatform/Platform5.tscn" id="12_wcnai"]
 [ext_resource type="PackedScene" uid="uid://bg4um3gvwqhtx" path="res://Scenes/Refrigerator/LiftPlatformAndDoor/Door/Door.tscn" id="13_80f15"]
-[ext_resource type="Texture2D" uid="uid://cayyw6hvtdqbc" path="res://Assest/Refrigerator/Refrigerator_Third_tilemap.png" id="14_v7jgn"]
+[ext_resource type="Texture2D" uid="uid://sejbpnvy5sh7" path="res://Assest/Refrigerator/Big_new_icicle.png" id="14_37abu"]
 [ext_resource type="PackedScene" uid="uid://6ueslp1mev1c" path="res://Scenes/Commons/2tp_area_2d.tscn" id="16_37abu"]
 [ext_resource type="PackedScene" uid="uid://bnd6rla26p24a" path="res://Scenes/Refrigerator/Icicle(alone).tscn" id="16_k7iwv"]
 [ext_resource type="PackedScene" uid="uid://y7ve74s60i0y" path="res://Scenes/UI/dead_menu.tscn" id="16_n7n2t"]
@@ -401,17 +401,16 @@ lift_speed = 2.0
 loop = true
 
 [node name="Ice" type="Sprite2D" parent="." unique_id=1047005396]
-position = Vector2(978.99994, 792.99994)
-rotation = 4.4403186
-scale = Vector2(9.389819, 11.061148)
-texture = ExtResource("14_v7jgn")
-region_enabled = true
+position = Vector2(999.00006, 784.99994)
+rotation = 1.359507
+scale = Vector2(1.1271826, 1.1515137)
+texture = ExtResource("14_37abu")
 region_rect = Rect2(51, 80, 10, 16)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ice" unique_id=702747913]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ice/StaticBody2D" unique_id=672438755]
-polygon = PackedVector2Array(2.2898636, -2.930458, 4.812355, 7.897583, -2.6329498, 8.011467, -4.7990417, 7.8738937, 0.21633148, -8.396065, 2.413643, -5.9984856)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ice/StaticBody2D" unique_id=673320560]
+polygon = PackedVector2Array(-11.598389, 57.07257, 11.945679, 65.56854, 41.465942, -65.01221, 15.628845, -71.325134)
 
 [node name="Switch" parent="." unique_id=1437898180 node_paths=PackedStringArray("door1", "door2") instance=ExtResource("7_tdiok")]
 position = Vector2(1772, 909)

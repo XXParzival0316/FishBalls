@@ -228,11 +228,13 @@ func smooth_scale(target_scale:Vector2,duration:float)->void:
 
 # 受伤
 func take_damage(damage:float):
+	var original_color = modulate
 	if invincible == false:
 		for target in get_tree().get_nodes_in_group("Player"):
 			target.take_damage_signal.emit(damage)
 		invincible = true
 		HP -= damage
+		modulate = Color(1.0, 0.0, 0.0, 0.8)
 		print(name,"受到:",damage,"点伤害")
 		if HP <= 0.0:
 			for target in get_tree().get_nodes_in_group("Player"):
@@ -242,6 +244,7 @@ func take_damage(damage:float):
 			dead.emit()
 			return
 		await get_tree().create_timer(invincible_time).timeout
+		modulate = original_color
 		invincible = false
 		
 func apply_knockback(force_x: float):

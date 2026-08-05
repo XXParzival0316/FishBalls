@@ -238,6 +238,7 @@ func take_damage(damage:float):
 		HP -= damage
 		modulate = Color(1.0, 0.0, 0.0, 0.8)
 		print(name,"受到:",damage,"点伤害")
+		print(name,"剩余血量:",HP)
 		if HP <= 0.0:
 			for target in get_tree().get_nodes_in_group("Player"):
 				print(target.name)

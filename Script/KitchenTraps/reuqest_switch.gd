@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-var Refrigerator_Map:PackedScene = preload("uid://cecqctcxwm7d8")
+var Refrigerator_Map:PackedScene
 
 enum State {
 	CLEAN,
@@ -14,6 +14,7 @@ var player_target:CharacterBody2D = null
 
 
 func _ready() -> void:
+	Refrigerator_Map = preload("uid://cecqctcxwm7d8")
 	$InteractLabel.visible = false
 	$Area2D.connect("body_entered",_on_area_2d_body_entered)
 	$Area2D.connect("body_exited",_on_area_2d_body_exited)

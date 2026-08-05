@@ -22,6 +22,7 @@ var SkillsManager:Node2D
 func _ready() -> void:
 	wasabi_cd_bar.value = 100
 	ice_walk_cd_bar.value = 100
+
 	if owner is Player:
 		fishball = owner
 	if fishball:

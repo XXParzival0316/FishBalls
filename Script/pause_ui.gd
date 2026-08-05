@@ -1,8 +1,6 @@
 extends CanvasLayer
 @onready var pause_panel: Panel = %PausePanel
 
-func _ready() -> void:
-	unpause()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -24,8 +22,10 @@ func unpause():
 
 # 重新开始 要在_ready 取消停止游戏
 func restart():
-	get_tree().reload_current_scene()
-	
+	get_tree().paused = false
+	var player:Player = get_tree().get_first_node_in_group("Player")
+	player.HP = 100.0
+	get_tree().call_deferred("reload_current_scene")
 
 func quit_game():
 	get_tree().quit()

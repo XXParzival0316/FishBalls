@@ -32,8 +32,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 610.0
+offset_bottom = -294.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 
 [node name="PauseButton" type="TextureButton" parent="Control" unique_id=464137535]
 layout_mode = 1
@@ -47,10 +50,10 @@ offset_bottom = 21.0
 grow_horizontal = 0
 texture_normal = SubResource("AtlasTexture_e158m")
 
-[node name="PausePanel" type="Panel" parent="Control" unique_id=1841640555]
+[node name="PausePanel" type="Panel" parent="." unique_id=1841640555]
 unique_name_in_owner = true
+process_mode = 3
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -58,7 +61,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mx7s6")
 
-[node name="TextureRect" type="TextureRect" parent="Control/PausePanel" unique_id=640216372]
+[node name="TextureRect" type="TextureRect" parent="PausePanel" unique_id=640216372]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -73,7 +76,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_baubf")
 
-[node name="PAUSED" type="TextureRect" parent="Control/PausePanel" unique_id=584662280]
+[node name="PAUSED" type="TextureRect" parent="PausePanel" unique_id=584662280]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -88,7 +91,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_mx7s6")
 
-[node name="ResumeButton" type="TextureButton" parent="Control/PausePanel" unique_id=716393084]
+[node name="ResumeButton" type="TextureButton" parent="PausePanel" unique_id=716393084]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -103,7 +106,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_baubf")
 
-[node name="QuitButton" type="TextureButton" parent="Control/PausePanel" unique_id=942988186]
+[node name="QuitButton" type="TextureButton" parent="PausePanel" unique_id=942988186]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -119,5 +122,5 @@ grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_175hy")
 
 [connection signal="pressed" from="Control/PauseButton" to="." method="pause"]
-[connection signal="pressed" from="Control/PausePanel/ResumeButton" to="." method="unpause"]
-[connection signal="pressed" from="Control/PausePanel/QuitButton" to="." method="quit_game"]
+[connection signal="pressed" from="PausePanel/ResumeButton" to="." method="unpause"]
+[connection signal="pressed" from="PausePanel/QuitButton" to="." method="quit_game"]

@@ -15,6 +15,7 @@ func pause():
 	pause_panel.visible = true
 
 func unpause():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	get_tree().paused = false
 	pause_panel.visible = false
 

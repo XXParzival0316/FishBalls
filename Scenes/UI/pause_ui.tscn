@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://rg533uwtjs8q" path="res://Script/pause_ui.gd" id="1_e158m"]
 [ext_resource type="Texture2D" uid="uid://y5pmjtslwrtx" path="res://Assest/UI/Setting&Pause.png" id="1_mx7s6"]
+[ext_resource type="Texture2D" uid="uid://dl7j1e6uugtuo" path="res://Assest/UI/UIBorder.png" id="3_baubf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e158m"]
 atlas = ExtResource("1_mx7s6")
@@ -57,6 +58,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mx7s6")
 
+[node name="TextureRect" type="TextureRect" parent="Control/PausePanel" unique_id=640216372]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -45.0
+offset_right = 106.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_baubf")
+
 [node name="PAUSED" type="TextureRect" parent="Control/PausePanel" unique_id=584662280]
 layout_mode = 1
 anchors_preset = 8
@@ -79,10 +95,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -69.0
-offset_top = -9.0
-offset_right = -11.0
-offset_bottom = 10.0
+offset_left = -73.0
+offset_top = -12.0
+offset_right = -15.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_baubf")
@@ -94,10 +110,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 11.0
-offset_top = -9.0
-offset_right = 69.0
-offset_bottom = 10.0
+offset_left = 14.0
+offset_top = -12.0
+offset_right = 72.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_175hy")

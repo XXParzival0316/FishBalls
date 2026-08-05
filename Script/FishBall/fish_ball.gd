@@ -82,7 +82,9 @@ func _ready() -> void:
 	$CanvasLayer.visible = Show_UI
 	original_scale = scale
 	if clone:spawn_clone()
-	if is_clone:%PauseUI.visible = false
+	if is_clone:
+		remove_child(%CanvasLayer)
+		remove_child(%PauseUI)
 	
 func _physics_process(delta: float) -> void:
 	# 禁止玩家输入

@@ -201,6 +201,7 @@ script = ExtResource("7_avsej")
 [node name="Timer" type="Timer" parent="." unique_id=1430770562]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1822502409]
+unique_name_in_owner = true
 
 [node name="FishBallUi" parent="CanvasLayer" unique_id=834021621 instance=ExtResource("8_wbxwx")]
 unique_name_in_owner = true

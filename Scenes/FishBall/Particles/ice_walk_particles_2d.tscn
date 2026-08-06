@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bj4a7laxl8xd6"]
+
+[node name="IceWalk_particles_2d" type="CPUParticles2D" unique_id=1073794149]
+emitting = false
+amount = 60
+lifetime = 0.5
+randomness = 0.27
+emission_shape = 2
+emission_sphere_radius = 10.41
+gravity = Vector2(400, -980)
+color = Color(0.722503, 0.7963012, 0.96199864, 1)

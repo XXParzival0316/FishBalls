@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var fb: Player = $".."
 
+
 signal	use_skill_signal(skill_name:String)
 signal show_skill_select_signal(skill_name:String)
 
@@ -92,10 +93,13 @@ func get_icewalk() -> void:
 func use_icewalk() -> void:
 	if can_use_icewalk:
 		use_skill_signal.emit("icewalk")
+		var IceWalk_particles:CPUParticles2D = get_node("IceWalk/IceWalk_particles_2d")
+		IceWalk_particles.emitting = true
 		can_use_icewalk = false
 		## 等冰行持续时间结束,才开始创建CD计时器
 		await icewalk_inst.use(fb.icewalk_time,fb.iceblock_time,fb.using_icewalk)
 		if not has_node("icewalk_timer"):
+			IceWalk_particles.emitting = false
 			print("冰霜行者:冷却--",fb.icewalk_CD,"s")
 			create_timer(fb.icewalk_CD,_on_icewalk_CD_timeout,"icewalk_timer")
 

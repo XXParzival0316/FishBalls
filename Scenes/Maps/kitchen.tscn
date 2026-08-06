@@ -2972,6 +2972,13 @@ limit_left = 0
 limit_top = 0
 limit_right = 640
 limit_bottom = 320
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 1.0
+drag_top_margin = 1.0
+drag_right_margin = 1.0
+drag_bottom_margin = 1.0
+editor_draw_drag_margin = true
 
 [node name="FrameAnimation" parent="." unique_id=1813364554 instance=ExtResource("18_rw82g")]
 visible = false

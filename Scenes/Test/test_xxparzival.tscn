@@ -610,6 +610,39 @@ physics_layer_1/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ul61f")
 sources/1 = SubResource("TileSetAtlasSource_52yc7")
 
+[sub_resource type="GDScript" id="GDScript_brns1"]
+script/source = "extends Camera2D
+
+# 可在检查器可视化调整参数
+@export var smooth_speed: float = 1.0
+@export var min_scale: float = 0.4   # 最大放大下限
+@export var max_scale: float = 2.5    # 最小缩小上限
+var target_zoom = clamp(Vector2(1.0,1.0),Vector2(0.1,0.1),Vector2(2.0,1.0))
+
+func _ready():
+	pass
+
+func _physics_process(delta: float) -> void:
+	smonth_zoom(delta)
+	print(delta)
+
+func smonth_zoom(delta)->void:
+	zoom = lerp(zoom, target_zoom, 1 - exp(-smooth_speed * delta))
+
+
+func _input(event: InputEvent):
+	# 滚轮上滑放大，下滑缩小
+	if event is InputEventMouseButton:
+		if event.button_index == MouseButton.MOUSE_BUTTON_WHEEL_UP:
+			target_zoom += Vector2(1.0,1.0)
+			target_zoom = clamp(target_zoom,Vector2(0.1,0.1),Vector2(1.0,1.0))
+			
+			print(target_zoom)
+		if event.button_index == MouseButton.MOUSE_BUTTON_WHEEL_DOWN:
+			target_zoom -= Vector2(1.0,1.0)
+			target_zoom = clamp(target_zoom,Vector2(0.1,0.1),Vector2(1.0,1.0))
+"
+
 [node name="Test" type="Node2D" unique_id=1968407514]
 
 [node name="TileMapLayer_MG" type="TileMapLayer" parent="." unique_id=367423192]
@@ -621,6 +654,13 @@ position = Vector2(156, 282)
 clone = true
 get_icewalk = true
 icewalk_CD = 0.5
+
+[node name="Camera2D" type="Camera2D" parent="FishBall" unique_id=1845499490]
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 320
+script = SubResource("GDScript_brns1")
 
 [node name="Node2D" type="Node2D" parent="FishBall" unique_id=1892140246]
 position = Vector2(275, -12)

@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://dk7fhaqgyfbvf" path="res://Scenes/KitchenTraps/Refrigerator.tscn" id="12_kyl5f"]
 [ext_resource type="PackedScene" uid="uid://bsxqqku06djro" path="res://Scenes/Commons/tips.tscn" id="13_o81y8"]
 [ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="14_gjruh"]
-[ext_resource type="Texture2D" uid="uid://cj5a1p8ogr23n" path="res://Assest/Kitchen/Kitchen_Old_furniture2.png" id="14_oysoi"]
 [ext_resource type="PackedScene" uid="uid://7vqcvys3d7vx" path="res://Scenes/KitchenTraps/frame_animation.tscn" id="18_rw82g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jolfa"]
@@ -2953,12 +2952,6 @@ shape = SubResource("RectangleShape2D_gjruh")
 
 [node name="Refrigerator" parent="." unique_id=51527414 instance=ExtResource("12_kyl5f")]
 position = Vector2(56, 228)
-
-[node name="Cabinet" type="Sprite2D" parent="." unique_id=385397129]
-position = Vector2(227, 84)
-texture = ExtResource("14_oysoi")
-region_enabled = true
-region_rect = Rect2(120, 47, 215, 75)
 
 [node name="SteamPot" type="Sprite2D" parent="." unique_id=59091737]
 position = Vector2(439, 211)

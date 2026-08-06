@@ -74,7 +74,7 @@ scale = Vector2(2.4225352, 2.8193948)
 texture = ExtResource("2_mwluc")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeadFish" unique_id=839368741]
-polygon = PackedVector2Array(1216, 448, 1206, 484, 1184, 480, 1184, 520, 1216, 584, 1216, 608, 1232, 632, 1264, 624, 1336, 576, 1332, 566, 1234, 450)
+polygon = PackedVector2Array(1215, 459, 1206, 484, 1184, 480, 1184, 520, 1216, 584, 1216, 608, 1232, 632, 1264, 624, 1336, 576, 1332, 566, 1234, 454)
 
 [node name="IceSpike_Left" type="Node2D" parent="." unique_id=1637249615]
 position = Vector2(768.00006, 1040)
@@ -266,7 +266,7 @@ position = Vector2(607, 56)
 position = Vector2(1657, 551)
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("2_rf7us")]
-position = Vector2(196.00012, 167)
+position = Vector2(200.00006, 169.00003)
 scale = Vector2(0.8, 0.8)
 JUMP_VELOCITY = -300.0
 icewalk_CD = 2.0

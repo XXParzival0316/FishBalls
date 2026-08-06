@@ -137,6 +137,7 @@ size = Vector2(155, 29)
 size = Vector2(2, 2)
 
 [node name="Octopus" type="CharacterBody2D" unique_id=1517227325 groups=["Enemy"]]
+collision_layer = 9
 script = ExtResource("1_vvplx")
 metadata/_custom_type_script = "uid://8yfbxnn3wf1l"
 

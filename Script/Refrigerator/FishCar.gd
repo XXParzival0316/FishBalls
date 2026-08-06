@@ -15,7 +15,7 @@ extends StaticBody2D
 @onready var left_bound: Node2D = $LeftBound
 @onready var right_bound: Node2D = $RightBound
 @onready var marker_2d: Marker2D = $Marker2D
-
+var is_hit:bool = false
 # 记录鱼车原始移速
 var origin_speed:float
 var move_dir: float = 1.0  # 1向右，-1向左
@@ -51,19 +51,24 @@ func _physics_process(delta: float) -> void:
 	$AnimatedSprite2D.flip_h = move_dir < 0
 
 func take_damage(damage):
-	modulate = Color(1.0, 0.0, 0.0, 1.0)
-	move_speed = 0
-	$HitDetech.monitoring = false
-	$AnimatedSprite2D.pause()
-	$IceWalkDetech.monitoring = true
-	await get_tree().create_timer(wasabi_syncope_time).timeout
-	$AnimatedSprite2D.play()
-	$IceWalkDetech.monitoring = false
-	$HitDetech.monitoring = true
-	# 要是没受ic影响
-	if not icewalk_effected:
-		move_speed = origin_speed
-		modulate = Color(1.0, 1.0, 1.0, 1.0)
+	if not is_hit:
+		
+		is_hit = true	
+		modulate = Color(1.0, 0.0, 0.0, 1.0)
+		move_speed = 0
+		$HitDetech.monitoring = false
+		$AnimatedSprite2D.pause()
+		$IceWalkDetech.monitoring = true
+		await get_tree().create_timer(wasabi_syncope_time).timeout
+		is_hit = false
+		$AnimatedSprite2D.play()
+		$IceWalkDetech.monitoring = false
+		$HitDetech.monitoring = true
+		
+		# 要是没受ic影响
+		if not icewalk_effected:
+			move_speed = origin_speed
+			modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 # 传送玩家
 func tp_Player(body:Node2D) -> void:

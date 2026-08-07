@@ -20,6 +20,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if body.is_in_group("Player"):
 			has_trigger = true
 			animatied_sprite_2d.play("on")
+			$AudioStreamPlayer2D.play()
 			if platform != null:
 				platform.is_active = true 
 			if door1 != null:

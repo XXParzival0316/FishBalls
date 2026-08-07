@@ -77,6 +77,8 @@ var invincible_time : float = 0.8
 @onready var water_drop_particles: CPUParticles2D = $Particles/WaterDrop
 @onready var water_explosion_particles: CPUParticles2D = $Particles/WaterExplosion
 
+
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$CanvasLayer.visible = Show_UI
@@ -162,6 +164,7 @@ func match_active_state(delta:float,direction:float) -> void:
 				
 		STATE.JUMP:
 			animated_sprite_2d.play("Jump")
+			%JumpAudio.play()
 			velocity.y = JUMP_VELOCITY
 				
 			if not is_on_floor():
@@ -217,6 +220,7 @@ func spawn_clone():
 # 反弹
 func bounce(bounce_target:float) -> void:
 	water_drop_particles.emitting = false
+	%BounceAudio.play()
 	print("反弹高度为:",bounce_target)
 	smooth_scale (original_scale,0.25)
 	velocity.y = -bounce_target
@@ -236,10 +240,12 @@ func take_damage(damage:float):
 			target.take_damage_signal.emit(damage)
 		invincible = true
 		HP -= damage
+		%TakeDamageAudio.play()
 		modulate = Color(1.0, 0.0, 0.0, 0.8)
 		print(name,"受到:",damage,"点伤害")
 		print(name,"剩余血量:",HP)
 		if HP <= 0.0:
+			%DeadAudio.play()
 			for target in get_tree().get_nodes_in_group("Player"):
 				print(target.name)
 				target.dead.emit()

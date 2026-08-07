@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bnd6rla26p24a" path="res://Scenes/Refrigerator/Icicle(alone).tscn" id="16_k7iwv"]
 [ext_resource type="PackedScene" uid="uid://y7ve74s60i0y" path="res://Scenes/UI/dead_menu.tscn" id="16_n7n2t"]
 [ext_resource type="Texture2D" uid="uid://dewkm2iuddts4" path="res://Assest/Refrigerator/Refrigerator_Base_tilemap.png" id="17_37abu"]
+[ext_resource type="AudioStream" uid="uid://ydjx6652u0fl" path="res://Audios/BGM/Waiting.wav" id="19_6w6m1"]
 
 [sub_resource type="GDScript" id="GDScript_fa2su"]
 script/source = "extends Area2D
@@ -275,7 +276,7 @@ platform = NodePath("../Platform2")
 [node name="5" type="Node" parent="PlatformAndSwitch" unique_id=513312267]
 
 [node name="Switch" parent="PlatformAndSwitch/5" unique_id=553985258 node_paths=PackedStringArray("platform") instance=ExtResource("7_tdiok")]
-position = Vector2(458, 826)
+position = Vector2(458, 829)
 platform = NodePath("../Platform")
 
 [node name="Platform" parent="PlatformAndSwitch/5" unique_id=1469552188 instance=ExtResource("10_lixj6")]
@@ -495,5 +496,10 @@ region_rect = Rect2(336, 77, 80, 19)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=436967188]
 
 [node name="DeadMenu" parent="CanvasLayer" unique_id=962510847 instance=ExtResource("16_n7n2t")]
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="." unique_id=1528915654]
+unique_name_in_owner = true
+stream = ExtResource("19_6w6m1")
+volume_db = -10.0
 
 [connection signal="body_entered" from="Congratulations" to="Congratulations" method="_on_body_entered"]

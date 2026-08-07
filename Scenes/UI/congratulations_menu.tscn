@@ -10,10 +10,10 @@ script/source = "extends Control
 var kitchen:PackedScene
 
 func _ready() -> void:
-	kitchen = preload(\"uid://dwn585jhghlg5\")
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_back_kitchen_pressed() -> void:
+	kitchen = load(\"uid://dwn585jhghlg5\")
 	get_tree().change_scene_to_packed(kitchen)
 
 

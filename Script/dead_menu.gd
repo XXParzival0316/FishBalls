@@ -6,6 +6,7 @@ extends Control
 var kitchen:PackedScene
 func _ready() -> void:
 	kitchen = load("res://Scenes/Maps/kitchen.tscn")
+	
 func _on_restar_pressed() -> void:
 	get_tree().reload_current_scene()
 

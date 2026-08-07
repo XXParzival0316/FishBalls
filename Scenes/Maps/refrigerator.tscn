@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://ealxjtpsyoiy" path="res://Scenes/Refrigerator/IceSpike.tscn" id="22_3tr67"]
 [ext_resource type="PackedScene" uid="uid://dd75cedhc855w" path="res://Scenes/Commons/tp_area.tscn" id="22_b6dsn"]
 [ext_resource type="PackedScene" uid="uid://y7ve74s60i0y" path="res://Scenes/UI/dead_menu.tscn" id="27_poeo5"]
+[ext_resource type="AudioStream" uid="uid://b7q8j73hib0so" path="res://Audios/BGM/Cute Jump.wav" id="28_poeo5"]
 
 [sub_resource type="GDScript" id="GDScript_60tdj"]
 script/source = "extends Area2D
@@ -687,5 +688,10 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="DeadMenu" parent="CanvasLayer" unique_id=962510847 instance=ExtResource("27_poeo5")]
 visible = false
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="." unique_id=10850872]
+unique_name_in_owner = true
+stream = ExtResource("28_poeo5")
+volume_db = -10.0
 
 [connection signal="body_entered" from="SwitchAnimations" to="SwitchAnimations" method="_on_body_entered"]

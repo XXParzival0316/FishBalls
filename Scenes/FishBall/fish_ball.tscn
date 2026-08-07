@@ -9,7 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://bemf58yduupi5" path="res://Scenes/FishBall/Particles/water_explosion.tscn" id="6_tf1wl"]
 [ext_resource type="Script" uid="uid://d4jwkrfcrr7qe" path="res://Script/FishBall/Skills/skills_manager.gd" id="7_avsej"]
 [ext_resource type="PackedScene" uid="uid://b0agq0ccmdspw" path="res://Scenes/FishBall/FishBall_UI.tscn" id="8_wbxwx"]
+[ext_resource type="AudioStream" uid="uid://b2og0f0jo8p81" path="res://Audios/FishBall/PickItems.wav" id="9_c1c2t"]
 [ext_resource type="PackedScene" uid="uid://b6tr18u8lmnxd" path="res://Scenes/UI/pause_ui.tscn" id="10_rcbsf"]
+[ext_resource type="AudioStream" uid="uid://cugmyhmudsg1s" path="res://Audios/FishBall/Bounce.wav" id="11_dlvbk"]
+[ext_resource type="AudioStream" uid="uid://cj7swo3f8ls5j" path="res://Audios/FishBall/Jump.wav" id="12_e8xy5"]
+[ext_resource type="AudioStream" uid="uid://c5aglkffpfxjd" path="res://Audios/FishBall/TakeDamage.wav" id="12_psx50"]
+[ext_resource type="AudioStream" uid="uid://rgmqbcefnaan" path="res://Audios/FishBall/Dead.wav" id="15_e7alg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcbsf"]
 atlas = ExtResource("2_w0hpu")
@@ -198,6 +203,10 @@ emitting = false
 [node name="SkillsManager" type="Node2D" parent="." unique_id=794075905]
 script = ExtResource("7_avsej")
 
+[node name="PickItemsAudio" type="AudioStreamPlayer2D" parent="SkillsManager" unique_id=467386691]
+unique_name_in_owner = true
+stream = ExtResource("9_c1c2t")
+
 [node name="Timer" type="Timer" parent="." unique_id=1430770562]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1822502409]
@@ -208,6 +217,22 @@ unique_name_in_owner = true
 
 [node name="PauseUI" parent="." unique_id=1307599785 instance=ExtResource("10_rcbsf")]
 unique_name_in_owner = true
+
+[node name="BounceAudio" type="AudioStreamPlayer2D" parent="." unique_id=775889723]
+unique_name_in_owner = true
+stream = ExtResource("11_dlvbk")
+
+[node name="TakeDamageAudio" type="AudioStreamPlayer2D" parent="." unique_id=1361828787]
+unique_name_in_owner = true
+stream = ExtResource("12_psx50")
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="." unique_id=1340162205]
+unique_name_in_owner = true
+stream = ExtResource("12_e8xy5")
+
+[node name="DeadAudio" type="AudioStreamPlayer2D" parent="." unique_id=1356271405]
+unique_name_in_owner = true
+stream = ExtResource("15_e7alg")
 
 [connection signal="body_entered" from="Area2D" to="." method="_entered_water"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

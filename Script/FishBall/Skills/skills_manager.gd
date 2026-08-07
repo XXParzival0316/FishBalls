@@ -82,6 +82,7 @@ func create_timer(wait_time:float,func_name:Callable,timer_name ="timer"):
 
 func get_icewalk() -> void:
 	if not has_node("IceWalk"):
+		%PickItemsAudio.play()
 		fb.get_icewalk = true
 		icewalk_inst = icewalk.instantiate()
 		add_child(icewalk_inst)
@@ -112,6 +113,7 @@ func _on_icewalk_CD_timeout() -> void:
 func get_wasabi() -> void:
 	if not has_node("WasabiSpawner"):
 		fb.get_wasabi = true
+		%PickItemsAudio.play()
 		print("获得芥末酱技能")
 		skills_arr.append("wasabi")
 		wasabi_spawner_inst = wasabi_spawner.instantiate()

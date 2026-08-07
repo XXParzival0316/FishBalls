@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dk7fhaqgyfbvf" path="res://Scenes/KitchenTraps/Refrigerator.tscn" id="12_kyl5f"]
 [ext_resource type="PackedScene" uid="uid://bsxqqku06djro" path="res://Scenes/Commons/tips.tscn" id="13_o81y8"]
 [ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="14_gjruh"]
+[ext_resource type="AudioStream" uid="uid://4bf2te1cr7ux" path="res://Audios/BGM/Rest time.wav" id="18_cl1uc"]
 [ext_resource type="PackedScene" uid="uid://7vqcvys3d7vx" path="res://Scenes/KitchenTraps/frame_animation.tscn" id="18_rw82g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jolfa"]
@@ -2983,3 +2984,8 @@ editor_draw_drag_margin = true
 [node name="FrameAnimation" parent="." unique_id=1813364554 instance=ExtResource("18_rw82g")]
 visible = false
 position = Vector2(163, 223)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1284028383]
+stream = ExtResource("18_cl1uc")
+volume_db = -10.0
+autoplay = true

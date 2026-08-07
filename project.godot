@@ -27,6 +27,7 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://Assest/": "green",
+"res://Audios/": "red",
 "res://Fonts/": "teal",
 "res://Scenes/": "pink",
 "res://Script/": "purple",

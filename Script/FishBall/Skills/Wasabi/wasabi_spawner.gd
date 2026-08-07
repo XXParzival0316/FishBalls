@@ -17,4 +17,5 @@ func use(is_filp:bool,fb_position:Vector2,wasabi_damage:float) -> void:
 	if not is_filp:
 		wasabi_inst.linear_velocity.x = 500
 	wasabi_inst.damage = wasabi_damage
+	$AudioStreamPlayer2D.play()
 	add_child(wasabi_inst)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btw1nkdatnjqa" path="res://Script/FishBall/Skills/IceWalk/icewalk.gd" id="1_bgk5b"]
 [ext_resource type="PackedScene" uid="uid://bj4a7laxl8xd6" path="res://Scenes/FishBall/Particles/ice_walk_particles_2d.tscn" id="2_wnnfx"]
+[ext_resource type="AudioStream" uid="uid://h0qbgb4s4vpg" path="res://Audios/FishBall/IceWalk.wav" id="3_fm6e3"]
 
 [node name="IceWalk" type="RayCast2D" unique_id=1414787809]
 scale = Vector2(1.7335016, 0.80438215)
@@ -10,3 +11,6 @@ collision_mask = 516
 script = ExtResource("1_bgk5b")
 
 [node name="IceWalk_particles_2d" parent="." unique_id=1073794149 instance=ExtResource("2_wnnfx")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=260980842]
+stream = ExtResource("3_fm6e3")

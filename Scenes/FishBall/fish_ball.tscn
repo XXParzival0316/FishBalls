@@ -221,14 +221,17 @@ unique_name_in_owner = true
 [node name="BounceAudio" type="AudioStreamPlayer2D" parent="." unique_id=775889723]
 unique_name_in_owner = true
 stream = ExtResource("11_dlvbk")
+volume_db = -5.0
 
 [node name="TakeDamageAudio" type="AudioStreamPlayer2D" parent="." unique_id=1361828787]
 unique_name_in_owner = true
 stream = ExtResource("12_psx50")
+volume_db = -10.0
 
 [node name="JumpAudio" type="AudioStreamPlayer2D" parent="." unique_id=1340162205]
 unique_name_in_owner = true
 stream = ExtResource("12_e8xy5")
+volume_db = -5.0
 
 [node name="DeadAudio" type="AudioStreamPlayer2D" parent="." unique_id=1356271405]
 unique_name_in_owner = true

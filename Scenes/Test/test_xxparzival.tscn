@@ -2,9 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://do0qp4xjy5kc6" path="res://Assest/Kitchen/Kitchen_Water_tilemap.png" id="2_brns1"]
 [ext_resource type="Texture2D" uid="uid://ck8741ninfiem" path="res://Assest/Kitchen/Kitchen_Wall_tilemap.png" id="3_52yc7"]
-[ext_resource type="PackedScene" uid="uid://bthao4itsc3ci" path="res://Scenes/PickItem/wasabi_pick.tscn" id="4_brns1"]
+[ext_resource type="PackedScene" uid="uid://cau4sbgaaoit2" path="res://Scenes/Enemy/octopus.tscn" id="4_brns1"]
 [ext_resource type="PackedScene" uid="uid://ou8vwax3spb8" path="res://Scenes/FishBall/fish_ball.tscn" id="4_hu080"]
-[ext_resource type="PackedScene" uid="uid://ej2pyu3bby41" path="res://Scenes/PickItem/icewalk_pick.tscn" id="5_hu080"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ul61f"]
 texture = ExtResource("2_brns1")
@@ -614,14 +613,13 @@ sources/1 = SubResource("TileSetAtlasSource_52yc7")
 [node name="Test" type="Node2D" unique_id=1968407514]
 
 [node name="TileMapLayer_MG" type="TileMapLayer" parent="." unique_id=367423192]
-tile_map_data = PackedByteArray("AAAAABMAAQAAAAAAAAABABMAAQAAAAAAAAACABMAAQAAAAAAAAADABMAAQAAAAAAAAAEABMAAQAAAAAAAAAFABMAAQAAAAAAAAAGABMAAQAAAAAAAAAHABMAAQAAAAAAAAAIABMAAQAAAAAAAAAJABMAAQAAAAAAAAAKABMAAQAAAAAAAAALABMAAQAAAAAAAAAMABMAAQAAAAAAAAANABMAAQAAAAAAAAAOABMAAQAAAAAAAAAPABMAAQAAAAAAAAAQABMAAQAAAAAAAAARABMAAQAAAAAAAAASABMAAQAAAAAAAAATABMAAQAAAAAAAAAUABMAAQAAAAAAAAAVABMAAQAAAAAAAAAWABMAAQAAAAAAAAAXABMAAQAAAAAAAAAYABMAAQAAAAAAAAAZABMAAQAAAAAAAAAaABMAAQAAAAAAAAAbABMAAQAAAAAAAAAcABMAAQAAAAAAAAAdABMAAQAAAAAAAAAeABMAAQAAAAAAAAAfABMAAQAAAAAAAAAgABMAAQAAAAAAAAAhABMAAQAAAAAAAAAiABMAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAABMAAQAAAAAAAAABABMAAQAAAAAAAAACABMAAQAAAAAAAAADABMAAQAAAAAAAAAEABMAAQAAAAAAAAAFABMAAQAAAAAAAAAGABMAAQAAAAAAAAAHABMAAQAAAAAAAAAIABMAAQAAAAAAAAAJABMAAQAAAAAAAAAKABMAAQAAAAAAAAALABMAAQAAAAAAAAAMABMAAQAAAAAAAAANABMAAQAAAAAAAAAOABMAAQAAAAAAAAAPABMAAQAAAAAAAAAQABMAAQAAAAAAAAARABMAAQAAAAAAAAASABMAAQAAAAAAAAATABMAAQAAAAAAAAAUABMAAQAAAAAAAAAVABMAAQAAAAAAAAAWABMAAQAAAAAAAAAXABMAAQAAAAAAAAAYABMAAQAAAAAAAAAZABMAAQAAAAAAAAAaABMAAQAAAAAAAAAbABMAAQAAAAAAAAAcABMAAQAAAAAAAAAdABMAAQAAAAAAAAAeABMAAQAAAAAAAAAfABMAAQAAAAAAAAAgABMAAQAAAAAAAAAhABMAAQAAAAAAAAAiABMAAQAAAAAAAAAOABIAAAACAAQAAAAPABIAAAACAAQAAAAQABIAAAACAAQAAAARABIAAAACAAQAAAASABIAAAACAAQAAAATABIAAAACAAQAAAA=")
 tile_set = SubResource("TileSet_52yc7")
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("4_hu080")]
 position = Vector2(93, 263)
+get_icewalk = true
+get_wasabi = true
 
-[node name="WasabiPick" parent="." unique_id=1374159557 instance=ExtResource("4_brns1")]
-position = Vector2(152, 290)
-
-[node name="icewalk_pick" parent="." unique_id=688055498 instance=ExtResource("5_hu080")]
-position = Vector2(218, 283)
+[node name="Octopus" parent="." unique_id=1517227325 instance=ExtResource("4_brns1")]
+position = Vector2(196, 270)

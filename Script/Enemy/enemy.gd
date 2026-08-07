@@ -39,6 +39,8 @@ var is_move : bool = true
 #组件
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wall_checker = $WallChecker
+var take_damage_audio:AudioStream = preload("res://Audios/Enemy/hitHurt.wav")
+var audioplayer2d:AudioStreamPlayer2D = AudioStreamPlayer2D.new()
 
 func _enter_tree() -> void: #start
 	dir.x = $".".scale.x
@@ -46,6 +48,8 @@ func _enter_tree() -> void: #start
 	next_wall = false
 
 func _ready() -> void: #awake
+	audioplayer2d.set_stream(take_damage_audio)
+	add_child(audioplayer2d)
 	state_machine.set_physics_process(true)
 	Ignore_player_collision()
 
@@ -124,7 +128,9 @@ func take_damage(damage:float):
 		#todo 动画
 		modulate = Color(1.0, 0.0, 0.0, 1.0)
 		print(name,"受到:",damage,"点伤害")
+		audioplayer2d.play()
 		if health <= 0.0:
+			audioplayer2d.play()
 			print(name,"死了")
 			enemy_died.emit(self)
 			queue_free()

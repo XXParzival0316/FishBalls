@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bsxqqku06djro" path="res://Scenes/Commons/tips.tscn" id="8_mwhjt"]
 [ext_resource type="PackedScene" uid="uid://cau4sbgaaoit2" path="res://Scenes/Enemy/octopus.tscn" id="9_pulr7"]
 [ext_resource type="PackedScene" uid="uid://ej2pyu3bby41" path="res://Scenes/PickItem/icewalk_pick.tscn" id="9_sssap"]
-[ext_resource type="Texture2D" uid="uid://cayyw6hvtdqbc" path="res://Assest/Refrigerator/Refrigerator_Third_tilemap.png" id="10_ctau2"]
 [ext_resource type="PackedScene" uid="uid://dr21ubqc5j0w1" path="res://Scenes/Refrigerator/fishCar.tscn" id="11_v2dgo"]
 [ext_resource type="PackedScene" uid="uid://bfyvco4nuscqc" path="res://Scenes/Refrigerator/LiftPlatformAndDoor/LiftPlatform/Platform4.tscn" id="12_5ig5s"]
 [ext_resource type="PackedScene" uid="uid://b62aiw4htm3pq" path="res://Scenes/Refrigerator/Drip/DripSpawner.tscn" id="13_84lbp"]
@@ -26,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://duch4yqy6qs54" path="res://Scenes/Refrigerator/IceLayer(up).tscn" id="21_3tr67"]
 [ext_resource type="PackedScene" uid="uid://ealxjtpsyoiy" path="res://Scenes/Refrigerator/IceSpike.tscn" id="22_3tr67"]
 [ext_resource type="PackedScene" uid="uid://dd75cedhc855w" path="res://Scenes/Commons/tp_area.tscn" id="22_b6dsn"]
+[ext_resource type="Texture2D" uid="uid://sejbpnvy5sh7" path="res://Assest/Refrigerator/Big_new_icicle.png" id="22_poeo5"]
 [ext_resource type="PackedScene" uid="uid://y7ve74s60i0y" path="res://Scenes/UI/dead_menu.tscn" id="27_poeo5"]
 [ext_resource type="AudioStream" uid="uid://b7q8j73hib0so" path="res://Audios/BGM/Cute Jump.wav" id="28_poeo5"]
 
@@ -267,7 +267,7 @@ position = Vector2(607, 56)
 position = Vector2(1657, 551)
 
 [node name="FishBall" parent="." unique_id=920739817 instance=ExtResource("2_rf7us")]
-position = Vector2(200.00006, 169.00003)
+position = Vector2(205.00012, 174.00003)
 scale = Vector2(0.8, 0.8)
 JUMP_VELOCITY = -300.0
 icewalk_CD = 2.0
@@ -568,10 +568,7 @@ position = Vector2(1502, 184)
 
 [node name="Ice" type="Sprite2D" parent="." unique_id=1047005396]
 position = Vector2(1000, 704.00006)
-rotation = 3.1415927
-scale = Vector2(9.208274, 8.310501)
-texture = ExtResource("10_ctau2")
-region_enabled = true
+texture = ExtResource("22_poeo5")
 region_rect = Rect2(51, 80, 10, 16)
 
 [node name="Switch" parent="." unique_id=1437898180 node_paths=PackedStringArray("door1", "door2") instance=ExtResource("7_e6sbe")]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cmrao8v6ly7y8" path="res://Script/Refrigerator/FishCar.gd" id="1_y31yk"]
 [ext_resource type="Texture2D" uid="uid://dgglk2xw20gk4" path="res://Assest/Refrigerator/fishcar_right.png" id="2_y31yk"]
+[ext_resource type="AudioStream" uid="uid://cjrmjn1x51fiv" path="res://Audios/Enemy/hitHurt.wav" id="3_0fsp7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0fsp7"]
 atlas = ExtResource("2_y31yk")
@@ -84,6 +85,9 @@ position = Vector2(-31, -20)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBar" unique_id=1569357192]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_u6t1l")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=935564626]
+stream = ExtResource("3_0fsp7")
 
 [connection signal="body_entered" from="HitDetech" to="." method="_on_hit_detech_body_entered"]
 [connection signal="body_entered" from="IceWalkDetech" to="." method="_on_ice_walk_detech_body_entered"]

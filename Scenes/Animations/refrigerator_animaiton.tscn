@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b3sbsn71mf4ke" path="res://Assest/Animation/RefrigeratorAnimaiton.png" id="1_u86ed"]
 [ext_resource type="FontFile" uid="uid://clj2x82ubn706" path="res://Fonts/VonwaonBitmap-12px.ttf" id="2_cimdi"]
+[ext_resource type="AudioStream" uid="uid://4bf2te1cr7ux" path="res://Audios/BGM/Rest time.wav" id="3_leja0"]
 
 [sub_resource type="GDScript" id="GDScript_u86ed"]
 script/source = "extends Control
@@ -13,7 +14,6 @@ var refrigerator3:PackedScene = preload(\"uid://b7akbsj6mntqu\")
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	animated_sprite_2d.frame = 0
-	
 
 func _on_next_pressed() -> void:
 	if animated_sprite_2d.frame != 4:
@@ -103,5 +103,9 @@ offset_bottom = 310.0
 theme_override_fonts/font = ExtResource("2_cimdi")
 shortcut = SubResource("Shortcut_leja0")
 text = "下一页"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1242004038]
+stream = ExtResource("3_leja0")
+autoplay = true
 
 [connection signal="pressed" from="Next" to="." method="_on_next_pressed"]

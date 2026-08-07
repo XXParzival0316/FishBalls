@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://dpw3r0g33fx0t"]
 
 [ext_resource type="Script" uid="uid://bj4g0vu035yl0" path="res://Script/FishBall/Skills/Wasabi/wasabi_spawner.gd" id="1_d0avc"]
+[ext_resource type="AudioStream" uid="uid://chdncsldw7pxt" path="res://Audios/FishBall/wasabi_shoot.wav" id="2_uhilt"]
 
 [node name="WasabiSpawner" type="Node2D" unique_id=610261167]
 script = ExtResource("1_d0avc")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=86959834]
+stream = ExtResource("2_uhilt")

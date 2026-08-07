@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(damage):
 	if not is_hit:
-		
+		$AudioStreamPlayer2D.play()
 		is_hit = true	
 		modulate = Color(1.0, 0.0, 0.0, 1.0)
 		move_speed = 0
